@@ -24,7 +24,7 @@
 package com.tencent.wstt.gt.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import androidx.core.app.FragmentActivity;
 
 import com.tencent.stat.StatService;
 import com.tencent.wstt.gt.GTApp;

@@ -7,7 +7,9 @@ import android.database.Cursor;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.CursorAdapter;
+import android.widget.ListAdapter;
+
+import androidx.cursoradapter.widget.CursorAdapter;
 
 
 /**
@@ -20,7 +22,7 @@ import android.support.v4.widget.CursorAdapter;
  * returns the reordered list of Cursor positions.
  *
  * An instance of this class is passed
- * to {@link DragSortListView#setAdapter(ListAdapter)} and, since
+ * to {@link DragSortListView#setAdapter(ListAdapter)}and, since
  * this class implements the {@link DragSortListView.DragSortListener}
  * interface, it is automatically set as the DragSortListener for
  * the DragSortListView instance.

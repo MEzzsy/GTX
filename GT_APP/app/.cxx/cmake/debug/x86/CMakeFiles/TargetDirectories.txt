@@ -1,0 +1,3 @@
+/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/x86/CMakeFiles/mem_fill_tool.dir

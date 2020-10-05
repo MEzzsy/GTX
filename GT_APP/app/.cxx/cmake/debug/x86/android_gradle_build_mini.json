@@ -1,0 +1,19 @@
+{
+  "buildFiles": [
+    "/Users/mezzsy/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake",
+    "/Users/mezzsy/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/src/main/jni/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/mezzsy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/x86\" clean"
+  ],
+  "buildTargetsCommand": "/Users/mezzsy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "mem_fill_tool-Debug-x86": {
+      "artifactName": "mem_fill_tool",
+      "buildCommand": "/Users/mezzsy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/x86\" mem_fill_tool",
+      "abi": "x86",
+      "output": "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/build/intermediates/cmake/debug/obj/x86/libmem_fill_tool.so"
+    }
+  }
+}
