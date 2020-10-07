@@ -18,7 +18,7 @@
      CONDITIONS OF ANY KIND, either express or implied. See the License for the
      specific language governing permissions and limitations under the License.
 -->
-<com.tencent.wstt.gt.views.PatchedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.didi.wstt.gt.views.PatchedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list_item"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"

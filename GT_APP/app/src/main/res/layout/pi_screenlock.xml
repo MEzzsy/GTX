@@ -70,7 +70,7 @@
             android:textSize="18sp"
             android:background="@drawable/seekbar_border" />
 
-        <com.tencent.wstt.gt.views.GTCheckBox
+        <com.didi.wstt.gt.views.GTCheckBox
             android:id="@+id/screenlock_toggle_wakelock"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -101,7 +101,7 @@
             android:textSize="18sp" 
             android:background="@drawable/seekbar_border"/>
 
-        <com.tencent.wstt.gt.views.GTCheckBox
+        <com.didi.wstt.gt.views.GTCheckBox
             android:id="@+id/screenlock_toggle_partiallock"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

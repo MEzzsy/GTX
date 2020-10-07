@@ -20,7 +20,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- 通用 -->
-    <string name="app_name">GT</string>
+    <string name="app_name">GTX</string>
     <string name="back">返回</string>
     <string name="start">开始</string>
     <string name="stop">停止</string>

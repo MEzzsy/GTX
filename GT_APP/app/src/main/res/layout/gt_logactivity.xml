@@ -52,7 +52,7 @@
                 android:textColor="#b7bdcf"
                 android:textSize="16sp" />
 
-            <com.tencent.wstt.gt.views.GTCheckBox
+            <com.didi.wstt.gt.views.GTCheckBox
                 android:id="@+id/cb_logcat_switch"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

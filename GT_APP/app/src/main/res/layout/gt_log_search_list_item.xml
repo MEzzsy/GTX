@@ -31,7 +31,7 @@
         android:textColor="@drawable/text_hint_gray"
         android:textSize="14sp" />
 
-    <com.tencent.wstt.gt.views.PatchedTextView
+    <com.didi.wstt.gt.views.PatchedTextView
         android:id="@+id/log_search_list_item"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

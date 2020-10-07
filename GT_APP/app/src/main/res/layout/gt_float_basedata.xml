@@ -79,7 +79,7 @@
             android:textColor="#FFFFFF"
             android:textSize="10sp" />
 
-        <com.tencent.wstt.gt.proInfo.floatView.SMLightView
+        <com.didi.wstt.gt.proInfo.floatView.SMLightView
             android:id="@+id/sm_lightview"
             android:layout_width="50dp"
             android:layout_height="35dp"

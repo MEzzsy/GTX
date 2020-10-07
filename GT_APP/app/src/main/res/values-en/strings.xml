@@ -21,7 +21,7 @@
 <resources>
 
     <!-- 通用 -->
-    <string name="app_name">GT</string>
+    <string name="app_name">GTX</string>
     <string name="back">Back</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>

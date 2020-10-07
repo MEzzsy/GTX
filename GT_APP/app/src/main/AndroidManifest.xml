@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     coreApp="true"
-    package="com.tencent.wstt.gt"
+    package="com.didi.wstt.gt"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -55,12 +55,12 @@
         android:smallScreens="true" />
 
     <application
-        android:name=".GTApp"
+        android:name="com.didi.wstt.gt.GTApp"
         android:allowBackup="false"
         android:icon="@drawable/gt_apk"
         android:label="@string/app_name">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.didi.wstt.gt.activity.SplashActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -71,101 +71,101 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.GTMainActivity"
+            android:name="com.didi.wstt.gt.activity.GTMainActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/translucentWithTitle"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.GTLogSearchActivity"
+            android:name="com.didi.wstt.gt.activity.GTLogSearchActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.GTPerfGroupDetailActivity"
+            android:name="com.didi.wstt.gt.activity.GTPerfGroupDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTOpMulPerfActivity"
+            android:name="com.didi.wstt.gt.activity.GTOpMulPerfActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTOpSinglePerfActivity"
+            android:name="com.didi.wstt.gt.activity.GTOpSinglePerfActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTOpSMActivity"
+            android:name="com.didi.wstt.gt.activity.GTOpSMActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <!-- launchMode="singleInstance"这样从悬浮进入，回的时候会回到原来位置 -->
         <activity
-            android:name=".activity.GTInputParamSetActivity"
+            android:name="com.didi.wstt.gt.activity.GTInputParamSetActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTAboutActivity"
+            android:name="com.didi.wstt.gt.activity.GTAboutActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTLogSwitchActivity"
+            android:name="com.didi.wstt.gt.activity.GTLogSwitchActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTACSettingActivity"
+            android:name="com.didi.wstt.gt.activity.GTACSettingActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTIntervalSettingActivity"
+            android:name="com.didi.wstt.gt.activity.GTIntervalSettingActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".plugin.tcpdump.GTCaptureActivity"
+            android:name="com.didi.wstt.gt.plugin.tcpdump.GTCaptureActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".plugin.battery.GTBatteryActivity"
+            android:name="com.didi.wstt.gt.plugin.battery.GTBatteryActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".activity.GTShowPackageActivity"
+            android:name="com.didi.wstt.gt.activity.GTShowPackageActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".plugin.screenlock.GTScreenlockActivity"
+            android:name="com.didi.wstt.gt.plugin.screenlock.GTScreenlockActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".plugin.memfill.GTMemFillActivity"
+            android:name="com.didi.wstt.gt.plugin.memfill.GTMemFillActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name="com.tencent.wstt.gt.activity.ShowhtmlActivity"
+            android:name="com.didi.wstt.gt.activity.ShowhtmlActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".plugin.gps.GTGPSActivity"
+            android:name="com.didi.wstt.gt.plugin.gps.GTGPSActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
-            android:name=".plugin.gps.GTGPSReplayActivity"
+            android:name="com.didi.wstt.gt.plugin.gps.GTGPSReplayActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
@@ -177,21 +177,21 @@
 
         <!-- use for gt base -->
         <service
-            android:name=".service.GTService"
+            android:name="com.didi.wstt.gt.service.GTService"
             android:exported="true">
             <intent-filter>
                 <action
-                    android:name="com.tencent.wstt.gt.service"
+                    android:name="com.didi.wstt.gt.service"
                     android:exported="true" />
             </intent-filter>
         </service>
-        <service android:name=".service.GTFloatView" />
-        <service android:name=".service.GTLogo" />
-        <service android:name=".plugin.internal.PluginService" />
+        <service android:name="com.didi.wstt.gt.service.GTFloatView" />
+        <service android:name="com.didi.wstt.gt.service.GTLogo" />
+        <service android:name="com.didi.wstt.gt.plugin.internal.PluginService" />
         <service android:name=".plugin.smtools.SMLogService" />
         <service android:name=".plugin.smtools.SMDataService" />
         <service
-            android:name=".service.GTRService"
+            android:name="com.didi.wstt.gt.service.GTRService"
             android:exported="true">
             <intent-filter>
                 <action
@@ -201,7 +201,7 @@
         </service>
         <!-- use for battery -->
         <receiver
-            android:name=".plugin.battery.BTBroadcast"
+            android:name="com.didi.wstt.gt.plugin.battery.BTBroadcast"
             android:exported="true">
             <intent-filter>
                 <action
@@ -214,7 +214,7 @@
         </receiver>
         <!-- use for memfill -->
         <receiver
-            android:name=".plugin.memfill.MFBroadcast"
+            android:name="com.didi.wstt.gt.plugin.memfill.MFBroadcast"
             android:exported="true">
             <intent-filter>
                 <action
@@ -227,7 +227,7 @@
         </receiver>
         <!-- use for capture -->
         <receiver
-            android:name=".plugin.tcpdump.CaptureBroadcast"
+            android:name="com.didi.wstt.gt.plugin.tcpdump.CaptureBroadcast"
             android:exported="true">
             <intent-filter>
                 <action
@@ -240,7 +240,7 @@
         </receiver>
         <!-- use for GPS -->
         <receiver
-            android:name=".plugin.gps.GPSMockBroadcast"
+            android:name="com.didi.wstt.gt.plugin.gps.GPSMockBroadcast"
             android:exported="true">
             <intent-filter>
                 <action
@@ -284,7 +284,7 @@
         </receiver>
         <!-- use for base param auto test -->
         <receiver
-            android:name=".receiver.BaseCommandReceiver"
+            android:name="com.didi.wstt.gt.receiver.BaseCommandReceiver"
             android:exported="true">
             <intent-filter>
                 <action
@@ -330,25 +330,25 @@
             android:authorities="com.tencent.wstt.gt.TENCENT.MID.V3"
             android:exported="true"></provider>
 
-        <activity android:name=".activity.GTRDetail_LineChartActivity"
+        <activity android:name="com.didi.wstt.gt.activity.GTRDetail_LineChartActivity"
             android:theme="@style/translucent" >
         </activity>
-        <activity android:name=".activity.GTRDetail_ListViewActivity"
+        <activity android:name="com.didi.wstt.gt.activity.GTRDetail_ListViewActivity"
             android:theme="@style/translucent" >
         </activity>
-        <activity android:name=".activity.ShowFileListActivity"
+        <activity android:name="com.didi.wstt.gt.activity.ShowFileListActivity"
             android:label="@string/pi_filelist_label"/>
 
         <!-- use for share to WX -->
         <receiver
-            android:name=".share.AppRegisterToWX"
+            android:name="com.didi.wstt.gt.share.AppRegisterToWX"
             android:permission="com.tencent.mm.plugin.permission.SEND" >
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".wxapi.WXEntryActivity"
+        <activity android:name="com.didi.wstt.gt.wxapi.WXEntryActivity"
                   android:exported="true">
 
         </activity>

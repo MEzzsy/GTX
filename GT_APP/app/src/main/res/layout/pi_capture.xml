@@ -111,7 +111,7 @@
                     android:textColor="#b7bdcf"
                     android:textSize="18sp" />
 
-                <com.tencent.wstt.gt.views.GTCheckBox
+                <com.didi.wstt.gt.views.GTCheckBox
                     android:id="@+id/cb_param_switch"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
