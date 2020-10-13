@@ -35,7 +35,7 @@ import com.didi.wstt.gt.AidlEntry;
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.InPara;
 import com.didi.wstt.gt.OutPara;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.ParamConst;
 
 public abstract class GTParamListBaseAdapter extends BaseAdapter {

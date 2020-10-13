@@ -1,7 +1,7 @@
-package com.tencent.wstt.gt;
+package com.didi.wstt.gt;
 
-import com.tencent.wstt.gt.IRemoteClient;
-import com.tencent.wstt.gt.GTRParam;
+import com.didi.wstt.gt.IRemoteClient;
+import com.didi.wstt.gt.GTRParam;
 
 //GTR的通信接口，负责GTRService与GTR交换数据
 interface IGTR {

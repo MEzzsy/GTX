@@ -35,7 +35,7 @@ import com.didi.wstt.gt.log.GTGWInternal;
 import com.didi.wstt.gt.log.GWSaveEntry;
 import com.didi.wstt.gt.ui.model.TagTimeEntry;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.OpPerfBridge;
 import com.didi.wstt.gt.manager.OpUIManager;
 import com.didi.wstt.gt.manager.ParamConst;
@@ -50,7 +50,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.core.app.ListFragment;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -65,6 +64,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.fragment.app.ListFragment;
 
 public class GTParamOutFragment extends ListFragment implements OnClickListener, OnTouchListener, OnScrollListener {
 	private Button btn_gw_on;

@@ -42,7 +42,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.didi.wstt.gt.InPara;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.Client;
 import com.didi.wstt.gt.manager.ClientManager;
 

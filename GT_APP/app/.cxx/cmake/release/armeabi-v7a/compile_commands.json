@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/mezzsy/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi23 --gcc-toolchain=/Users/mezzsy/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/mezzsy/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dmem_fill_tool_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -Oz -DNDEBUG  -fPIC   -o CMakeFiles/mem_fill_tool.dir/com_tencent_wstt_gt_api_utils_MemFillTool.c.o   -c /Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/src/main/jni/com_tencent_wstt_gt_api_utils_MemFillTool.c",
+  "file": "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/src/main/jni/com_tencent_wstt_gt_api_utils_MemFillTool.c"
+}
+]

@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.didi.wstt.gt.analysis4.GTRDataToJsManager;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.share.Constants;
@@ -29,7 +30,7 @@ import com.tencent.mm.opensdk.modelmsg.WXFileObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.tencent.wstt.gt;
+package com.didi.wstt.gt;
 
 // Declare any non-default types here with import statements
 

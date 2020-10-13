@@ -29,7 +29,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.core.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,6 +42,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.didi.wstt.gt.Functions;
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.internal.GTMemoryDaemonHelper;
@@ -50,7 +51,7 @@ import com.didi.wstt.gt.log.GTTimeInternal;
 import com.didi.wstt.gt.log.LogUtils;
 import com.didi.wstt.gt.ui.model.NamedEntry;
 import com.didi.wstt.gt.ui.model.TagTimeEntry;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTPerfFragment extends Fragment {
 	

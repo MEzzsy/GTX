@@ -33,7 +33,7 @@ import com.didi.wstt.gt.dao.GTPref;
 import com.didi.wstt.gt.log.GTLogInternal;
 import com.didi.wstt.gt.log.LogUtils;
 import com.didi.wstt.gt.views.GTCheckBox;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTLogSwitchActivity extends GTBaseActivity {
 	

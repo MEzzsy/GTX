@@ -31,7 +31,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.didi.wstt.gt.dao.GTPref;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTIntervalSettingActivity extends GTBaseActivity {
 

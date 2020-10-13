@@ -14,7 +14,7 @@ import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisCallback;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.views.ScrollLineChartView;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTRDetail_LineChartActivity extends Activity {
 

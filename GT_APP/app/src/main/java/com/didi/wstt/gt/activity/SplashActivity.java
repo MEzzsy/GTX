@@ -24,7 +24,7 @@
 package com.didi.wstt.gt.activity;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -30,8 +30,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import androidx.core.app.Fragment;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,6 +44,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisCallback;
@@ -56,7 +57,7 @@ import com.didi.wstt.gt.utils.CommonString;
 import com.didi.wstt.gt.utils.DLog;
 import com.didi.wstt.gt.utils.FileUtils;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.manager.ClientFactory;
 import com.didi.wstt.gt.manager.ClientManager;

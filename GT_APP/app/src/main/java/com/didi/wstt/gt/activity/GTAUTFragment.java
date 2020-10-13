@@ -32,7 +32,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.core.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,6 +46,8 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.didi.wstt.gt.Functions;
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.OutPara;
@@ -58,7 +59,7 @@ import com.didi.wstt.gt.plugin.PluginManager;
 import com.didi.wstt.gt.ui.model.TagTimeEntry;
 import com.didi.wstt.gt.utils.CommonString;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.manager.Client;
 import com.didi.wstt.gt.manager.ClientFactory;

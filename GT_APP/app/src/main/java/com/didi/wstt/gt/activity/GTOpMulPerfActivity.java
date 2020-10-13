@@ -64,7 +64,7 @@ import com.didi.wstt.gt.utils.StringUtil;
 import com.didi.wstt.gt.utils.ToastUtil;
 import com.didi.wstt.gt.views.GTMulOpPerfDetailView;
 import com.didi.wstt.gt.views.GTOutParaPerfDialog;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.ClientManager;
 import com.didi.wstt.gt.manager.OpPerfBridge;
 

@@ -45,7 +45,7 @@ import com.didi.wstt.gt.log.GTTimeInternal;
 import com.didi.wstt.gt.log.LogUtils;
 import com.didi.wstt.gt.ui.model.TagTimeEntry;
 import com.didi.wstt.gt.views.GTPerfDetailView;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTPerfGroupDetailActivity extends GTBaseActivity {
 	

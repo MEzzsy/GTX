@@ -36,7 +36,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.core.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -65,6 +64,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.api.base.GTLog;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
@@ -80,7 +81,7 @@ import com.didi.wstt.gt.log.logcat.SaveLogHelper;
 import com.didi.wstt.gt.utils.FileUtil;
 import com.didi.wstt.gt.utils.GTUtils;
 import com.didi.wstt.gt.views.GTCheckBox;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTLogFragment extends Fragment implements LogListener, OnClickListener {
 

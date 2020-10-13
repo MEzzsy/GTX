@@ -35,7 +35,7 @@ import android.widget.TextView;
 
 import com.didi.wstt.gt.dao.GTPref;
 import com.didi.wstt.gt.views.GTCheckBox;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.service.GTFloatView;
 import com.didi.wstt.gt.service.GTLogo;
 

@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 import com.didi.wstt.gt.GTConfig;
 import com.didi.wstt.gt.api.utils.Env;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTAboutActivity extends GTBaseActivity implements View.OnClickListener {
 

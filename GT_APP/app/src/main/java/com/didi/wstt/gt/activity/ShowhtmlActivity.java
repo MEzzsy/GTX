@@ -27,7 +27,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import com.didi.wstt.gt.api.utils.Env;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 import android.content.Intent;
 import android.os.Build;

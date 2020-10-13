@@ -26,7 +26,6 @@ package com.didi.wstt.gt.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.core.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,9 +38,11 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.didi.wstt.gt.plugin.PluginItem;
 import com.didi.wstt.gt.plugin.PluginManager;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTPluginFragment extends Fragment {
 	private ListView listView;

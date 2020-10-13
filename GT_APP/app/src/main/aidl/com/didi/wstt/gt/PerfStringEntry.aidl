@@ -1,3 +1,3 @@
-package com.tencent.wstt.gt;
+package com.didi.wstt.gt;
 
 parcelable PerfStringEntry;

@@ -45,7 +45,7 @@ import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.api.utils.ProcessUtils;
 import com.didi.wstt.gt.utils.AppInfo;
 import com.tencent.stat.StatService;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.manager.ClientFactory;
 import com.didi.wstt.gt.manager.ClientManager;

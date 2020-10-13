@@ -55,7 +55,7 @@ import com.didi.wstt.gt.log.GTLogInternal;
 import com.didi.wstt.gt.log.SearchLogAdapter;
 import com.didi.wstt.gt.log.logcat.SaveLogHelper;
 import com.didi.wstt.gt.ui.model.LogEntry;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTLogSearchActivity extends GTBaseActivity {
 	private ImageView img_empty;

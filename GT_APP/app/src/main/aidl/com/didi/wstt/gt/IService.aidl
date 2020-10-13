@@ -1,10 +1,10 @@
-package com.tencent.wstt.gt;
-import com.tencent.wstt.gt.AidlTask;
-import com.tencent.wstt.gt.PerfDigitalEntry;
-import com.tencent.wstt.gt.PerfStringEntry;
-import com.tencent.wstt.gt.InPara;
-import com.tencent.wstt.gt.OutPara;
-import com.tencent.wstt.gt.BooleanEntry;
+package com.didi.wstt.gt;
+import com.didi.wstt.gt.AidlTask;
+import com.didi.wstt.gt.PerfDigitalEntry;
+import com.didi.wstt.gt.PerfStringEntry;
+import com.didi.wstt.gt.InPara;
+import com.didi.wstt.gt.OutPara;
+import com.didi.wstt.gt.BooleanEntry;
 
 interface IService
 {

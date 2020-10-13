@@ -33,10 +33,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.Fragment;
-import androidx.core.app.FragmentManager;
-import androidx.core.app.FragmentTransaction;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,7 +51,7 @@ import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.dao.GTPref;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTMainActivity extends GTBaseFragmentActivity implements OnClickListener {
 

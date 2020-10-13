@@ -26,16 +26,17 @@ package com.didi.wstt.gt.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.core.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import androidx.fragment.app.ListFragment;
+
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.OutPara;
 import com.mobeta.android.dslv.DragSortListView;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.OpUIManager;
 import com.didi.wstt.gt.manager.ParamConst;
 

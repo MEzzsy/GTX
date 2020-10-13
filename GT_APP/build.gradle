@@ -4,7 +4,7 @@ import javax.tools.JavaCompiler
 
 buildscript {
     repositories {
-//        maven { url "https://maven.aliyun.com/repository/public" }
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/'}
         jcenter()
         google()
         mavenCentral()
@@ -19,7 +19,7 @@ buildscript {
 
 allprojects {
     repositories {
-//        maven { url "https://maven.aliyun.com/repository/public" }
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/'}
         jcenter()
         google()
     }

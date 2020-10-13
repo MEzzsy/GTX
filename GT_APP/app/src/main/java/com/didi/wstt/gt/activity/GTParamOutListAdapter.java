@@ -36,7 +36,7 @@ import com.didi.wstt.gt.OutPara;
 import com.didi.wstt.gt.internal.GTMemoryDaemonThread;
 import com.didi.wstt.gt.ui.model.TagTimeEntry;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.OpUIManager;
 import com.didi.wstt.gt.manager.OpPerfBridge;
 import com.didi.wstt.gt.manager.ParamConst;
