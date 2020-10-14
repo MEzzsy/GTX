@@ -42,9 +42,6 @@ import com.didi.wstt.gt.plugin.gps.GTGPSPluginItem;
 import com.didi.wstt.gt.plugin.gps.GTGPSReplayEngine;
 import com.didi.wstt.gt.utils.GTUtils;
 import com.tencent.bugly.crashreport.CrashReport;
-import com.tencent.stat.MtaSDkException;
-import com.tencent.stat.StatConfig;
-import com.tencent.stat.StatService;
 import com.didi.wstt.gt.activity.GTEntrance;
 import com.didi.wstt.gt.internal.DaemonHandler;
 import com.didi.wstt.gt.internal.GTDaemonThreadManager;
@@ -123,19 +120,6 @@ public class GTApp extends Application {
 		loadPlugins();
 
 		loadEnvInfo();
-
-		// 使用MAT平台进行统计上报
-		// 第二个参数是null，标识读取manifest里配置的appKey
-		// 第三个参数必须为：com.tencent.stat.common.StatConstants.VERSION
-		StatConfig.setDebugEnable(false); // 不打印MTA类日志
-		// 是否WIFI网络下实时上报，如果是false，则在GT第二次启动上报
-		StatConfig.setEnableSmartReporting(true);
-		try {
-			StatService.startStatService(this, null, com.tencent.stat.common.StatConstants.VERSION);
-		} catch (MtaSDkException e) {
-			// MTA初始化失败
-			Log.e("gt_mta", "MTA start failed.");
-		}
 
 		// notify the existing clients to try to connect to
         // current service if they are launched before GT

@@ -27,7 +27,6 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.stat.StatService;
 
 public abstract class GTBaseActivity extends Activity {
 
@@ -40,14 +39,12 @@ public abstract class GTBaseActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		GTApp.setInGT(true);
-		StatService.onResume(this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		GTApp.setInGT(false);
-		StatService.onPause(this);
 	}
 
 	@Override

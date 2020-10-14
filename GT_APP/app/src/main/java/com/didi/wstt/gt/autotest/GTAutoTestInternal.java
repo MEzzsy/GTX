@@ -40,7 +40,6 @@ import com.didi.wstt.gt.log.GTTimeInternal;
 import com.didi.wstt.gt.log.GWSaveEntry;
 import com.didi.wstt.gt.utils.CommonString;
 import com.didi.wstt.gt.utils.FileUtil;
-import com.tencent.stat.StatService;
 import com.didi.wstt.gt.activity.GTAUTFragment;
 import com.didi.wstt.gt.internal.GTMemoryDaemonHelper;
 import com.didi.wstt.gt.manager.AUTManager;
@@ -130,11 +129,6 @@ public class GTAutoTestInternal {
 						GTApp.getContext().getPackageManager()).toString();
 				AUTManager.appic = pi.applicationInfo
 						.loadIcon(GTApp.getContext().getPackageManager());
-
-				// MTA记录选中的AUT
-				Properties prop = new Properties();
-				prop.setProperty("pkgName", AUTManager.pkn);
-				StatService.trackCustomKVEvent(GTApp.getContext(), "Connected AUT", prop);
 
 				// 复杂的过程，修改需谨慎
 				AUTManager.findProcess();

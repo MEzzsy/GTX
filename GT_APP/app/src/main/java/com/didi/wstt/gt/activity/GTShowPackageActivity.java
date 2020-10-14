@@ -44,7 +44,6 @@ import android.widget.TextView;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.api.utils.ProcessUtils;
 import com.didi.wstt.gt.utils.AppInfo;
-import com.tencent.stat.StatService;
 import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.manager.ClientFactory;
@@ -205,7 +204,6 @@ public class GTShowPackageActivity extends GTBaseActivity {
 		// MTA记录选中的AUT
 		Properties prop = new Properties();
 		prop.setProperty("pkgName", AUTManager.pkn);
-		StatService.trackCustomKVEvent(this, "Selected AUT", prop);
 		this.finish();
 	}
 }

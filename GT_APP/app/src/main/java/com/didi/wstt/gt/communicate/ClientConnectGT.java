@@ -29,7 +29,6 @@ import android.content.Context;
 
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.GTConfig;
-import com.tencent.stat.StatService;
 import com.didi.wstt.gt.activity.GTEntrance;
 import com.didi.wstt.gt.manager.Client;
 import com.didi.wstt.gt.manager.ClientFactory;
@@ -54,7 +53,6 @@ public class ClientConnectGT
 		{
 			Properties prop = new Properties();
 			prop.setProperty("pkgName", cur_pkgName);
-			StatService.trackCustomKVEvent(GTApp.getContext(), "Connected AUT", prop);
 		}
 
 		return GTConfig.CONNECT_RES_CODE_OK;

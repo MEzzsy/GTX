@@ -28,7 +28,6 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.stat.StatService;
 
 public abstract class GTBaseFragmentActivity extends FragmentActivity {
 
@@ -41,14 +40,12 @@ public abstract class GTBaseFragmentActivity extends FragmentActivity {
 	protected void onResume() {
 		super.onResume();
 		GTApp.setInGT(true);
-		StatService.onResume(this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		GTApp.setInGT(false);
-		StatService.onPause(this);
 	}
 
 	@Override
