@@ -12,7 +12,7 @@ import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 import com.didi.wstt.gt.utils.GTUtils;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class LogFileAdapter extends ArrayAdapter<CharSequence> {
 	

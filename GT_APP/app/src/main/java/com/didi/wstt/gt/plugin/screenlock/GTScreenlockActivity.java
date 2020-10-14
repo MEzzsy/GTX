@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 import com.didi.wstt.gt.activity.GTBaseActivity;
 import com.didi.wstt.gt.views.GTCheckBox;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTScreenlockActivity extends GTBaseActivity {
 	

@@ -38,7 +38,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.CompoundButton;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
 
 public class GTCheckBox extends CompoundButton {

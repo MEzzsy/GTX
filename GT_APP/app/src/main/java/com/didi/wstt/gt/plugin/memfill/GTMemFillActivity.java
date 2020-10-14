@@ -32,7 +32,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.didi.wstt.gt.activity.GTBaseActivity;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTMemFillActivity extends GTBaseActivity implements GTMemFillListener {
 

@@ -36,7 +36,7 @@ import android.widget.TextView;
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.activity.GTBaseActivity;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTBatteryActivity extends GTBaseActivity
 	implements BatteryPluginListener, OnCheckedChangeListener {

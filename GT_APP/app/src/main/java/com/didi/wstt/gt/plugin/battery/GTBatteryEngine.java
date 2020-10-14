@@ -28,7 +28,7 @@ import android.os.Bundle;
 import com.didi.wstt.gt.Functions;
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.OutPara;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.api.base.GTLog;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
 import com.didi.wstt.gt.dao.GTPref;

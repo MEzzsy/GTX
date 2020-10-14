@@ -45,7 +45,7 @@ import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.activity.GTMainActivity;
 import com.didi.wstt.gt.activity.SplashActivity;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTLogo extends Service {
 

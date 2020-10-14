@@ -24,7 +24,7 @@
 package com.didi.wstt.gt.plugin.gps;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.plugin.PluginItem;
 
 public class GTGPSPluginItem extends PluginItem {

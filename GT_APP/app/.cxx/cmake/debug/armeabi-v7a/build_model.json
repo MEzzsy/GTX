@@ -163,6 +163,7 @@
       "project": {
         "compilerSettingsCacheFolder": "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/.cxx",
         "cxxFolder": "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/.cxx",
+        "ideBuildTargetAbi": "arm64-v8a,armeabi-v7a,armeabi",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
@@ -185,8 +186,7 @@
     "objFolder": "/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/build/intermediates/cmake/debug/obj",
     "variantName": "debug",
     "validAbiList": [
-      "ARMEABI_V7A",
-      "X86"
+      "ARMEABI_V7A"
     ]
   }
 }

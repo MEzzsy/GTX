@@ -38,7 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 /**
  * Toast显示帮助类，不需要在UI线程调用也不会死

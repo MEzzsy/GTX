@@ -43,7 +43,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.ui.model.LogEntry;
 
 /**
@@ -82,7 +82,6 @@ public class NormalLogAdapter extends BaseAdapter implements Filterable {
 	/**
 	 * 查询，暂时只支持level和tag查询
 	 * @param queryLevel
-	 * @param queryGroup
 	 * @param queryTag
 	 * @param queryMsg
 	 */

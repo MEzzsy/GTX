@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Locale;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.plugin.BaseService;
 import com.didi.wstt.gt.utils.FileUtil;

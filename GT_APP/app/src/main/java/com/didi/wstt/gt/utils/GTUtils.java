@@ -42,7 +42,7 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.api.utils.Env;
 
 public class GTUtils {

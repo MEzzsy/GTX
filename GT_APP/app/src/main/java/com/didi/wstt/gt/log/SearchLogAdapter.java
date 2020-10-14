@@ -38,7 +38,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.ui.model.LogEntry;
 import com.didi.wstt.gt.ui.model.MatchedEntry;
 

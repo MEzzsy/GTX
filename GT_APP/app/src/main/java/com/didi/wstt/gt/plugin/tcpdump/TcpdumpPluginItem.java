@@ -25,7 +25,7 @@ package com.didi.wstt.gt.plugin.tcpdump;
 
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.plugin.PluginItem;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class TcpdumpPluginItem extends PluginItem {
 

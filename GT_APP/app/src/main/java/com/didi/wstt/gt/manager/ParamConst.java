@@ -27,7 +27,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.didi.wstt.gt.GTApp;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class ParamConst {
 

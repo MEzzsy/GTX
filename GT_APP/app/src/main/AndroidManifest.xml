@@ -325,10 +325,10 @@
             android:name="InstallChannel"
             android:value="play" />
 
-        <provider
-            android:name="com.tencent.mid.api.MidProvider"
-            android:authorities="com.tencent.wstt.gt.TENCENT.MID.V3"
-            android:exported="true"></provider>
+<!--        <provider-->
+<!--            android:name="com.tencent.mid.api.MidProvider"-->
+<!--            android:authorities="com.tencent.wstt.gt.TENCENT.MID.V3"-->
+<!--            android:exported="true"></provider>-->
 
         <activity android:name="com.didi.wstt.gt.activity.GTRDetail_LineChartActivity"
             android:theme="@style/translucent" >

@@ -33,7 +33,7 @@ import com.didi.wstt.gt.service.GTServiceController;
 import com.didi.wstt.gt.ui.model.TagTimeEntry;
 import com.didi.wstt.gt.ui.model.WarningEntry;
 import com.didi.wstt.gt.utils.NotificationHelper;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class OpWarningManager {
 	private LinkedBlockingQueue<WarningEntry> queue;

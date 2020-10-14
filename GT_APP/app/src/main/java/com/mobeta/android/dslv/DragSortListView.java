@@ -49,7 +49,7 @@ import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 
 /**

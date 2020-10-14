@@ -61,7 +61,7 @@ import com.didi.wstt.gt.activity.SplashActivity;
 import com.didi.wstt.gt.api.base.GTTime;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
 import com.didi.wstt.gt.internal.GTMemoryDaemonHelper;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.IpUIManager;
 import com.didi.wstt.gt.manager.OpUIManager;
 import com.didi.wstt.gt.plugin.listener.PluginListener;

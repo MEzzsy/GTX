@@ -29,7 +29,7 @@ import android.os.Message;
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.OutPara;
 import com.didi.wstt.gt.utils.NotificationHelper;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.activity.GTMainActivity;
 
 public class DaemonHandler extends Handler {

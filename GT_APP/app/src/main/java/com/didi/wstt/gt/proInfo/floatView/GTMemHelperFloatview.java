@@ -50,7 +50,7 @@ import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.api.utils.ProcessUtils;
 import com.didi.wstt.gt.plugin.BaseService;
 import com.didi.wstt.gt.utils.GTUtils;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
 
 public class GTMemHelperFloatview extends BaseService implements OnTouchListener {

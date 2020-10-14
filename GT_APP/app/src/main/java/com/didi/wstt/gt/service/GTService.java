@@ -32,7 +32,7 @@ import com.didi.wstt.gt.GTBinder;
 import com.didi.wstt.gt.GTConfig;
 import com.didi.wstt.gt.activity.GTMainActivity;
 import com.didi.wstt.gt.utils.NotificationHelper;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 /**
  * GT对外的服务,同时声明为前台服务

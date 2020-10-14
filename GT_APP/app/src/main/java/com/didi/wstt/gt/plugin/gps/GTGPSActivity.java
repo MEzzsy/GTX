@@ -44,7 +44,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.activity.GTBaseActivity;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.plugin.PluginManager;

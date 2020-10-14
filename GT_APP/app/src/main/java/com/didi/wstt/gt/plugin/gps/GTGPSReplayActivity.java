@@ -23,7 +23,7 @@
  */
 package com.didi.wstt.gt.plugin.gps;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.activity.GTBaseActivity;
 
 import android.content.Intent;

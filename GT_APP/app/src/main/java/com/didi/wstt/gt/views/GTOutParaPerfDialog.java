@@ -30,7 +30,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 public class GTOutParaPerfDialog extends Dialog{
 	

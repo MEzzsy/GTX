@@ -33,7 +33,7 @@ import com.didi.wstt.gt.api.utils.WidgetUtils;
 import com.didi.wstt.gt.utils.FileUtil;
 import com.didi.wstt.gt.utils.GTUtils;
 import com.didi.wstt.gt.views.GTCheckBox;
-import com.tencent.wstt.gt.R;
+import com.didi.wstt.gt.R;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
