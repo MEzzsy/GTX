@@ -63,11 +63,11 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
     private static boolean isFloatViewAllowed = GTPref.getGTPref().getBoolean(GTPref.FLOAT_ALLOWED, false);
 
     // 页面碎片对象
-    private GTAUTFragment1 autFragment;
-    private GTParamTopFragment paramFragment;
-    private GTPerfFragment perfFragment;
-    private GTLogFragment logFragment;
-    private GTPluginFragment pluginFragment;
+    private GTAUTFragment1 autFragment;//AUT
+    private GTParamTopFragment paramFragment;//参数
+    private GTPerfFragment perfFragment;//耗时
+    private GTLogFragment logFragment;//日志
+    private GTPluginFragment pluginFragment;//插件
 
     // 页面布局
     private View autLayout;

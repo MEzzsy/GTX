@@ -74,6 +74,7 @@
             android:name="com.didi.wstt.gt.activity.GTMainActivity"
             android:exported="true"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/translucentWithTitle"
             android:windowSoftInputMode="adjustPan" />
         <activity

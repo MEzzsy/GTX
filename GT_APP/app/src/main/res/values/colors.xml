@@ -20,7 +20,7 @@
 -->
 <resources>
 
-    <drawable name="transparent">#E6000000</drawable>
+    <drawable name="transparent">#000000</drawable>
     <drawable name="text_title_gray">#878c98</drawable>
     <drawable name="text_content_gray">#b7bdcf</drawable>
     <drawable name="area_title_orange">#DD843F</drawable>

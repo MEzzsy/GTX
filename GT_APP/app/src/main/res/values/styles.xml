@@ -20,16 +20,18 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <!--android:windowIsTranslucent设为false，否则会有异常：
+    Only fullscreen opaque activities can request orientation-->
     <style name="translucent" parent="android:Theme.Holo">
         <item name="android:windowBackground">@drawable/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
 
     <style name="translucentWithTitle" parent="translucent">
         <item name="android:windowBackground">@drawable/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">false</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
