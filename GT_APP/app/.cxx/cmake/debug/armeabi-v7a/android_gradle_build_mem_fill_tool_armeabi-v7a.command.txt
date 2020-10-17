@@ -1,7 +1,0 @@
-Executable : /Users/mezzsy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
-arguments : 
--C
-/Users/mezzsy/Projects/Android/AAAAADownload/GT/android/GT_APP/app/.cxx/cmake/debug/armeabi-v7a
-mem_fill_tool
-jvmArgs : 
-
