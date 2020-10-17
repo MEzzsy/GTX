@@ -1,1 +1,4 @@
 include ':app', ':datatool'
+
+include ':commonlib'
+project(":commonlib").projectDir = new File("/Users/mezzsy/Projects/Android/MyApplication/commonlib")
