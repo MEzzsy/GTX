@@ -41,6 +41,7 @@ import com.didi.wstt.gt.plugin.PluginManager;
 import com.didi.wstt.gt.plugin.gps.GTGPSPluginItem;
 import com.didi.wstt.gt.plugin.gps.GTGPSReplayEngine;
 import com.didi.wstt.gt.utils.GTUtils;
+import com.mezzsy.commonlib.CommonLibContext;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.didi.wstt.gt.activity.GTEntrance;
 import com.didi.wstt.gt.internal.DaemonHandler;
@@ -124,6 +125,8 @@ public class GTApp extends Application {
 		// notify the existing clients to try to connect to
         // current service if they are launched before GT
         notifyGTRClient();
+
+		CommonLibContext.getInstance().init(this);
 	}
 
 	private void loadEnvInfo() {

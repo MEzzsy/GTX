@@ -24,7 +24,9 @@
 package com.didi.wstt.gt.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -33,12 +35,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,14 +57,19 @@ import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.dao.GTPref;
 import com.didi.wstt.gt.utils.ToastUtil;
 import com.didi.wstt.gt.R;
+import com.mezzsy.commonlib.util.PermissionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GTMainActivity extends GTBaseFragmentActivity implements OnClickListener {
-
+    private static final String TAG = "GTX";
     // Android6.x之后，需要由用户明确授权的权限，放在MainActivity里提前做申请交互
     private static final int REQUEST_NEED_PERMISSION = 101;
     // 悬浮窗的权限是特殊权限，需要单独处理
     private static final int REQUEST_FLOAT_VIEW = 102;
-    private static boolean isFloatViewAllowed = GTPref.getGTPref().getBoolean(GTPref.FLOAT_ALLOWED, false);
+    //    private static boolean isFloatViewAllowed = GTPref.getGTPref().getBoolean(GTPref.FLOAT_ALLOWED, false);
+    private boolean isFloatViewAllowed = false;
 
     // 页面碎片对象
     private GTAUTFragment1 autFragment;//AUT
@@ -105,6 +114,13 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
         instance = this;
     }
 
+    private static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,//读写权限
+            Manifest.permission.ACCESS_FINE_LOCATION,//允许一个程序访问精良位置(如GPS)
+            Manifest.permission.READ_PHONE_STATE,//允许程序访问电话状态
+//            Manifest.permission.SYSTEM_ALERT_WINDOW,//允许程序显示系统窗口，这个权限系统默认禁止，不在跟随批量申请
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,58 +139,71 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
         }
         isActived = true;
 
-        boolean hasPermission = (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
-
-        hasPermission = hasPermission && (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
-
-        hasPermission = hasPermission && (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED);
-
-        hasPermission = hasPermission && (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SYSTEM_ALERT_WINDOW) == PackageManager.PERMISSION_GRANTED);
-
-        if (!hasPermission) {
-            ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.READ_PHONE_STATE},
-                    REQUEST_NEED_PERMISSION);
+        boolean isNeedRequest = PermissionUtils.requestPermissions(this,
+                PERMISSIONS, REQUEST_NEED_PERMISSION);
+        isFloatViewAllowed = PermissionUtils.checkFloatPermission(this);
+        Log.i(TAG, "onCreate: isFloatViewAllowed = " + isFloatViewAllowed);
+        if (!isNeedRequest && !isFloatViewAllowed) {
+            PermissionUtils.requestAlertWindowPermission(this, REQUEST_FLOAT_VIEW);
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
-            case REQUEST_NEED_PERMISSION: {
+            case REQUEST_NEED_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 授权了就可以保存了，do nothing即可
-                    // 接收了危险权限后，再弹出悬浮窗处理特殊权限，这样还可以避过ACTION_MANAGE_OVERLAY_PERMISSION不支持API23之前的问题
+                    // 接收了危险权限后，再弹出悬浮窗处理特殊权限，
+                    // 这样还可以避过ACTION_MANAGE_OVERLAY_PERMISSION不支持API23之前的问题
                     if (!isFloatViewAllowed) {
-                        requestAlertWindowPermission();
+                        PermissionUtils.requestAlertWindowPermission(this, REQUEST_FLOAT_VIEW);
                     }
+
                     // 在授权后，需要将之前没权限创建的目录重新创建一次
-                    Env.init();
+                    if (permissions[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        Env.init();
+                    }
+
                 } else {
-                    ToastUtil.ShowLongToast(GTApp.getContext(),
-                            "Permission not enough. Please consider granting it this permission.");
+                    Log.i(TAG, "onRequestPermissionsResult: PERMISSION_DENIED : " + permissions[0]);
+//                    ToastUtil.ShowLongToast(GTApp.getContext(),
+//                            "Permission not enough. Please consider granting it this permission.");
                 }
-            }
+                break;
         }
     }
 
-    private void requestAlertWindowPermission() {
-        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-        intent.setData(Uri.parse("package:" + getPackageName()));
-        try {
-            startActivityForResult(intent, REQUEST_FLOAT_VIEW);
-        } catch (Exception e) {
-            // 有的定制系统会抛异常，这样的系统也不需要额外的悬浮窗授权
-        }
+    /* 进行验证码验证，或者进行快速登录的回调，这两个是进行快速登录可能遇到的情况 */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_FLOAT_VIEW:
+                // 得到权限，置标志位，相应的提示用户重启GT等
 
+                isFloatViewAllowed = PermissionUtils.checkFloatPermission(this);
+                Log.i(TAG, "onActivityResult: isFloatViewAllowed = " + isFloatViewAllowed);
+
+                // 因为授权之前的启动悬浮窗会报异常关闭，所以这里重新启动悬浮窗服务
+//			if ( GTPref.getGTPref().getBoolean(GTPref.AC_SWITCH_FLAG, true))
+//			{
+//				Intent intent = new Intent(this, GTLogo.class);
+//				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//				startService(intent);
+
+//				Intent mintent = new Intent(this, GTFloatView.class);
+//				mintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//				startService(mintent);
+//			}
+
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -229,17 +258,17 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
         logLayout = findViewById(R.id.log_layout);
         pluginLayout = findViewById(R.id.plugin_layout);
 
-        autImage = (ImageView) findViewById(R.id.aut_image);
-        paramImage = (ImageView) findViewById(R.id.param_image);
-        perfImage = (ImageView) findViewById(R.id.perf_image);
-        logImage = (ImageView) findViewById(R.id.log_image);
-        pluginImage = (ImageView) findViewById(R.id.plugin_image);
+        autImage = findViewById(R.id.aut_image);
+        paramImage = findViewById(R.id.param_image);
+        perfImage = findViewById(R.id.perf_image);
+        logImage = findViewById(R.id.log_image);
+        pluginImage = findViewById(R.id.plugin_image);
 
-        autText = (TextView) findViewById(R.id.aut_text);
-        paramText = (TextView) findViewById(R.id.param_text);
-        perfText = (TextView) findViewById(R.id.perf_text);
-        logText = (TextView) findViewById(R.id.log_text);
-        pluginText = (TextView) findViewById(R.id.plugin_text);
+        autText = findViewById(R.id.aut_text);
+        paramText = findViewById(R.id.param_text);
+        perfText = findViewById(R.id.perf_text);
+        logText = findViewById(R.id.log_text);
+        pluginText = findViewById(R.id.plugin_text);
 
         autLayout.setOnClickListener(this);
         paramLayout.setOnClickListener(this);
@@ -288,7 +317,7 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-        hideFragments(transaction); //TODO
+        hideFragments(transaction);
 
         switch (index) {
             case 0:
@@ -367,7 +396,7 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
      * 清除掉所有的选中状态。
      */
     private void clearSelection() {
-        int defaultColor = getResources().getColor(R.color.tab_default_textcolor);
+        int defaultColor = getResources().getColor(R.color.tab_default_textcolor, null);
         autImage.setImageResource(R.drawable.tab_default_border);
         autText.setTextColor(defaultColor);
         paramImage.setImageResource(R.drawable.tab_default_border);
@@ -454,37 +483,5 @@ public class GTMainActivity extends GTBaseFragmentActivity implements OnClickLis
         }
 
         return false;
-    }
-
-    /* 进行验证码验证，或者进行快速登录的回调，这两个是进行快速登录可能遇到的情况 */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case REQUEST_FLOAT_VIEW:
-                // 得到权限，置标志位，相应的提示用户重启GT等
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    isFloatViewAllowed = Settings.canDrawOverlays(this);
-                    GTPref.getGTPref().edit().putBoolean(GTPref.FLOAT_ALLOWED, isFloatViewAllowed).commit();
-                } else {
-                    GTPref.getGTPref().edit().putBoolean(GTPref.FLOAT_ALLOWED, false).commit();
-                }
-
-                // 因为授权之前的启动悬浮窗会报异常关闭，所以这里重新启动悬浮窗服务
-//			if ( GTPref.getGTPref().getBoolean(GTPref.AC_SWITCH_FLAG, true))
-//			{
-//				Intent intent = new Intent(this, GTLogo.class);
-//				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//				startService(intent);
-
-//				Intent mintent = new Intent(this, GTFloatView.class);
-//				mintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//				startService(mintent);
-//			}
-
-                break;
-            default:
-                break;
-        }
     }
 }
