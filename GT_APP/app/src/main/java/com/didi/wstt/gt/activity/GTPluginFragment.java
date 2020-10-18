@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -38,6 +38,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.didi.wstt.gt.plugin.PluginItem;
@@ -45,78 +46,79 @@ import com.didi.wstt.gt.plugin.PluginManager;
 import com.didi.wstt.gt.R;
 
 public class GTPluginFragment extends Fragment {
-	private ListView listView;
-	private PluginAdapter adapter;
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		adapter = new PluginAdapter(getActivity());
-		adapter.notifyDataSetChanged();
-		setHasOptionsMenu(true);
-	}
+    private ListView listView;
+    private PluginAdapter adapter;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View pluginLayout = inflater.inflate(R.layout.gt_plugin,
-				container, false);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new PluginAdapter(getActivity());
+        adapter.notifyDataSetChanged();
+        setHasOptionsMenu(true);
+    }
 
-		listView = (ListView) pluginLayout.findViewById(R.id.plugin_list);
-		listView.setAdapter(adapter);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View pluginLayout = inflater.inflate(R.layout.gt_plugin,
+                container, false);
 
-		return pluginLayout;
-	}
+        listView = (ListView) pluginLayout.findViewById(R.id.plugin_list);
+        listView.setAdapter(adapter);
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		menu.setGroupVisible(0, true); // 屏蔽设置主菜单
-	}
+        return pluginLayout;
+    }
 
-	class PluginAdapter extends ArrayAdapter<PluginItem> {
-		
-		Context context;
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.setGroupVisible(0, true); // 屏蔽设置主菜单
+    }
 
-		public PluginAdapter(Context context) {
-			super(context, R.layout.gt_plugin_item, PluginManager.getInstance().getPlugins());
-			this.context = context;
-		}
+    static class PluginAdapter extends ArrayAdapter<PluginItem> {
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			RelativeLayout rl;
-			ImageView img_logo;
-			TextView tv_title;
-			TextView tv_description;
+        Context context;
+
+        public PluginAdapter(Context context) {
+            super(context, R.layout.gt_plugin_item, PluginManager.getInstance().getPlugins());
+            this.context = context;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+            RelativeLayout rl;
+            ImageView img_logo;
+            TextView tv_title;
+            TextView tv_description;
+
+            if (convertView == null) {
+                rl = (RelativeLayout) LayoutInflater.from(context).inflate(
+                        R.layout.gt_plugin_item, parent, false);
+            } else {
+                rl = (RelativeLayout) convertView;
+            }
+
+            img_logo = rl.findViewById(R.id.item_ivLogo);
+            tv_description = rl.findViewById(R.id.item_tvDesc);
+            tv_title = rl.findViewById(R.id.item_tvSubTitle);
 
 			final PluginItem item = this.getItem(position);
+			if (item != null) {
+                img_logo.setImageResource(item.logo_id);
+                tv_title.setText(item.alias);
+                tv_description.setText(item.description);
 
-			if (convertView == null) {
-				rl = (RelativeLayout) LayoutInflater.from(context).inflate(
-						R.layout.gt_plugin_item, parent, false);
-			} else {
-				rl = (RelativeLayout) convertView;
-			}
+                rl.setOnClickListener(new OnClickListener() {
 
-			img_logo=(ImageView) rl.findViewById(R.id.item_ivLogo);
-			tv_description=(TextView) rl.findViewById(R.id.item_tvDesc);
-			tv_title=(TextView) rl.findViewById(R.id.item_tvSubTitle);
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.setClass(context, item.activityClass);
+                        context.startActivity(intent);
+                    }
+                });
+            }
 
-			img_logo.setImageResource(item.logo_id);
-			tv_title.setText(item.alias);
-			tv_description.setText(item.description);
-
-			rl.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent();
-					intent.setClass(context, item.activityClass);
-					context.startActivity(intent);
-				}
-			});
-
-			return rl;
-		}
-	}
+            return rl;
+        }
+    }
 }
