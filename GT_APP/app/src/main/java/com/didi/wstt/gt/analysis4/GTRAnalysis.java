@@ -8,11 +8,11 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.didi.wstt.gt.GTConfig;
-import com.didi.wstt.gt.controller.GTRControllerServer;
-import com.didi.wstt.gt.utils.FileUtils;
 import com.didi.wstt.gt.activity.GTAUTFragment1;
+import com.didi.wstt.gt.controller.GTRControllerServer;
 import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.service.GTRBinder;
+import com.didi.wstt.gt.utils.FileUtils;
 
 import java.io.File;
 
@@ -34,6 +34,7 @@ public class GTRAnalysis extends GTRAnalysisCallBackManager {
 
     /**
      * Restart a new application monitoring
+     *
      * @param context
      * @param packageName
      * @param autoStartStop true if restart the application and reset the data collection
@@ -45,8 +46,8 @@ public class GTRAnalysis extends GTRAnalysisCallBackManager {
 
         //设置初始化数据分析器：
         GTRAnalysis.applicationContext = (context != null)
-                        ? context.getApplicationContext()
-                        : null;
+                ? context.getApplicationContext()
+                : null;
 
         if (GTRAnalysis.mainThreadHandler == null) {
             GTRAnalysis.mainThreadHandler = new Handler(Looper.getMainLooper());
@@ -68,8 +69,9 @@ public class GTRAnalysis extends GTRAnalysisCallBackManager {
      * Start the analysis with the target app process id, and
      * the process must exists when this method is called, so
      * no need to handle the launch thing.
+     *
      * @param context
-     * @param pid application process id
+     * @param pid     application process id
      */
     public static void start(Context context, int pid, String pkgName) {
         GTRAnalysis.applicationContext = (context != null)

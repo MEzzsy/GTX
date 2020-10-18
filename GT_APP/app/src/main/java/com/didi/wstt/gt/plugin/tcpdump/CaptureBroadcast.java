@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -29,27 +29,24 @@ import android.content.Intent;
 import android.util.Log;
 
 public class CaptureBroadcast extends BroadcastReceiver {
-	public static final String ACTION_START_TEST = "com.tencent.wstt.gt.plugin.tcpdump.startTest";
-	public static final String ACTION_END_TEST = "com.tencent.wstt.gt.plugin.tcpdump.endTest";
+    public static final String ACTION_START_TEST = "com.tencent.wstt.gt.plugin.tcpdump.startTest";
+    public static final String ACTION_END_TEST = "com.tencent.wstt.gt.plugin.tcpdump.endTest";
 
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		try {
-			String action = intent.getAction();
-			if (action == null) return;
-			if (action.equals(ACTION_START_TEST)) {
-				
-				String filePath = intent.getStringExtra("filepath");
-				String param = intent.getStringExtra("param");
-				GTCaptureEngine.getInstance().doCapture(filePath, param);
-			}
-			else if (action.equals(ACTION_END_TEST)) {
-				GTCaptureEngine.getInstance().doStopCapture();
-			}
-		}
-		catch (Exception e)
-		{
-			Log.e("GT", "error on CaptureBroadcast.onReceive()...");
-		}
-	}
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        try {
+            String action = intent.getAction();
+            if (action == null) return;
+            if (action.equals(ACTION_START_TEST)) {
+
+                String filePath = intent.getStringExtra("filepath");
+                String param = intent.getStringExtra("param");
+                GTCaptureEngine.getInstance().doCapture(filePath, param);
+            } else if (action.equals(ACTION_END_TEST)) {
+                GTCaptureEngine.getInstance().doStopCapture();
+            }
+        } catch (Exception e) {
+            Log.e("GT", "error on CaptureBroadcast.onReceive()...");
+        }
+    }
 }

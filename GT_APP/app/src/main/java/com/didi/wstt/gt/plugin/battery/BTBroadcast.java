@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -29,37 +29,37 @@ import android.content.Intent;
 import android.util.Log;
 
 public class BTBroadcast extends BroadcastReceiver {
-	public static final String BATTERY_START_TEST = "com.tencent.wstt.gt.plugin.battery.startTest";
-	public static final String BATTERY_END_TEST = "com.tencent.wstt.gt.plugin.battery.endTest";
+    public static final String BATTERY_START_TEST = "com.tencent.wstt.gt.plugin.battery.startTest";
+    public static final String BATTERY_END_TEST = "com.tencent.wstt.gt.plugin.battery.endTest";
 
-	@Override
-	public void onReceive(Context context, Intent intent) {
+    @Override
+    public void onReceive(Context context, Intent intent) {
 
-		try {
-			String action = intent.getAction();
-			if (action == null) return;
-			if (action.equals(BATTERY_START_TEST)) {
-				int refreshRate = intent.getIntExtra("refreshRate", 250);
-				int brightness = intent.getIntExtra("brightness", 100);
+        try {
+            String action = intent.getAction();
+            if (action == null) return;
+            if (action.equals(BATTERY_START_TEST)) {
+                int refreshRate = intent.getIntExtra("refreshRate", 250);
+                int brightness = intent.getIntExtra("brightness", 100);
 
-				boolean updateI = intent.getBooleanExtra("I", true);
-				GTBatteryEngine.getInstance().updateI(updateI);
+                boolean updateI = intent.getBooleanExtra("I", true);
+                GTBatteryEngine.getInstance().updateI(updateI);
 
-				boolean updateU = intent.getBooleanExtra("U", false);
-				GTBatteryEngine.getInstance().updateU(updateU);
+                boolean updateU = intent.getBooleanExtra("U", false);
+                GTBatteryEngine.getInstance().updateU(updateU);
 
-				boolean updateT = intent.getBooleanExtra("T", false);
-				GTBatteryEngine.getInstance().updateT(updateT);
+                boolean updateT = intent.getBooleanExtra("T", false);
+                GTBatteryEngine.getInstance().updateT(updateT);
 
-				boolean updateP = intent.getBooleanExtra("P", false);
-				GTBatteryEngine.getInstance().updateP(updateP);
+                boolean updateP = intent.getBooleanExtra("P", false);
+                GTBatteryEngine.getInstance().updateP(updateP);
 
-				GTBatteryEngine.getInstance().doStart(refreshRate, brightness);
-			} else if (action.equals(BATTERY_END_TEST)) {
-				GTBatteryEngine.getInstance().doStop();
-			}
-		} catch (Exception e) {
-			Log.e("GT", "error on BTBroadcast.onReceive()...");
-		}
-	}
+                GTBatteryEngine.getInstance().doStart(refreshRate, brightness);
+            } else if (action.equals(BATTERY_END_TEST)) {
+                GTBatteryEngine.getInstance().doStop();
+            }
+        } catch (Exception e) {
+            Log.e("GT", "error on BTBroadcast.onReceive()...");
+        }
+    }
 }

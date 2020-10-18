@@ -1,7 +1,12 @@
 package com.didi.wstt.gt.analysis4.obj;
 
 
-/** dalvikvm 日志格式： **/
+/**
+ * dalvikvm 日志格式：  Art 日志格式：  dalvikvm gcReason: 什么触发了GC，以及属于哪种类型的垃圾回收，可能出现的值包括  Art gcReason: 什么触发了GC，以及属于哪种类型的垃圾回收，可能出现的值包括一下几种  Art gcType：ART有几种不同的GC
+ * art虚拟机有6个GC回收器，分为两组（一组并发，一组非并发），每组有一下三个kGcTypeSticky、kGcTypePartial和kGcTypeFul，回收力度依次加大
+ * 依次执行三种类型的GC。每次GC执行完毕，都尝试调用Heap类的成员函数TryToAllocate在不增长当前堆大小的前提下再次尝试分配请求的内存。
+ * 如果分配内存成功，则返回得到的内存起始地址给调用者，并且不再执行下一种类型的GC。
+ **/
 // D/dalvikvm:<GC_Reason><Amount_freed>,<Heap_stats>,<Pause_time>,<Total_time>
 /** Art 日志格式： **/
 /*  I/ art :< GC_Reason><Amount_freed>,<LOS_Space_Status>,<Heap_stats>,<Pause_time >,<Total_time>:  */
@@ -60,13 +65,11 @@ package com.didi.wstt.gt.analysis4.obj;
 //样例： I/art : Explicit concurrent mark sweep GC freed 104710(7MB) AllocSpace objects, 21(416KB) LOS objects, 33% free, 25MB/38MB, paused 1.230ms total 67.216ms
 
 
-
-
 /**
  * Created by p_hongjcong on 2017/4/6.
  *
  */
-public class GCInfo   {
+public class GCInfo {
 
 
     public String vm = "";                  //虚拟机类型（art、dalvikvm）
@@ -80,22 +83,23 @@ public class GCInfo   {
     public long pauseTime = 0;              //非GC线程挂起时长 um
     public long totalTime = 0;              //GC总时长 um
 
-    public GCInfo(){
+    public GCInfo() {
 
     }
 
 
-    public static GCInfo initGcInfo(String gcTag,String gcString ,long time) {
+    public static GCInfo initGcInfo(String gcTag, String gcString, long time) {
 
-        if(gcTag.contains("art")){
-            return analysisArtGCLog(gcString,time);
-        }else if(gcTag.contains("dalvik")){
-            return analysisDalvikGCLog(gcString,time);
-        }else {
+        if (gcTag.contains("art")) {
+            return analysisArtGCLog(gcString, time);
+        } else if (gcTag.contains("dalvik")) {
+            return analysisDalvikGCLog(gcString, time);
+        } else {
             return null;
         }
     }
-    private static GCInfo analysisArtGCLog(String gcString ,long gcLogTime) {
+
+    private static GCInfo analysisArtGCLog(String gcString, long gcLogTime) {
         GCInfo gcInfo = new GCInfo();
         gcInfo.gcLog = gcString;
         gcInfo.gcLogTime = gcLogTime;
@@ -104,8 +108,8 @@ public class GCInfo   {
         String[] ddd = sss[0].split(" ");
         gcInfo.gcResult = ddd[1];
         String[] fff = sss[1].split(",");
-        gcInfo.freedInfo = fff[0].replace(" AllocSpace objects","");
-        gcInfo.freedLargeInfo = fff[1].replace(" LOS objects","");
+        gcInfo.freedInfo = fff[0].replace(" AllocSpace objects", "");
+        gcInfo.freedLargeInfo = fff[1].replace(" LOS objects", "");
         gcInfo.heapStatistics = fff[2] + fff[3];
         String[] ggg = fff[4].split(" ");
         gcInfo.pauseTime = getUSTimeFromString(ggg[2]);
@@ -114,7 +118,7 @@ public class GCInfo   {
     }
 
 
-    private static GCInfo analysisDalvikGCLog(String gcString ,long gcLogTime) {
+    private static GCInfo analysisDalvikGCLog(String gcString, long gcLogTime) {
         GCInfo gcInfo = new GCInfo();
         gcInfo.gcLog = gcString;
         gcInfo.gcLogTime = gcLogTime;
@@ -127,17 +131,17 @@ public class GCInfo   {
     private static long getUSTimeFromString(String timeString) {
         double time = 0;
         long base = 1;//单位换算基数
-        if(timeString.contains("us")){
-            time = Double.parseDouble(timeString.replace("us",""));
+        if (timeString.contains("us")) {
+            time = Double.parseDouble(timeString.replace("us", ""));
             base = 1;
-        }else if(timeString.contains("ms")){
-            time = Double.parseDouble(timeString.replace("ms",""));
+        } else if (timeString.contains("ms")) {
+            time = Double.parseDouble(timeString.replace("ms", ""));
             base = 1000;
-        }else if(timeString.contains("s")){
-            time = Double.parseDouble(timeString.replace("s",""));
+        } else if (timeString.contains("s")) {
+            time = Double.parseDouble(timeString.replace("s", ""));
             base = 1000000;
         }
-        return (long) (time*base);
+        return (long) (time * base);
     }
 
 }

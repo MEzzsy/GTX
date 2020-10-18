@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -23,44 +23,44 @@
  */
 package com.didi.wstt.gt.manager;
 
-import java.util.List;
-
 import com.didi.wstt.gt.InPara;
+
+import java.util.List;
 
 /**
  * 不考虑UI，纯粹的完整入参管理接口
  */
 public interface IInParaManager {
-	public void register(String paraName, String alias, String defaultValue,
-			String... optionalValues);
+    public void register(String paraName, String alias, String defaultValue,
+                         String... optionalValues);
 
-	public void register(InPara para);
-	
-	public void removeOutPara(String paraName);
+    public void register(InPara para);
 
-	public void clear();
-	
-	public boolean isEmpty();
-	
-	public List<InPara> getAll();
-	
-	public abstract InPara getInPara(int positon);
-	
-	public abstract InPara getInPara(String paraName);
+    public void removeOutPara(String paraName);
 
-	public abstract String getInPara(String paraName, String origVal);
+    public void clear();
 
-	public abstract boolean getInPara(String paraName, boolean origVal);
+    public boolean isEmpty();
 
-	public abstract int getInPara(String paraName, int origVal);
+    public List<InPara> getAll();
 
-	public abstract float getInPara(String paraName, float origVal);
+    public abstract InPara getInPara(int positon);
 
-	public abstract double getInPara(String paraName, double origVal);
+    public abstract InPara getInPara(String paraName);
 
-	public abstract short getInPara(String paraName, short origVal);
+    public abstract String getInPara(String paraName, String origVal);
 
-	public abstract byte getInPara(String paraName, byte origVal);
+    public abstract boolean getInPara(String paraName, boolean origVal);
 
-	public abstract long getInPara(String paraName, long origVal);
+    public abstract int getInPara(String paraName, int origVal);
+
+    public abstract float getInPara(String paraName, float origVal);
+
+    public abstract double getInPara(String paraName, double origVal);
+
+    public abstract short getInPara(String paraName, short origVal);
+
+    public abstract byte getInPara(String paraName, byte origVal);
+
+    public abstract long getInPara(String paraName, long origVal);
 }

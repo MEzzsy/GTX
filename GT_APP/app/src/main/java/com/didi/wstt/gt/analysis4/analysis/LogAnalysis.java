@@ -1,7 +1,7 @@
 package com.didi.wstt.gt.analysis4.analysis;
 
-import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
+import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.analysis4.obj.LogInfo;
 import com.didi.wstt.gt.analysis4.util.LogUtil;
 

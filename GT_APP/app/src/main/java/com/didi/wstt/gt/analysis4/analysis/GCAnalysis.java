@@ -1,11 +1,11 @@
 package com.didi.wstt.gt.analysis4.analysis;
 
 
-import com.didi.wstt.gt.dao.DetailListData;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.analysis4.obj.LogInfo;
 import com.didi.wstt.gt.analysis4.util.LogUtil;
+import com.didi.wstt.gt.dao.DetailListData;
 
 /**
  * Created by p_hongjcong on 2017/8/2.

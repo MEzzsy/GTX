@@ -1,9 +1,9 @@
 package com.didi.wstt.gt.analysis4.analysis;
 
-import com.didi.wstt.gt.dao.DetailPointData;
-import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
+import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.analysis4.obj.FrontBackState;
+import com.didi.wstt.gt.dao.DetailPointData;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,7 @@ public class NormalAnalysis {
 
         if (lastTime != 0) {
             gtrAnalysisResult.nowCPU = (cpuTotal - lastCPUTotal) == 0 ? 0
-                : (cpuApp_noGTR - lastCPUApp) * 100L / (cpuTotal - lastCPUTotal);
+                    : (cpuApp_noGTR - lastCPUApp) * 100L / (cpuTotal - lastCPUTotal);
             gtrAnalysisResult.nowMemory = memory / 1024;
             gtrAnalysisResult.nowFlow = gtrAnalysisResult.nowFlow + (flowUpload + flowDownload - lastFlowUpload - lastFlowDownload);
             gtrAnalysisResult.nowFlowSpeed = (flowUpload + flowDownload - lastFlowUpload - lastFlowDownload) * 1000 / 1024 / (time - lastTime);

@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -23,62 +23,60 @@
  */
 package com.didi.wstt.gt.manager;
 
-import java.util.List;
-
 import com.didi.wstt.gt.OutPara;
+
+import java.util.List;
 
 public class EmptyOutParaManager extends IOutParaManager {
 
-	private static EmptyOutParaManager INSTANCE = new EmptyOutParaManager();
-	
-	private EmptyOutParaManager()
-	{
-		super(EmptyClient.getInstance());
-		this.outParaMap = null;
-	}
-	
-	public static EmptyOutParaManager getInstance()
-	{
-		return INSTANCE;
-	}
+    private static EmptyOutParaManager INSTANCE = new EmptyOutParaManager();
 
-	@Override
-	public void register(OutPara para) {
+    private EmptyOutParaManager() {
+        super(EmptyClient.getInstance());
+        this.outParaMap = null;
+    }
 
-	}
+    public static EmptyOutParaManager getInstance() {
+        return INSTANCE;
+    }
 
-	public void register(String paraName, String alias,int typeProperty) {
+    @Override
+    public void register(OutPara para) {
 
-	}
+    }
 
-	public void removeOutPara(String paraName) {
+    public void register(String paraName, String alias, int typeProperty) {
 
-	}
+    }
 
-	public boolean isOutParaExsit(OutPara para) {
-		return false;
-	}
+    public void removeOutPara(String paraName) {
 
-	public OutPara getOutPara(String paraName) {
-		return null;
-	}
+    }
 
-	public void setOutparaMonitor(String str, boolean flag) {
+    public boolean isOutParaExsit(OutPara para) {
+        return false;
+    }
 
-	}
+    public OutPara getOutPara(String paraName) {
+        return null;
+    }
 
-	public boolean contains(String paraName) {
-		return false;
-	}
+    public void setOutparaMonitor(String str, boolean flag) {
 
-	public void clear() {
-	}
+    }
 
-	public boolean isEmpty() {
-		return true;
-	}
+    public boolean contains(String paraName) {
+        return false;
+    }
 
-	public List<OutPara> getAll() {
-		return null;
-	}
+    public void clear() {
+    }
+
+    public boolean isEmpty() {
+        return true;
+    }
+
+    public List<OutPara> getAll() {
+        return null;
+    }
 }

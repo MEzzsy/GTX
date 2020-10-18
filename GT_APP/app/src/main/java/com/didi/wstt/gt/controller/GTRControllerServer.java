@@ -23,15 +23,15 @@ public class GTRControllerServer {
     private static final String KEY_PARAM_2 = "param_2";
 
     //强制杀死被测应用
-    public static void killAppWithSDK(Context context,String packageName){
+    public static void killAppWithSDK(Context context, String packageName) {
         Intent intent = new Intent();
         intent.setAction(GTR_BROADCAST_ACTION);
-        intent.putExtra(KEY_BEHAVIOR,"kill");
-        intent.putExtra(KEY_PARAM_1,packageName);
+        intent.putExtra(KEY_BEHAVIOR, "kill");
+        intent.putExtra(KEY_PARAM_1, packageName);
         context.sendBroadcast(intent);
     }
 
-    public static void openApp(Context context,String packageName) {
+    public static void openApp(Context context, String packageName) {
         PackageInfo pi;
         try {
             pi = context.getPackageManager().getPackageInfo(packageName, 0);
@@ -44,7 +44,7 @@ public class GTRControllerServer {
         resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         resolveIntent.setPackage(pi.packageName);
         PackageManager pManager = GTApp.getContext().getPackageManager();
-        List<ResolveInfo> apps = pManager.queryIntentActivities(resolveIntent,0);
+        List<ResolveInfo> apps = pManager.queryIntentActivities(resolveIntent, 0);
 
         ResolveInfo ri = apps.iterator().next();
         if (ri != null) {
@@ -58,7 +58,6 @@ public class GTRControllerServer {
             context.startActivity(intent);
         }
     }
-
 
 
 }

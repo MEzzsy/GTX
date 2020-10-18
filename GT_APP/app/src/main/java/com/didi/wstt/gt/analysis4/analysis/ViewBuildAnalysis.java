@@ -1,8 +1,8 @@
 package com.didi.wstt.gt.analysis4.analysis;
 
-import com.didi.wstt.gt.dao.DetailListData;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
+import com.didi.wstt.gt.dao.DetailListData;
 
 public class ViewBuildAnalysis {
     GTRAnalysisResult gtrAnalysisResult = null;

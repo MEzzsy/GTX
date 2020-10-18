@@ -8,7 +8,7 @@ import java.util.HashMap;
  * 用于保存后台定时采集的数据（流量、内存、CPU、电量）
  */
 
-public class NormalInfo   {
+public class NormalInfo {
 
 
     //(cpuApp - lastCpuApp) * 100L / (cpuTotal-lastCpuTotal);//计算cpu占用率
@@ -19,17 +19,14 @@ public class NormalInfo   {
     public long flowDownload;
     public long cpuApp;
     public long cpuTotal;
-    public HashMap<String,ThreadCpu> threadCpus = new HashMap<>();//所有线程的CPU占用
-    
-    
-    public static class ThreadCpu{
-    	String threadId;
-    	String ThreadName;
-    	long threadCpu;
+    public HashMap<String, ThreadCpu> threadCpus = new HashMap<>();//所有线程的CPU占用
+
+
+    public static class ThreadCpu {
+        String threadId;
+        String ThreadName;
+        long threadCpu;
     }
 
 
-    
-    
-    
 }

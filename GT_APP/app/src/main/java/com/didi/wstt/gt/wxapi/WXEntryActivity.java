@@ -4,16 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.didi.wstt.gt.activity.GTBaseActivity;
+import com.didi.wstt.gt.activity.ShowFileListActivity;
+import com.didi.wstt.gt.api.utils.Env;
+import com.didi.wstt.gt.share.Constants;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.didi.wstt.gt.activity.GTBaseActivity;
-import com.didi.wstt.gt.activity.ShowFileListActivity;
-import com.didi.wstt.gt.api.utils.Env;
-import com.didi.wstt.gt.share.Constants;
 
 import java.io.File;
 

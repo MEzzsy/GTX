@@ -23,13 +23,13 @@
  */
 package com.didi.wstt.gt.activity;
 
-import com.didi.wstt.gt.GTApp;
-import com.didi.wstt.gt.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.didi.wstt.gt.GTApp;
+import com.didi.wstt.gt.R;
 
 /**
  * 首页

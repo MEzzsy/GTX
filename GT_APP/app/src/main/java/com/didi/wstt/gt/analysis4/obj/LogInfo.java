@@ -6,11 +6,11 @@ package com.didi.wstt.gt.analysis4.obj;
 
 public class LogInfo {
 
-	public long time = 0; // 时间
-	public String grade = ""; // tag
-	public String tag = ""; // tag
-	public String logContent = ""; // log
-	
-	public boolean isGTR = false;
+    public long time = 0; // 时间
+    public String grade = ""; // tag
+    public String tag = ""; // tag
+    public String logContent = ""; // log
+
+    public boolean isGTR = false;
 
 }

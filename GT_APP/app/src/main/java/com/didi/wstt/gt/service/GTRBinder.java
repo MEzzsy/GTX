@@ -36,6 +36,7 @@ public class GTRBinder extends IGTR.Stub {
      */
     static HandlerThread handlerThread;
     static Handler handler;
+
     static Handler getHandler() {
         if (handlerThread == null || handler == null) {
             handlerThread = new HandlerThread("GTRBinderHandlerThread");
@@ -47,7 +48,7 @@ public class GTRBinder extends IGTR.Stub {
                     switch (msg.what) {
                         case MSG_UNREGISTER:
                             if (service != null) {
-                                service.unregister(null, (String)msg.obj);
+                                service.unregister(null, (String) msg.obj);
                             }
 
                             break;

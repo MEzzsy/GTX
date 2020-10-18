@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -23,89 +23,87 @@
  */
 package com.didi.wstt.gt.manager;
 
+import com.didi.wstt.gt.OutPara;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.didi.wstt.gt.OutPara;
-
 /**
  * 不考虑UI，纯粹的完整出参管理接口
  */
 public abstract class IOutParaManager {
 
-	protected Client client;
-	protected Map<String, OutPara> outParaMap =
-			Collections.synchronizedMap(new LinkedHashMap<String, OutPara>());
+    protected Client client;
+    protected Map<String, OutPara> outParaMap =
+            Collections.synchronizedMap(new LinkedHashMap<String, OutPara>());
 
-	public IOutParaManager(Client client)
-	{
-		this.client = client;
-	}
-	
-	/**
-	 * 由客户端首次注册，直接入缓存
-	 * 
-	 * @param para
-	 */
-	abstract public void register(OutPara para);
+    public IOutParaManager(Client client) {
+        this.client = client;
+    }
 
-	public void register(String paraName, String alias) {
-		if(alias.length() > 4){
-			alias = alias.substring(0, 3) + ".";
-		}
-		
-		OutPara para = new OutPara();
-		para.setKey(paraName);
-		para.setAlias(alias);
-		para.setDisplayProperty(OutPara.DISPLAY_NORMAL);
-		para.setClient(client.getKey());
+    /**
+     * 由客户端首次注册，直接入缓存
+     *
+     * @param para
+     */
+    abstract public void register(OutPara para);
 
-		if(!contains(paraName)){
-			outParaMap.put(paraName, para);
-		}
-	}
+    public void register(String paraName, String alias) {
+        if (alias.length() > 4) {
+            alias = alias.substring(0, 3) + ".";
+        }
 
-	public void removeOutPara(String paraName) {
-		OutPara para = outParaMap.remove(paraName);
-		OpPerfManager.getInstance().remove(paraName);
-		OpUIManager.list_op.remove(para);
-	}
+        OutPara para = new OutPara();
+        para.setKey(paraName);
+        para.setAlias(alias);
+        para.setDisplayProperty(OutPara.DISPLAY_NORMAL);
+        para.setClient(client.getKey());
 
-	public OutPara getOutPara(String paraName) {
-		return outParaMap.get(paraName);
-	}
+        if (!contains(paraName)) {
+            outParaMap.put(paraName, para);
+        }
+    }
 
-	public void setOutparaMonitor(String str, boolean flag) {
-		OutPara ov = getOutPara(str);
-		if (ov != null) {
-			ov.setMonitor(flag);
-		}
-	}
+    public void removeOutPara(String paraName) {
+        OutPara para = outParaMap.remove(paraName);
+        OpPerfManager.getInstance().remove(paraName);
+        OpUIManager.list_op.remove(para);
+    }
 
-	public boolean contains(String paraName) {
-		return getOutPara(paraName) == null ? false : true;
-	}
+    public OutPara getOutPara(String paraName) {
+        return outParaMap.get(paraName);
+    }
 
-	public void clear() {
-		List<OutPara> opList = getAll();
+    public void setOutparaMonitor(String str, boolean flag) {
+        OutPara ov = getOutPara(str);
+        if (ov != null) {
+            ov.setMonitor(flag);
+        }
+    }
 
-		// 需要循环一个个remove
-		for (OutPara op : opList)
-		{
-			removeOutPara(op.getKey());
-		}
-	}
+    public boolean contains(String paraName) {
+        return getOutPara(paraName) == null ? false : true;
+    }
 
-	public boolean isEmpty() {
-		return outParaMap.isEmpty();
-	}
+    public void clear() {
+        List<OutPara> opList = getAll();
 
-	public List<OutPara> getAll() {
-		List<OutPara> result = new ArrayList<OutPara>();
-		result.addAll(outParaMap.values());
-		return result;
-	}
+        // 需要循环一个个remove
+        for (OutPara op : opList) {
+            removeOutPara(op.getKey());
+        }
+    }
+
+    public boolean isEmpty() {
+        return outParaMap.isEmpty();
+    }
+
+    public List<OutPara> getAll() {
+        List<OutPara> result = new ArrayList<OutPara>();
+        result.addAll(outParaMap.values());
+        return result;
+    }
 }

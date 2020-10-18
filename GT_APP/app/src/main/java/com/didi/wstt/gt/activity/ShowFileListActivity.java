@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.analysis4.GTRDataToJsManager;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.share.Constants;
@@ -30,7 +31,6 @@ import com.tencent.mm.opensdk.modelmsg.WXFileObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.didi.wstt.gt.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -174,8 +174,8 @@ public class ShowFileListActivity extends GTBaseActivity {
                                                     if (b) {
                                                         long endTime = System.currentTimeMillis();
                                                         Log.i("adam", "解析数据完成使用" + (endTime - startTime) + "ms");
-                                                        boolean isZipSuccess = FileUtils.zipFile(Env.GTR_WX_DATAJS_PATH_NAME,Env.GTR_ZIP_DATAJS_PATH_NAME);
-                                                        if (isZipSuccess){
+                                                        boolean isZipSuccess = FileUtils.zipFile(Env.GTR_WX_DATAJS_PATH_NAME, Env.GTR_ZIP_DATAJS_PATH_NAME);
+                                                        if (isZipSuccess) {
                                                             Log.i("adam", "压缩数据完成使用" + (System.currentTimeMillis() - endTime) + "ms");
                                                             File zipFile = new File(Env.GTR_ZIP_DATAJS_PATH_NAME);
                                                             dismissProgress();
@@ -186,7 +186,7 @@ public class ShowFileListActivity extends GTBaseActivity {
                                                                 if (dataFile.exists())
                                                                     dataFile.delete();
                                                                 ToastUtil.ShowShortToast(ShowFileListActivity.this, "测试数据压缩后大小超过10M,建议导出文件到手机根目录");
-                                                            }else {
+                                                            } else {
                                                                 shareFileToWX(zipFile);
                                                                 ShowFileListActivity.this.finish();
                                                             }

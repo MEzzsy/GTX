@@ -20,32 +20,32 @@ import java.util.HashMap;
 public class GTRServerSave {
 
 
-
     //bufferedWriter缓存列表，防止一直做文件打开操作
-    private static HashMap<String,BufferedWriter> bufferedWriters = new HashMap<>();
+    private static HashMap<String, BufferedWriter> bufferedWriters = new HashMap<>();
 
 
     /**
      * 写入数据
+     *
      * @param packageName
      * @param startTestTime
      * @param pid
      * @param data
      * @throws Exception
      */
-    public static void saveData(String packageName,long startTestTime,int pid,String data) throws Exception {
-        if (packageName==null){
+    public static void saveData(String packageName, long startTestTime, int pid, String data) throws Exception {
+        if (packageName == null) {
             throw new Exception("packageName is null");
         }
-        BufferedWriter bufferedWriter = initBufferedWriter(packageName,startTestTime,pid);
+        BufferedWriter bufferedWriter = initBufferedWriter(packageName, startTestTime, pid);
         try {
-            bufferedWriter.write("\n"+data);
+            bufferedWriter.write("\n" + data);
             bufferedWriter.flush();
-        }catch (Exception e){
+        } catch (Exception e) {
             //如果写失败，可能是由于文件被删除导致的，我们重新初始化bufferedWriter
-            addNewBufferedWriter(packageName,startTestTime,pid);
-            bufferedWriter = initBufferedWriter(packageName,startTestTime,pid);
-            bufferedWriter.write("\n"+data);
+            addNewBufferedWriter(packageName, startTestTime, pid);
+            bufferedWriter = initBufferedWriter(packageName, startTestTime, pid);
+            bufferedWriter.write("\n" + data);
             bufferedWriter.flush();
         }
     }
@@ -53,6 +53,7 @@ public class GTRServerSave {
 
     /**
      * 初始化BufferedWriter
+     *
      * @param packageName
      * @param startTestTime
      * @param pid
@@ -60,10 +61,10 @@ public class GTRServerSave {
      * @throws IOException
      */
     public static BufferedWriter initBufferedWriter(String packageName, long startTestTime, int pid) throws IOException {
-        String key = packageName+startTestTime+pid;
+        String key = packageName + startTestTime + pid;
         BufferedWriter bufferedWriter = bufferedWriters.get(key);
-        if (bufferedWriter==null){
-            addNewBufferedWriter(packageName,startTestTime,pid);
+        if (bufferedWriter == null) {
+            addNewBufferedWriter(packageName, startTestTime, pid);
         }
         bufferedWriter = bufferedWriters.get(key);
         return bufferedWriter;
@@ -71,24 +72,23 @@ public class GTRServerSave {
 
 
     public static void addNewBufferedWriter(String packageName, long startTestTime, int pid) throws IOException {
-        String key = packageName+startTestTime+pid;
+        String key = packageName + startTestTime + pid;
         //创建文件
-        File dataFile = new File(getSaveFilePath( packageName, startTestTime, pid));
+        File dataFile = new File(getSaveFilePath(packageName, startTestTime, pid));
         dataFile.getParentFile().mkdirs();
         dataFile.createNewFile();
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(dataFile, true),"utf-8"));
-        bufferedWriters.put(key,bufferedWriter);
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(dataFile, true), "utf-8"));
+        bufferedWriters.put(key, bufferedWriter);
     }
 
 
-    public static String getSaveFilePath(String packageName, long startTestTime, int pid){
+    public static String getSaveFilePath(String packageName, long startTestTime, int pid) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd_HH:mm:ss");
         Date curDate = new Date(startTestTime);//获取当前时间
         String dateStr = dateFormat.format(curDate);
-        String dataFilePath = GTConfig.gtrDirPath+packageName+"_"+dateStr+"/"+pid+".txt";
+        String dataFilePath = GTConfig.gtrDirPath + packageName + "_" + dateStr + "/" + pid + ".txt";
         return dataFilePath;
     }
-
 
 
 }

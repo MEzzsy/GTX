@@ -1,11 +1,10 @@
 package com.didi.wstt.gt.analysis4.obj;
 
 /**
- *
  * Created by elvis on 2017/2/16.
  */
 
-public class LifecycleMethod  {
+public class LifecycleMethod {
 
 
     public static final String EXECSTART = "execStart";
@@ -18,8 +17,6 @@ public class LifecycleMethod  {
     public String methodName;
     public long methodStartTime;
     public long methodEndTime;
-	
-    
-    
-    
+
+
 }

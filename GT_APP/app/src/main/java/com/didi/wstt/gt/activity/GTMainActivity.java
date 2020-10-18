@@ -24,24 +24,11 @@
 package com.didi.wstt.gt.activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.Notification;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -52,15 +39,15 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.didi.wstt.gt.GTApp;
-import com.didi.wstt.gt.api.utils.Env;
-import com.didi.wstt.gt.dao.GTPref;
-import com.didi.wstt.gt.utils.ToastUtil;
-import com.didi.wstt.gt.R;
-import com.mezzsy.commonlib.util.PermissionUtils;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.didi.wstt.gt.GTApp;
+import com.didi.wstt.gt.R;
+import com.didi.wstt.gt.api.utils.Env;
+import com.mezzsy.commonlib.util.PermissionUtils;
 
 public class GTMainActivity extends GTBaseFragmentActivity implements OnClickListener {
     private static final String TAG = "GTX";

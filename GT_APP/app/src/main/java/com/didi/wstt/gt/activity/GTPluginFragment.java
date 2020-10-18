@@ -41,9 +41,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.plugin.PluginItem;
 import com.didi.wstt.gt.plugin.PluginManager;
-import com.didi.wstt.gt.R;
 
 public class GTPluginFragment extends Fragment {
     private ListView listView;
@@ -101,8 +101,8 @@ public class GTPluginFragment extends Fragment {
             tv_description = rl.findViewById(R.id.item_tvDesc);
             tv_title = rl.findViewById(R.id.item_tvSubTitle);
 
-			final PluginItem item = this.getItem(position);
-			if (item != null) {
+            final PluginItem item = this.getItem(position);
+            if (item != null) {
                 img_logo.setImageResource(item.logo_id);
                 tv_title.setText(item.alias);
                 tv_description.setText(item.description);

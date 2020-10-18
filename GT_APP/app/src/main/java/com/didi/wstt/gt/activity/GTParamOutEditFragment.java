@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -35,115 +35,108 @@ import androidx.fragment.app.ListFragment;
 
 import com.didi.wstt.gt.GTApp;
 import com.didi.wstt.gt.OutPara;
-import com.mobeta.android.dslv.DragSortListView;
 import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.OpUIManager;
 import com.didi.wstt.gt.manager.ParamConst;
+import com.mobeta.android.dslv.DragSortListView;
 
 public class GTParamOutEditFragment
-	extends ListFragment implements DragSortListView.DropListener {
+        extends ListFragment implements DragSortListView.DropListener {
 
-	DragSortListView outList; 
-	private GTParamOutEditListAdapter outparam_adapter;
+    DragSortListView outList;
+    private GTParamOutEditListAdapter outparam_adapter;
 
-	// 用于外部变化需要通知AUT页刷新的Handler
-	private Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
-			// 清理累积的消息，保留一次即可
-			removeCallbacksAndMessages(null);
-			doResume();
-		}
-	};
+    // 用于外部变化需要通知AUT页刷新的Handler
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            // 清理累积的消息，保留一次即可
+            removeCallbacksAndMessages(null);
+            doResume();
+        }
+    };
 
-	public GTParamOutEditFragment()
-	{
-		super();
-		GTApp.setOpEditHandler(handler);
-	}
+    public GTParamOutEditFragment() {
+        super();
+        GTApp.setOpEditHandler(handler);
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setHasOptionsMenu(true);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
-		View layout = inflater.inflate(R.layout.gt_param_out_edit,
-				container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View layout = inflater.inflate(R.layout.gt_param_out_edit,
+                container, false);
 
-		return layout;
-	}
+        return layout;
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
-		super.onActivityCreated(savedInstanceState);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-		outList = (DragSortListView) getListView();
-		outList.setDropListener(this);
-	}
+        outList = (DragSortListView) getListView();
+        outList.setDropListener(this);
+    }
 
-	public void onResume()
-	{
-		super.onResume();
-		doResume();
-	}
+    public void onResume() {
+        super.onResume();
+        doResume();
+    }
 
-	private void doResume()
-	{
-		outparam_adapter =
-				new GTParamOutEditListAdapter(getActivity(), OpUIManager.list_op);
-		setListAdapter(outparam_adapter);
-		outparam_adapter.notifyDataSetChanged();
-	}
+    private void doResume() {
+        outparam_adapter =
+                new GTParamOutEditListAdapter(getActivity(), OpUIManager.list_op);
+        setListAdapter(outparam_adapter);
+        outparam_adapter.notifyDataSetChanged();
+    }
 
-	@Override
-	public void drop(int from, int to) {
-		if (OpUIManager.list_op.get(from).getDisplayProperty() == OutPara.DISPLAY_TITLE) {
-			outparam_adapter.notifyDataSetChanged();
-		} else if (OpUIManager.list_op.size() > 4 && OpUIManager.list_op.get(4).getKey().equals(ParamConst.DIVID_TITLE)
-				&& from > to && from > 4 && to <= 4) {
-			outparam_adapter.notifyDataSetChanged();
-		} else {
-			int direction = -1;
-			int loop_start = from;
-			int loop_end = to;
+    @Override
+    public void drop(int from, int to) {
+        if (OpUIManager.list_op.get(from).getDisplayProperty() == OutPara.DISPLAY_TITLE) {
+            outparam_adapter.notifyDataSetChanged();
+        } else if (OpUIManager.list_op.size() > 4 && OpUIManager.list_op.get(4).getKey().equals(ParamConst.DIVID_TITLE)
+                && from > to && from > 4 && to <= 4) {
+            outparam_adapter.notifyDataSetChanged();
+        } else {
+            int direction = -1;
+            int loop_start = from;
+            int loop_end = to;
 
-			if (0 == to) {
-				to = 1;
-			}
+            if (0 == to) {
+                to = 1;
+            }
 
-			if (from < to) {
-				direction = 1;
-			}
+            if (from < to) {
+                direction = 1;
+            }
 
-			OutPara ov_target = OpUIManager.list_op.get(from);
+            OutPara ov_target = OpUIManager.list_op.get(from);
 
-			for (int i = loop_start; i != loop_end; i = i + direction) {
-				OpUIManager.list_op.set(i, OpUIManager.list_op.get(i + direction));
-			}
+            for (int i = loop_start; i != loop_end; i = i + direction) {
+                OpUIManager.list_op.set(i, OpUIManager.list_op.get(i + direction));
+            }
 
-			OpUIManager.list_op.set(to, ov_target);
-			if (to > OpUIManager.getOutListDisableTitlePosition()) {
-				ov_target.setDisplayProperty(OutPara.DISPLAY_DISABLE);
-			} else if (to < OpUIManager.getOutListDividePosition()) {
-				ov_target.setDisplayProperty(OutPara.DISPLAY_AC);
-			} else {
-				ov_target.setDisplayProperty(OutPara.DISPLAY_NORMAL);
-			}
-			outparam_adapter.notifyDataSetChanged();
-		}
-	}
+            OpUIManager.list_op.set(to, ov_target);
+            if (to > OpUIManager.getOutListDisableTitlePosition()) {
+                ov_target.setDisplayProperty(OutPara.DISPLAY_DISABLE);
+            } else if (to < OpUIManager.getOutListDividePosition()) {
+                ov_target.setDisplayProperty(OutPara.DISPLAY_AC);
+            } else {
+                ov_target.setDisplayProperty(OutPara.DISPLAY_NORMAL);
+            }
+            outparam_adapter.notifyDataSetChanged();
+        }
+    }
 
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		
-	}
-	
-	public void onShow(boolean show)
-	{
-		
-	}
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+
+    }
+
+    public void onShow(boolean show) {
+
+    }
 }

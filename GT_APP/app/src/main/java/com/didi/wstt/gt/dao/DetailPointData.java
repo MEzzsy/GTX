@@ -6,7 +6,7 @@ package com.didi.wstt.gt.dao;
 
 public class DetailPointData {
 
-    public DetailPointData(double x, double y){
+    public DetailPointData(double x, double y) {
         this.x = x;
         this.y = y;
     }

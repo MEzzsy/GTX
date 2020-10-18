@@ -67,7 +67,7 @@ public class FileUtils {
         if (!file2.exists()) {
             file2.mkdirs();
         }
-        if (fs!=null&&fs.length>0){
+        if (fs != null && fs.length > 0) {
             for (File f : fs) {
                 if (f.isFile()) {
                     fileCopy(f.getPath(), des + "/" + f.getName()); //调用文件拷贝的方法
@@ -75,7 +75,7 @@ public class FileUtils {
                     copy(f.getPath(), des + "/" + f.getName());
                 }
             }
-        }else{
+        } else {
             throw new Exception("is file");
         }
     }
@@ -113,6 +113,7 @@ public class FileUtils {
 
     /**
      * 删除root目录下所有文件夹和文件
+     *
      * @param root
      */
     public static void deleteAllFiles(File root) {

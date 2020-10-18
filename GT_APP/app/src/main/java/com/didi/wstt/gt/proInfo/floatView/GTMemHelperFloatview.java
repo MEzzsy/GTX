@@ -8,26 +8,20 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
 package com.didi.wstt.gt.proInfo.floatView;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -45,13 +39,19 @@ import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.api.utils.ProcessUtils;
+import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.plugin.BaseService;
 import com.didi.wstt.gt.utils.GTUtils;
-import com.didi.wstt.gt.R;
-import com.didi.wstt.gt.manager.AUTManager;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class GTMemHelperFloatview extends BaseService implements OnTouchListener {
 
@@ -162,10 +162,10 @@ public class GTMemHelperFloatview extends BaseService implements OnTouchListener
             wm.addView(net_switch_view, wmParams);
         } catch (Exception e) {
             /*
-			 * 有的Android6会报permission denied for this window type问题
-			 * https://github.com/intercom/intercom-android/issues/116
-			 * 在这种系统上直接屏蔽悬浮窗
-			 */
+             * 有的Android6会报permission denied for this window type问题
+             * https://github.com/intercom/intercom-android/issues/116
+             * 在这种系统上直接屏蔽悬浮窗
+             */
             stopSelf();
             return;
         }

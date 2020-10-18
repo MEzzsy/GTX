@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by p_hongjcong on 2017/5/3.
  */
 
-public class FragmentInfo  {
+public class FragmentInfo {
 
     public String activityClassName;
     public String activityHashCode;
@@ -19,19 +19,15 @@ public class FragmentInfo  {
     public ArrayList<FragmentLifecycleMethod> fragmentLifecycleMethodList = new ArrayList<>();
     public ArrayList<FragmentVisible> fragmentVisibleList = new ArrayList<>();
 
-    public FragmentInfo(){
+    public FragmentInfo() {
     }
-    public FragmentInfo(String activityClassName, String activityHashCode, String fragmentClassName, String fragmentHashCode){
+
+    public FragmentInfo(String activityClassName, String activityHashCode, String fragmentClassName, String fragmentHashCode) {
         this.activityClassName = activityClassName;
         this.activityHashCode = activityHashCode;
         this.fragmentClassName = fragmentClassName;
         this.fragmentHashCode = fragmentHashCode;
     }
-
-
-
-
-
 
 
     public void addAttachInfo(long start, long end) {
@@ -41,6 +37,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addCreateInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONCREATE;
@@ -48,6 +45,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addCreateViewInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONCREATEVIEW;
@@ -55,6 +53,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addActivityCreatedInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONACTIVITYCREATED;
@@ -62,6 +61,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addStartInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONSTART;
@@ -69,6 +69,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addResumeInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONRESUME;
@@ -76,6 +77,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addPauseInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONPAUSE;
@@ -83,6 +85,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addStopInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONSTOP;
@@ -90,6 +93,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addDestroyViewInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONDESTROYVIEW;
@@ -97,6 +101,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addDestroyInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONDESTROY;
@@ -104,6 +109,7 @@ public class FragmentInfo  {
         fragmentLifecycleMethod.methodEndTime = end;
         fragmentLifecycleMethodList.add(fragmentLifecycleMethod);
     }
+
     public void addDetachInfo(long start, long end) {
         FragmentLifecycleMethod fragmentLifecycleMethod = new FragmentLifecycleMethod();
         fragmentLifecycleMethod.methodName = FragmentLifecycleMethod.ONDETACH;
@@ -121,12 +127,6 @@ public class FragmentInfo  {
 
 
     }
-
-
-    
-    
-    
-    
 
 
 }

@@ -6,8 +6,7 @@ package com.didi.wstt.gt.analysis4.obj;
  * Created by elvis on 2017/2/10.
  */
 
-public class ViewBuildInfo  {
-
+public class ViewBuildInfo {
 
 
     public static final String NEWVIEW = "newView";
@@ -17,10 +16,8 @@ public class ViewBuildInfo  {
     //页面信息：
     public String method = "";//构建的方式（newView;  inflate;  setContentView）
     public String viewName = "";//resourceName 或 View的className
-    public long startTime=0;
-    public long endTime=0;
-	
-    
-    
-    
+    public long startTime = 0;
+    public long endTime = 0;
+
+
 }

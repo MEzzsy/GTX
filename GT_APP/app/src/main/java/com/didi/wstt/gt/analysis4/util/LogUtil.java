@@ -8,12 +8,12 @@ import com.didi.wstt.gt.analysis4.obj.LogInfo;
  */
 
 public class LogUtil {
-    public static final String[] GRADEKEYS = new String[] {
+    public static final String[] GRADEKEYS = new String[]{
             "A ", "A/", "E ", "E/", "W ", "W/",
             "I ", "I/", "D ", "D/", "V ", "V/"
     };
 
-    public static final String[] GTRTAGS = new String[] {
+    public static final String[] GTRTAGS = new String[]{
             "KHOOK", "Kat", "Elvis", "elvis", "Matt", "matt",
             "GTR", "GTR_DATA_TAG", "crash lib", "crash path",
             "zzzzzdddd", "addCallback", "_PDM_"
@@ -33,7 +33,7 @@ public class LogUtil {
             return null;
         }
 
-        String grade = log.substring(minGradeLocal, minGradeLocal+1);
+        String grade = log.substring(minGradeLocal, minGradeLocal + 1);
         //tag:
         String logWithoutGrade = log.substring(minGradeLocal + 2, log.length());
         int tagEndLocal = logWithoutGrade.indexOf(":");
@@ -43,10 +43,10 @@ public class LogUtil {
         }
         String tag = logWithoutGrade.substring(0, tagEndLocal);
         //logContent
-        String logContent = logWithoutGrade.substring(tagEndLocal + 1,logWithoutGrade.length());
+        String logContent = logWithoutGrade.substring(tagEndLocal + 1, logWithoutGrade.length());
         //isGTR
         boolean isGTR = false;
-        for (String s: GTRTAGS) {
+        for (String s : GTRTAGS) {
             if (tag.indexOf(s) != -1) {
                 isGTR = true;
             }

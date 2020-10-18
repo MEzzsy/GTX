@@ -15,18 +15,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisCallback;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.dao.DetailListData;
-import com.didi.wstt.gt.R;
 
 import java.util.ArrayList;
 
 public class GTRDetail_ListViewActivity extends Activity {
-
-
-
 
 
     //标题栏：
@@ -61,7 +58,7 @@ public class GTRDetail_ListViewActivity extends Activity {
 
         //获取类型：
         Intent intent = this.getIntent();
-        type = intent.getIntExtra("type",TYPE_Activity);
+        type = intent.getIntExtra("type", TYPE_Activity);
 
         //标题栏：
         backImageView = (ImageButton) findViewById(R.id.image_back);
@@ -103,7 +100,7 @@ public class GTRDetail_ListViewActivity extends Activity {
     }
 
 
-    GTRAnalysisCallback gtrAnalysisCallback = new GTRAnalysisCallback(){
+    GTRAnalysisCallback gtrAnalysisCallback = new GTRAnalysisCallback() {
         @Override
         public void refreshPageLoadInfo(GTRAnalysisResult gtrAnalysisResult) {
             initView();
@@ -131,10 +128,7 @@ public class GTRDetail_ListViewActivity extends Activity {
     };
 
 
-
-
-
-    void initView(){
+    void initView() {
         switch (type) {
             case TYPE_Activity:
                 initActivityView();
@@ -157,13 +151,13 @@ public class GTRDetail_ListViewActivity extends Activity {
         }
     }
 
-    void initActivityView(){
+    void initActivityView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("Activity测速");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新列表数据：
@@ -181,13 +175,13 @@ public class GTRDetail_ListViewActivity extends Activity {
         });
     }
 
-    void initFragmentView(){
+    void initFragmentView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("Fragment测速");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新列表数据：
@@ -204,13 +198,14 @@ public class GTRDetail_ListViewActivity extends Activity {
             }
         });
     }
-    void initViewBuildView(){
+
+    void initViewBuildView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("View构建检测");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新列表数据：
@@ -228,13 +223,13 @@ public class GTRDetail_ListViewActivity extends Activity {
         });
     }
 
-    void initViewDrawView(){
+    void initViewDrawView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("View绘制检测");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新列表数据：
@@ -252,13 +247,13 @@ public class GTRDetail_ListViewActivity extends Activity {
         });
     }
 
-    void initIOView(){
+    void initIOView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("IO检测");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新列表数据：
@@ -275,13 +270,14 @@ public class GTRDetail_ListViewActivity extends Activity {
             }
         });
     }
-    void initGCView(){
+
+    void initGCView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("GC检测");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新列表数据：
@@ -299,13 +295,13 @@ public class GTRDetail_ListViewActivity extends Activity {
         });
     }
 
-    public static class MyAdapter extends BaseAdapter{
+    public static class MyAdapter extends BaseAdapter {
 
         LayoutInflater inflater;
         ArrayList<DetailListData> datas;
 
 
-        public MyAdapter(Activity activity){
+        public MyAdapter(Activity activity) {
             inflater = activity.getLayoutInflater();
         }
 
@@ -315,18 +311,18 @@ public class GTRDetail_ListViewActivity extends Activity {
 
         @Override
         public int getCount() {
-            if (datas==null){
+            if (datas == null) {
                 return 0;
-            }else {
+            } else {
                 return datas.size();
             }
         }
 
         @Override
         public Object getItem(int position) {
-            if (datas==null){
+            if (datas == null) {
                 return null;
-            }else {
+            } else {
                 return datas.get(position);
             }
         }
@@ -338,11 +334,11 @@ public class GTRDetail_ListViewActivity extends Activity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View listItem = inflater.inflate(R.layout.gtr_item_detail_list,null);
+            View listItem = inflater.inflate(R.layout.gtr_item_detail_list, null);
             TextView textView = (TextView) listItem.findViewById(R.id.text_item);
-            if (datas!=null && datas.size()>position){
+            if (datas != null && datas.size() > position) {
                 textView.setText(datas.get(position).string);
-                switch (datas.get(position).type){
+                switch (datas.get(position).type) {
                     case DetailListData.Error:
                         textView.setTextColor(Color.RED);
                         break;
@@ -357,11 +353,6 @@ public class GTRDetail_ListViewActivity extends Activity {
             return listItem;
         }
     }
-
-
-
-
-
 
 
 }

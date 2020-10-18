@@ -13,7 +13,7 @@ public class FrontBackInfo {
     public long frontCpuApp = 0;
     public long frontCpuTotal = 0;
     public ArrayList<Long> frontCpuArray = new ArrayList<>();
-    public ArrayList<Long>  frontMemoryArray = new ArrayList<>();
+    public ArrayList<Long> frontMemoryArray = new ArrayList<>();
     public long frontFlowUpload = 0;
     public long frontFlowDownload = 0;
 
@@ -21,7 +21,7 @@ public class FrontBackInfo {
     public long backCpuApp = 0;
     public long backCpuTotal = 0;
     public ArrayList<Long> backCpuArray = new ArrayList<>();
-    public ArrayList<Long>  backMemoryArray = new ArrayList<>();
+    public ArrayList<Long> backMemoryArray = new ArrayList<>();
     public long backFlowUpload = 0;
     public long backFlowDownload = 0;
 

@@ -9,10 +9,10 @@ public class FrontBackState {
     public long time;
     public boolean isFront;
 
-    public FrontBackState(){
+    public FrontBackState() {
     }
 
-    public FrontBackState(long time,boolean isFront){
+    public FrontBackState(long time, boolean isFront) {
         this.time = time;
         this.isFront = isFront;
     }

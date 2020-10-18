@@ -10,14 +10,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisCallback;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.views.ScrollLineChartView;
-import com.didi.wstt.gt.R;
 
 public class GTRDetail_LineChartActivity extends Activity {
-
 
 
     //标题栏：
@@ -47,7 +46,7 @@ public class GTRDetail_LineChartActivity extends Activity {
 
         //获取类型：
         Intent intent = this.getIntent();
-        type = intent.getIntExtra("type",TYPE_CPU);
+        type = intent.getIntExtra("type", TYPE_CPU);
 
         //标题栏：
         backImageView = (ImageButton) findViewById(R.id.image_back);
@@ -90,12 +89,13 @@ public class GTRDetail_LineChartActivity extends Activity {
     }
 
 
-    GTRAnalysisCallback gtrAnalysisCallback = new GTRAnalysisCallback(){
+    GTRAnalysisCallback gtrAnalysisCallback = new GTRAnalysisCallback() {
         @Override
         public void refreshNormalInfo(final GTRAnalysisResult gtrAnalysisResult) {
             super.refreshNormalInfo(gtrAnalysisResult);
             initView();
         }
+
         @Override
         public void refreshSMInfo(final GTRAnalysisResult gtrAnalysisResult) {
             super.refreshSMInfo(gtrAnalysisResult);
@@ -104,7 +104,7 @@ public class GTRDetail_LineChartActivity extends Activity {
     };
 
 
-    void initView(){
+    void initView() {
         switch (type) {
             case TYPE_CPU:
                 initCPUView();
@@ -121,13 +121,13 @@ public class GTRDetail_LineChartActivity extends Activity {
         }
     }
 
-    private void initCPUView(){
+    private void initCPUView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("CPU");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新折线图数据：
@@ -138,11 +138,11 @@ public class GTRDetail_LineChartActivity extends Activity {
                 scrollLineChartView.setX_capacity(20);//显示最近20*3秒的数据
                 scrollLineChartView.setDatas(gtrAnalysisResult.allCPUChartDatas);
                 //刷新结果数据：
-                String text1 = "当前CPU：" + gtrAnalysisResult.nowCPU+"%";
-                String text2 = "前台时，平均CPU：" + (gtrAnalysisResult.frontCpuTotal==0?0:gtrAnalysisResult.frontCpuApp / gtrAnalysisResult.frontCpuTotal)+"%";
-                String text3 = "前台时，最高CPU：" + gtrAnalysisResult.frontCpuMax+"%";
-                String text4 = "后台时，平均CPU：" + (gtrAnalysisResult.backCpuTotal==0?0:gtrAnalysisResult.backCpuApp / gtrAnalysisResult.backCpuTotal)+"%";
-                String text5 = "后台时，最高CPU：" + gtrAnalysisResult.backCpuMax+"%";
+                String text1 = "当前CPU：" + gtrAnalysisResult.nowCPU + "%";
+                String text2 = "前台时，平均CPU：" + (gtrAnalysisResult.frontCpuTotal == 0 ? 0 : gtrAnalysisResult.frontCpuApp / gtrAnalysisResult.frontCpuTotal) + "%";
+                String text3 = "前台时，最高CPU：" + gtrAnalysisResult.frontCpuMax + "%";
+                String text4 = "后台时，平均CPU：" + (gtrAnalysisResult.backCpuTotal == 0 ? 0 : gtrAnalysisResult.backCpuApp / gtrAnalysisResult.backCpuTotal) + "%";
+                String text5 = "后台时，最高CPU：" + gtrAnalysisResult.backCpuMax + "%";
                 resultTextView.setText(new StringBuilder()
                         .append(text1).append("\n")
                         .append(text2).append("\n")
@@ -155,13 +155,13 @@ public class GTRDetail_LineChartActivity extends Activity {
         });
     }
 
-    private void initMemoryView(){
+    private void initMemoryView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("Memory");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新折线图数据：
@@ -171,11 +171,11 @@ public class GTRDetail_LineChartActivity extends Activity {
                 scrollLineChartView.setX_capacity(20);//显示最近20*3秒的数据
                 scrollLineChartView.setDatas(gtrAnalysisResult.allMemoryChartDatas);
                 //刷新结果数据：
-                String text1 = "当前Memory：" + gtrAnalysisResult.nowMemory+"MB";
-                String text2 = "前台时，平均Memory：" + (gtrAnalysisResult.frontMemoryAverage_Num==0?0:gtrAnalysisResult.frontMemoryAverage_Sum/gtrAnalysisResult.frontMemoryAverage_Num)+"MB";
-                String text3 = "前台时，最高Memory：" + gtrAnalysisResult.frontMemoryMax+"MB";
-                String text4 = "后台时，平均Memory：" + (gtrAnalysisResult.backMemoryAverage_Num==0?0:gtrAnalysisResult.backMemoryAverage_Sum/gtrAnalysisResult.backMemoryAverage_Num)+"MB";
-                String text5 = "后台时，最高Memory：" + gtrAnalysisResult.backMemoryMax+"MB";
+                String text1 = "当前Memory：" + gtrAnalysisResult.nowMemory + "MB";
+                String text2 = "前台时，平均Memory：" + (gtrAnalysisResult.frontMemoryAverage_Num == 0 ? 0 : gtrAnalysisResult.frontMemoryAverage_Sum / gtrAnalysisResult.frontMemoryAverage_Num) + "MB";
+                String text3 = "前台时，最高Memory：" + gtrAnalysisResult.frontMemoryMax + "MB";
+                String text4 = "后台时，平均Memory：" + (gtrAnalysisResult.backMemoryAverage_Num == 0 ? 0 : gtrAnalysisResult.backMemoryAverage_Sum / gtrAnalysisResult.backMemoryAverage_Num) + "MB";
+                String text5 = "后台时，最高Memory：" + gtrAnalysisResult.backMemoryMax + "MB";
                 resultTextView.setText(new StringBuilder()
                         .append(text1).append("\n")
                         .append(text2).append("\n")
@@ -188,13 +188,13 @@ public class GTRDetail_LineChartActivity extends Activity {
         });
     }
 
-    private void initFlowView(){
+    private void initFlowView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("流量");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新折线图数据：
@@ -205,11 +205,11 @@ public class GTRDetail_LineChartActivity extends Activity {
                 scrollLineChartView.setX_capacity(20);//显示最近20*3秒的数据
                 scrollLineChartView.setDatas(gtrAnalysisResult.allFlowChartDatas);
                 //刷新结果数据：
-                String text1 = "当前Flow：" + gtrAnalysisResult.nowFlow/1024+"KB";
-                String text2 = "前台时，总上行Flow：" + gtrAnalysisResult.frontFlowUpload/1024+"KB";
-                String text3 = "前台时，总下行Flow：" + gtrAnalysisResult.frontFlowDownload/1024+"KB";
-                String text4 = "后台时，总上行Flow：" + gtrAnalysisResult.backFlowUpload/1024+"KB";
-                String text5 = "后台时，总下行Flow：" + gtrAnalysisResult.backFlowDownload/1024+"KB";
+                String text1 = "当前Flow：" + gtrAnalysisResult.nowFlow / 1024 + "KB";
+                String text2 = "前台时，总上行Flow：" + gtrAnalysisResult.frontFlowUpload / 1024 + "KB";
+                String text3 = "前台时，总下行Flow：" + gtrAnalysisResult.frontFlowDownload / 1024 + "KB";
+                String text4 = "后台时，总上行Flow：" + gtrAnalysisResult.backFlowUpload / 1024 + "KB";
+                String text5 = "后台时，总下行Flow：" + gtrAnalysisResult.backFlowDownload / 1024 + "KB";
                 resultTextView.setText(new StringBuilder()
                         .append(text1).append("\n")
                         .append(text2).append("\n")
@@ -222,13 +222,13 @@ public class GTRDetail_LineChartActivity extends Activity {
         });
     }
 
-    private void initSMView(){
+    private void initSMView() {
         handler.post(new Runnable() {
             @Override
             public void run() {
                 titleTextView.setText("流畅值");
                 GTRAnalysisResult gtrAnalysisResult = GTRAnalysis.getGtrAnalysisResult();
-                if (gtrAnalysisResult==null){
+                if (gtrAnalysisResult == null) {
                     return;
                 }
                 //刷新折线图数据：
@@ -247,15 +247,6 @@ public class GTRDetail_LineChartActivity extends Activity {
             }
         });
     }
-
-
-
-
-
-
-
-
-
 
 
 }

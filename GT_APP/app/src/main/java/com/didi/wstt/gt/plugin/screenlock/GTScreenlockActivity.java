@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -28,74 +28,74 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.activity.GTBaseActivity;
 import com.didi.wstt.gt.views.GTCheckBox;
-import com.didi.wstt.gt.R;
 
 public class GTScreenlockActivity extends GTBaseActivity {
-	
-	private static final String TAG = "GTScreenlockActivity";
-	
-	private TextView back_gt;
 
-	private GTCheckBox tb_full;
-	private GTCheckBox tb_partial;
+    private static final String TAG = "GTScreenlockActivity";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    private TextView back_gt;
 
-		setContentView(R.layout.pi_screenlock);
-		
-		back_gt = (TextView)findViewById(R.id.screenlock_back_gt);
-		back_gt.setOnClickListener(back);
+    private GTCheckBox tb_full;
+    private GTCheckBox tb_partial;
 
-		tb_full = (GTCheckBox)findViewById(R.id.screenlock_toggle_wakelock);
-		tb_partial = (GTCheckBox)findViewById(R.id.screenlock_toggle_partiallock);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		tb_full.setChecked(ScreenWakeLock.flag);
-		tb_partial.setChecked(PartialWakeLock.flag);
-		
-		tb_full.setOnClickListener(fullWakelockClickListener);
-		tb_partial.setOnClickListener(partialWakelockClickListener);
-		
-	}
-	
-	private OnClickListener back = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			finish();
-		}
-	};
-	
-	
-	private OnClickListener fullWakelockClickListener = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			ScreenWakeLock.toggle(getBaseContext());
-			tb_full.setChecked(ScreenWakeLock.flag);
-		}
-	};
+        setContentView(R.layout.pi_screenlock);
 
-	private OnClickListener partialWakelockClickListener = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			PartialWakeLock.toggle(getBaseContext());
-			tb_partial.setChecked(PartialWakeLock.flag);
-		}
-	};
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
-	
-	@Override
-	protected void onPause() {
-		super.onPause();
+        back_gt = (TextView) findViewById(R.id.screenlock_back_gt);
+        back_gt.setOnClickListener(back);
 
-	}
+        tb_full = (GTCheckBox) findViewById(R.id.screenlock_toggle_wakelock);
+        tb_partial = (GTCheckBox) findViewById(R.id.screenlock_toggle_partiallock);
+
+        tb_full.setChecked(ScreenWakeLock.flag);
+        tb_partial.setChecked(PartialWakeLock.flag);
+
+        tb_full.setOnClickListener(fullWakelockClickListener);
+        tb_partial.setOnClickListener(partialWakelockClickListener);
+
+    }
+
+    private OnClickListener back = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            finish();
+        }
+    };
+
+
+    private OnClickListener fullWakelockClickListener = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            ScreenWakeLock.toggle(getBaseContext());
+            tb_full.setChecked(ScreenWakeLock.flag);
+        }
+    };
+
+    private OnClickListener partialWakelockClickListener = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            PartialWakeLock.toggle(getBaseContext());
+            tb_partial.setChecked(PartialWakeLock.flag);
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
 }

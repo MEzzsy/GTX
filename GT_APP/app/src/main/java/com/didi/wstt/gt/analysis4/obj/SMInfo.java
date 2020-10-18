@@ -5,7 +5,7 @@ package com.didi.wstt.gt.analysis4.obj;
  * Email:elvis@21kunpeng.com
  */
 
-public class SMInfo  {
+public class SMInfo {
 
     public long time;
     public int sm;

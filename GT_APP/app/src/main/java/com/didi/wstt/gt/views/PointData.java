@@ -6,7 +6,7 @@ package com.didi.wstt.gt.views;
 
 public class PointData {
 
-    public PointData(double x,double y){
+    public PointData(double x, double y) {
         this.x = x;
         this.y = y;
     }

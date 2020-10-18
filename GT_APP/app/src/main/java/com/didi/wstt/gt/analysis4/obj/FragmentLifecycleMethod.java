@@ -1,14 +1,13 @@
 package com.didi.wstt.gt.analysis4.obj;
 
 /**
- *
  * Created by elvis on 2017/2/16.
  */
 
-public class FragmentLifecycleMethod  {
+public class FragmentLifecycleMethod {
 
 
-    public static final String ONATTACH  = "onAttach";
+    public static final String ONATTACH = "onAttach";
     public static final String ONCREATE = "onCreate";
     public static final String ONCREATEVIEW = "onCreateView";
     public static final String ONACTIVITYCREATED = "onActivityCreated";
@@ -23,6 +22,6 @@ public class FragmentLifecycleMethod  {
     public String methodName;
     public long methodStartTime;
     public long methodEndTime;
-	
+
 
 }

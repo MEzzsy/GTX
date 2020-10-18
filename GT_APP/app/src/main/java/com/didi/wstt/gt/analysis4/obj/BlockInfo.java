@@ -7,18 +7,12 @@ import java.util.ArrayList;
  * Email:elvis@21kunpeng.com
  */
 
-public class BlockInfo{
+public class BlockInfo {
 
-	
+
     public long startTime;
     public long endTime;
     public ArrayList<StackInfo> stackInfoList = new ArrayList<>();
-    
-    
-    
-    
-    
-    
-    
-    
+
+
 }

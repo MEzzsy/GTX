@@ -7,12 +7,14 @@ import android.os.Parcelable;
  * Created by p_hongjcong on 2017/7/11.
  */
 
-public class GTRParam implements Parcelable{
+public class GTRParam implements Parcelable {
 
-    public GTRParam(){
+    public GTRParam() {
     }
+
     protected GTRParam(Parcel in) {
     }
+
     public static final Creator<GTRParam> CREATOR = new Creator<GTRParam>() {
         @Override
         public GTRParam createFromParcel(Parcel in) {
@@ -24,15 +26,15 @@ public class GTRParam implements Parcelable{
             return new GTRParam[size];
         }
     };
+
     @Override
     public int describeContents() {
         return 0;
     }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
-
-
 
 
 }

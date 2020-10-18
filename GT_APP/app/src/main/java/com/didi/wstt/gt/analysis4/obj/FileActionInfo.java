@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class FileActionInfo {
 
 
-
     public int fd;//文件ID
     public String filePath;//文件路径
     public String fileName;//文件名
@@ -28,6 +27,7 @@ public class FileActionInfo {
 
     public FileActionInfo() {
     }
+
     public void addDiskIOInfo(DiskIOInfo diskIOInfo, int mainThreadID) {
         diskIOInfos.add(diskIOInfo);
         startTime = -1;
@@ -41,45 +41,37 @@ public class FileActionInfo {
 
         int threadId = -1;
 
-        for(DiskIOInfo temp : diskIOInfos){
+        for (DiskIOInfo temp : diskIOInfos) {
             fd = diskIOInfo.fd;
             filePath = diskIOInfo.filePath;
             fileName = diskIOInfo.fileName;
-            if(startTime == -1 ||temp.actionStart<=startTime){
+            if (startTime == -1 || temp.actionStart <= startTime) {
                 startTime = temp.actionStart;
             }
-            if(endTime == -1 ||temp.actionEnd>=endTime){
+            if (endTime == -1 || temp.actionEnd >= endTime) {
                 endTime = temp.actionEnd;
             }
-            if(temp.actionName.equals(DiskIOInfo.READ)){
-                readNum = readNum +1;
-                readSize = readSize +temp.actionSize;
+            if (temp.actionName.equals(DiskIOInfo.READ)) {
+                readNum = readNum + 1;
+                readSize = readSize + temp.actionSize;
             }
-            if(temp.actionName.equals(DiskIOInfo.WRITE)){
-                writeNum = writeNum +1;
-                writeSize = writeSize +temp.actionSize;
+            if (temp.actionName.equals(DiskIOInfo.WRITE)) {
+                writeNum = writeNum + 1;
+                writeSize = writeSize + temp.actionSize;
             }
-            if (temp.threadID  == mainThreadID){
+            if (temp.threadID == mainThreadID) {
                 isMainThread = true;
             }
-            if(threadId== -1){
+            if (threadId == -1) {
                 threadId = temp.threadID;
             }
-            if (temp.threadID != threadId ){
+            if (temp.threadID != threadId) {
                 isMutilThread = true;
             }
         }
 
 
-
-
-
-
-
-
     }
-
-
 
 
 }

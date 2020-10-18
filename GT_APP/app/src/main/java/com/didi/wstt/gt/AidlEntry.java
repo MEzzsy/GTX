@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -27,32 +27,32 @@ import android.os.Parcel;
 
 public abstract class AidlEntry implements AidlTask {
 
-	public static final int DISPLAY_NORMAL = 0;
-	public static final int DISPLAY_AC = 1;
-	public static final int DISPLAY_DISABLE = 2;
-	public static final int DISPLAY_TITLE = 3;
+    public static final int DISPLAY_NORMAL = 0;
+    public static final int DISPLAY_AC = 1;
+    public static final int DISPLAY_DISABLE = 2;
+    public static final int DISPLAY_TITLE = 3;
 
-	int functionId;
+    int functionId;
 
-	public int getFunctionId() {
-		return functionId;
-	}
+    public int getFunctionId() {
+        return functionId;
+    }
 
-	public void setFunctionId(int functionId) {
-		this.functionId = functionId;
-	}
+    public void setFunctionId(int functionId) {
+        this.functionId = functionId;
+    }
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(functionId);
-	}
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(functionId);
+    }
 
-	public void readFromParcel(Parcel parcel) {
-		functionId = parcel.readInt();
-	}
+    public void readFromParcel(Parcel parcel) {
+        functionId = parcel.readInt();
+    }
 }

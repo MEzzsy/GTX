@@ -10,7 +10,7 @@ public class UITest {
     }
 
     public static void testStop() {
-        GTRAnalysis.addCallBack(new GTRAnalysisCallback(){
+        GTRAnalysis.addCallBack(new GTRAnalysisCallback() {
             @Override
             public void refreshNormalInfo(GTRAnalysisResult gtrAnalysisResult) {
 
@@ -22,7 +22,6 @@ public class UITest {
             }
         });
     }
-
 
 
 }

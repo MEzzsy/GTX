@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -48,24 +48,24 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.didi.wstt.gt.GTApp;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisCallback;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.api.utils.ProcessUtils;
-import com.didi.wstt.gt.plugin.PluginManager;
-import com.didi.wstt.gt.utils.CommonString;
-import com.didi.wstt.gt.utils.DLog;
-import com.didi.wstt.gt.utils.FileUtils;
-import com.didi.wstt.gt.utils.ToastUtil;
-import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
 import com.didi.wstt.gt.manager.ClientFactory;
 import com.didi.wstt.gt.manager.ClientManager;
 import com.didi.wstt.gt.manager.OpUIManager;
 import com.didi.wstt.gt.manager.SingleInstanceClientFactory;
-import com.didi.wstt.gt.proInfo.floatView.OnDataChangedListener;
+import com.didi.wstt.gt.plugin.PluginManager;
 import com.didi.wstt.gt.proInfo.floatView.GTBaseDataFloatview;
 import com.didi.wstt.gt.proInfo.floatView.GTMemHelperFloatview;
+import com.didi.wstt.gt.proInfo.floatView.OnDataChangedListener;
+import com.didi.wstt.gt.utils.CommonString;
+import com.didi.wstt.gt.utils.DLog;
+import com.didi.wstt.gt.utils.FileUtils;
+import com.didi.wstt.gt.utils.ToastUtil;
 
 import java.io.File;
 
@@ -256,9 +256,9 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
             resetAppInfo();
         }
 
-		/*
+        /*
          * 判断每次选择的应用是否为同样的，若不一样清空进程采集设置
-		 */
+         */
         if (pkn_old != null && !pkn_old.equals(AUTManager.pkn)) {
             AUTManager.proNameIdMap.clear();
             AUTManager.proNameList.clear();
@@ -412,7 +412,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                     public void run() {
                         itemCpuValueTv.setText(GTRAnalysis.getGtrAnalysisResult().nowCPU + "%");
                         itemMemValueTv.setText(GTRAnalysis.getGtrAnalysisResult().nowMemory + "MB");
-                        itemFlowValueTv.setText( Formatter.formatFileSize(getActivity(), GTRAnalysis.getGtrAnalysisResult().nowFlow));
+                        itemFlowValueTv.setText(Formatter.formatFileSize(getActivity(), GTRAnalysis.getGtrAnalysisResult().nowFlow));
                     }
                 });
             }
@@ -456,7 +456,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        itemViewconValueTv.setText("构建超时view总数:" + GTRAnalysis.getGtrAnalysisResult().viewBuildNum+ "     超时:"+ GTRAnalysis.getGtrAnalysisResult().overViewBuildNum);
+                        itemViewconValueTv.setText("构建超时view总数:" + GTRAnalysis.getGtrAnalysisResult().viewBuildNum + "     超时:" + GTRAnalysis.getGtrAnalysisResult().overViewBuildNum);
                     }
                 });
             }
@@ -467,7 +467,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        itemViewdrawValueTv.setText("绘制超时view总数:" + GTRAnalysis.getGtrAnalysisResult().viewDrawNum + "     超时:" +GTRAnalysis.getGtrAnalysisResult().overViewDrawNum );
+                        itemViewdrawValueTv.setText("绘制超时view总数:" + GTRAnalysis.getGtrAnalysisResult().viewDrawNum + "     超时:" + GTRAnalysis.getGtrAnalysisResult().overViewDrawNum);
                     }
                 });
             }
@@ -489,7 +489,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        itemGCValueTv.setText("次数:" + GTRAnalysis.getGtrAnalysisResult().gcNum + "     显示:" +GTRAnalysis.getGtrAnalysisResult().explicitGCNum);
+                        itemGCValueTv.setText("次数:" + GTRAnalysis.getGtrAnalysisResult().gcNum + "     显示:" + GTRAnalysis.getGtrAnalysisResult().explicitGCNum);
                     }
                 });
             }
@@ -501,7 +501,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
         appPidTv.setText("PId:" + GTRAnalysis.getGtrAnalysisResult().pId);
         itemCpuValueTv.setText(GTRAnalysis.getGtrAnalysisResult().nowCPU + "%");
         itemMemValueTv.setText(GTRAnalysis.getGtrAnalysisResult().nowMemory + "MB");
-        itemFlowValueTv.setText( Formatter.formatFileSize(getActivity(), GTRAnalysis.getGtrAnalysisResult().nowFlow));
+        itemFlowValueTv.setText(Formatter.formatFileSize(getActivity(), GTRAnalysis.getGtrAnalysisResult().nowFlow));
         itemCheckactValueTv.setText("Activity总数:" + GTRAnalysis.getGtrAnalysisResult().pageNum + "     >500ms:" + GTRAnalysis.getGtrAnalysisResult().overPageNum);
         itemCheckfragValueTv.setText("fragment总数:" + GTRAnalysis.getGtrAnalysisResult().fragmentNum + ">超时:" + GTRAnalysis.getGtrAnalysisResult().overFragmentNum);
         itemViewconValueTv.setText("构建超时view总数:" + GTRAnalysis.getGtrAnalysisResult().overViewBuildNum);
@@ -579,7 +579,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                     }
                     e.printStackTrace();
                 }
-                if (files!=null &&files.length > 0) {
+                if (files != null && files.length > 0) {
                     // TODO 2017/11/25  增加导出到微信功能
                     new AlertDialog.Builder(getActivity())
                             .setMessage("请选择导出方式")
@@ -605,7 +605,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                                     startActivity(intent);
                                 }
                             })
-                    .show();
+                            .show();
 
                 } else {
                     ToastUtil.ShowLongToast(getActivity(),
@@ -725,7 +725,7 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
         super.onDestroy();
     }
 
-    public static void addDataChangedListener(OnDataChangedListener listener){
-        changedListener=listener;
+    public static void addDataChangedListener(OnDataChangedListener listener) {
+        changedListener = listener;
     }
 }

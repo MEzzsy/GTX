@@ -23,11 +23,11 @@
  */
 package com.didi.wstt.gt.plugin;
 
+import android.os.Bundle;
+
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
-
-import android.os.Bundle;
 
 public class PluginManager {
 
@@ -36,7 +36,7 @@ public class PluginManager {
     private static PluginItem[] EMPTY = {};
     private PluginControler mPluginControler;
 
-    private  enum SingletonHodler{
+    private enum SingletonHodler {
         SINGLETON;
 
         private PluginManager mPluginManager;

@@ -8,14 +8,14 @@
  * in and to the previous version of Tencent GT (including any and all copies thereof)
  * shall be owned and retained by Tencent and subject to the license under the
  * Tencent GT End User License Agreement (http://gt.qq.com/wp-content/EULA_EN.html).
- * 
+ *
  * Copyright (C) 2015 THL A29 Limited, a Tencent company. All rights reserved.
- * 
+ *
  * Licensed under the MIT License (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://opensource.org/licenses/MIT
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -37,15 +37,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.activity.GTAUTFragment;
 import com.didi.wstt.gt.activity.GTAUTFragment1;
 import com.didi.wstt.gt.analysis4.GTRAnalysis;
 import com.didi.wstt.gt.analysis4.GTRAnalysisCallback;
 import com.didi.wstt.gt.analysis4.GTRAnalysisResult;
 import com.didi.wstt.gt.api.utils.DeviceUtils;
-import com.didi.wstt.gt.plugin.BaseService;
-import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.manager.AUTManager;
+import com.didi.wstt.gt.plugin.BaseService;
 
 import java.util.ArrayList;
 
@@ -139,7 +139,7 @@ public class GTBaseDataFloatview extends BaseService implements OnTouchListener,
         tv_switch_over.setOnTouchListener(this);
         tv_cpu.setOnTouchListener(this);
 
-        flag_btn = (Button)net_switch_view.findViewById(R.id.add_flag_btn);
+        flag_btn = (Button) net_switch_view.findViewById(R.id.add_flag_btn);
         flag_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,9 +176,9 @@ public class GTBaseDataFloatview extends BaseService implements OnTouchListener,
         } catch (Exception e) {
             /*
              * 有的Android6会报permission denied for this window type问题
-			 * https://github.com/intercom/intercom-android/issues/116
-			 * 在这种系统上直接屏蔽悬浮窗
-			 */
+             * https://github.com/intercom/intercom-android/issues/116
+             * 在这种系统上直接屏蔽悬浮窗
+             */
             stopSelf();
             return;
         }
