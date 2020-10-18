@@ -57,6 +57,10 @@ import java.util.Locale;
  * GPS回放引擎
  */
 public class GTGPSReplayEngine extends BaseService {
+    /**
+     * 没有选择item
+     */
+    public static final int SELECTED_NULL_ITEM = -1;
     private static GTGPSReplayEngine INSTANCE;
     private MockGpsProvider mMockGpsProviderTask = null;
     private LocationManager locationManager = null;
@@ -64,7 +68,7 @@ public class GTGPSReplayEngine extends BaseService {
     private List<GPSReplayListener> listeners;
     private boolean isReplay = false;
     public String selectedItem;
-    public int selectedItemPos = -1;
+    public int selectedItemPos = SELECTED_NULL_ITEM;
 
     /*回放gps文件的总长度*/
     public int mGPSFileLength = 0;

@@ -62,7 +62,7 @@ public class GTPluginFragment extends Fragment {
         View pluginLayout = inflater.inflate(R.layout.gt_plugin,
                 container, false);
 
-        listView = (ListView) pluginLayout.findViewById(R.id.plugin_list);
+        listView = pluginLayout.findViewById(R.id.plugin_list);
         listView.setAdapter(adapter);
 
         return pluginLayout;

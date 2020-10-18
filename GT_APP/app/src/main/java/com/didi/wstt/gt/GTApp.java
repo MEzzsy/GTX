@@ -136,7 +136,7 @@ public class GTApp extends Application {
         PluginManager pm = PluginManager.getInstance();
         // 启动PluginService
         Intent intent = new Intent(this, PluginService.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startService(intent);
 
         // 插件管理器初始化

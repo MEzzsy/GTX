@@ -25,6 +25,8 @@ package com.didi.wstt.gt.plugin;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -95,7 +97,7 @@ public class PluginManager {
 
     }
 
-    public void register(PluginItem item) {
+    public void register(@NonNull PluginItem item) {
         if (null != item.name && item.name.length() > 0) {
             pluginList.add(item);
             piMap.put(item.name, item);

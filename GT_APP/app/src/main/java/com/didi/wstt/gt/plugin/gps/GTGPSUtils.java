@@ -39,6 +39,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GTGPSUtils {
+    public static boolean clearGPSFiles() {
+        return com.mezzsy.commonlib.util.FileUtils.deleteFileRetainRootFile(Env.ROOT_GPS_FOLDER);
+    }
+
     public static ArrayList<String> getGPSFileList() {
         ArrayList<String> arrFile = new ArrayList<String>();
         try {

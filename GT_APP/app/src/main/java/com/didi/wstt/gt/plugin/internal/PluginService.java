@@ -55,19 +55,9 @@ public class PluginService extends Service {
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
-        super.onStart(intent, startId);
-        String action = intent == null ? null : intent.getAction();
-
-        if (action != null) {
-            // TODO
-        }
-    }
-
-    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-        return 1;
+        return START_STICKY;
     }
 
     @Override

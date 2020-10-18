@@ -224,7 +224,7 @@
     <string name="capture_desc">这是一个抓包插件，直接点击Start即可抓包，点击Stop后保存已抓包的内容到文件。抓包文件可用PC上的Wireshark软件分析。</string>
     <string name="screenlock_desc">这是一个wakelock的控制插件，当点击Full wakelock时，手机不会主动灭屏，并且手动灭屏了也不会进入休眠状态。当点击Partial wakelock时，手机灭屏后也不会休眠。</string>
     <string name="memfill_desc">这是一个内存填充插件，当点击fill时，会为GT进程在Native层分配xxxMB的内存。GT所占用的内存数在PSS数据中可以体现出来。</string>
-    <string name="gps_desc">GPS采集：点击record开始采集，再点击会停止采集。文件存放在gt日志目录下的gps目录里。\r\nGPS回放：选择gps目录里的文件，点击replay开始，再点击停止。回放需要系统设置如下：1、设置里的位置选项，只打开通过GPS定位，其他关闭。2、开发者选项里选择允许模仿位置。</string>
+    <string name="gps_desc">GPS采集：点击record开始采集，再点击会停止采集。文件存放在gt日志目录下的gps目录里。\nGPS回放：选择gps目录里的文件，点击replay开始，再点击停止。回放需要系统设置如下：1、设置里的位置选项，只打开通过GPS定位，其他关闭。2、开发者选项里选择允许模仿位置。</string>
     <string name="gps_replay_desc">拖动进度条改变GPS回放的进度后，点击保存即可生效。</string>
     <string name="othersm_desc">使用：检测（结果为OK）->选中被调试的进程->启动调试\n设置：检测（结果NOT OK）->点击更改->点击重启\n注意：无需检测时请点击停止调试，调试完毕时请点击恢复并重启系统还原设置</string>
     <string name="octopus_desc">本插件用于将采集的数据上传到web端进行展示。GT的web资源由Bugly平台提供，Bugly平台可以使用QQ帐号快速登录，使用前请确保:\r\n1.手机上安装了手机QQ\r\n2.在bugly.qq.com注册过产品\r\n</string>
@@ -270,7 +270,8 @@
     <string name="pi_gps_replay">回放</string>
     <string name="pi_gps_replay_stop">结束回放</string>
     <string name="pi_gps_replay_tip">请选择一个路径文件</string>
-    <string name="pi_gps_tag">打标记</string>
+    <string name="pi_gps_clear">清空</string>
+    <string name="pi_gps_refresh">刷新</string>
     <string name="pi_gps_warn_tip">请在开发者选项里允许模拟位置</string>
     <string name="pi_gps_warn_tip2">选择的是空位置文件!</string>
     <string name="pi_gps_warn_tip3">请不要在回放的时候做文件操作</string>

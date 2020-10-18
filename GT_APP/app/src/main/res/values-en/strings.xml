@@ -220,7 +220,7 @@
     <string name="capture_desc">This is a tcpdump plugin. Press "start" directly to capture network packets. The file that records the network data will be saved until the button "stop" clicked. The saved files can be analysed by wireshark.</string>
     <string name="screenlock_desc">This is a wakelock control plug-in, click on the Full wakelock, the phone will not take the initiative off the screen and off the screen manually, it will not go to sleep. When you click Partial wakelock, the phone will not sleep after the off-screen.</string>
     <string name="memfill_desc">This plugin can be used for filling memory. GT will allocate xxxxMB memory in native, if the button "fill" clicked. The total memory occupied by GT can be tracked in pss.</string>
-    <string name="gps_desc">GPS Collection: Click "Record" to start. The collection file is saved in /GT/Log/gps directory.\r\nGPS Replay: Choose a GPS Collection file and click "Replay" to start. The system settings should: 1. only enable the GPS function while others remain disabled in the location services; 2. select the "Allow mock locations" in the Developer options.</string>
+    <string name="gps_desc">GPS Collection: Click "Record" to start. The collection file is saved in /GT/Log/gps directory.\nGPS Replay: Choose a GPS Collection file and click "Replay" to start. The system settings should: 1. only enable the GPS function while others remain disabled in the location services; 2. select the "Allow mock locations" in the Developer options.</string>
     <string name="gps_replay_desc">Drag seekbar to change replay progress, become effective after click save button.</string>
     <string name="othersm_desc">Usage  :Check(if OK)->select App->Start\nSetting:Check(if NOT OK)->Modify->Restart\nNotice :if want resume setting, Resume->Restart</string>
     <string name="octopus_desc">This plugin can upload collected data to web.The web resource is Provided by bugly.qq.com and use QQ account quick login.Notice:\r\n1.install Mobile QQ first.\r\n2.regist product on bugly.qq.com.</string>
@@ -266,7 +266,8 @@
     <string name="pi_gps_replay">Replay</string>
     <string name="pi_gps_replay_stop">Stop Replay</string>
     <string name="pi_gps_replay_tip">please choose a file</string>
-    <string name="pi_gps_tag">Tag</string>
+    <string name="pi_gps_clear">Clear</string>
+    <string name="pi_gps_refresh">Refresh</string>
     <string name="pi_gps_warn_tip">Please allow mock locations in Developer options.</string>
     <string name="pi_gps_warn_tip2">Empty location record.</string>
     <string name="pi_gps_warn_tip3">Please do not operate files when replaying.</string>
