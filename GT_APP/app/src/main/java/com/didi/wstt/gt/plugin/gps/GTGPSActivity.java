@@ -339,15 +339,6 @@ public class GTGPSActivity extends GTBaseActivity implements GPSRecordListener, 
                                         }
                                         GTGPSReplayEngine.getInstance().selectedItemPos =
                                                 GTGPSReplayEngine.SELECTED_NULL_ITEM;
-
-//                                        if (position == GTGPSReplayEngine.getInstance().selectedItemPos) {
-//                                            GTGPSReplayEngine.getInstance().selectedItemPos = -1;
-//                                        } else if (position < GTGPSReplayEngine
-//                                                .getInstance().selectedItemPos) {
-//                                            // 上面的有删除，则记录的已选中Item顺延上移1位
-//                                            GTGPSReplayEngine.getInstance().selectedItemPos = GTGPSReplayEngine
-//                                                    .getInstance().selectedItemPos - 1;
-//                                        }
                                         handler.sendEmptyMessage(0);
                                     }
                                     break;

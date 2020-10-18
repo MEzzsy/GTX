@@ -36,6 +36,8 @@ import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class GTGPSUtils {
@@ -51,22 +53,24 @@ public class GTGPSUtils {
 
                 @Override
                 public boolean accept(File dir, String filename) {
-                    if (filename != null && filename.endsWith(".gps")) {
-                        return true;
-                    }
-                    return false;
+                    return filename != null && filename.endsWith(".gps");
                 }
             });// 列出所有文件
 
             if (files != null) {
+                //从新到旧排序，最新的在最前面
+                Arrays.sort(files, new Comparator<File>() {
+                    @Override
+                    public int compare(File o1, File o2) {
+                        long f1 = o1.lastModified();
+                        long f2 = o2.lastModified();
+                        return -Long.compare(f1, f2);
+                    }
+                });
 
-                int count = files.length;// 文件个数
-                for (int i = 0; i < count; i++) {
-                    File file = files[i];
+                for (File file : files) {
                     arrFile.add(file.getName());
                 }
-            } else {
-                arrFile.add("empty");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
