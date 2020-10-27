@@ -107,6 +107,16 @@ public class GTGPSReplayEngine extends BaseService {
         super.onCreate(context);
         locationManager = (LocationManager) context
                 .getSystemService(Context.LOCATION_SERVICE);
+        locationManager.addTestProvider(MockGpsProvider.GPS_MOCK_PROVIDER,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                0,
+                5);
     }
 
     @Override
@@ -159,21 +169,21 @@ public class GTGPSReplayEngine extends BaseService {
     }
 
     private boolean isAllowMock() {
-        if (!locationManager.isProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER)) {
-            try {
-                locationManager.addTestProvider(MockGpsProvider.GPS_MOCK_PROVIDER,
-                        false, false, false, false, true, false, false, 0, 5);
-                locationManager.setTestProviderEnabled(
-                        MockGpsProvider.GPS_MOCK_PROVIDER, true);
-            } catch (SecurityException e) {
-                // 如果之前未在开发者选项中手动打开“允许模拟GPS”，这里可能会抛安全异常
-                for (GPSReplayListener listener : listeners) {
-                    listener.onReplayFail(
-                            GTApp.getContext().getString(R.string.pi_gps_warn_tip));
-                }
-                return false;
-            }
-        }
+//        if (!locationManager.isProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER)) {
+//            try {
+//                locationManager.addTestProvider(MockGpsProvider.GPS_MOCK_PROVIDER,
+//                        false, false, false, false, true, false, false, 0, 5);
+//                locationManager.setTestProviderEnabled(
+//                        MockGpsProvider.GPS_MOCK_PROVIDER, true);
+//            } catch (SecurityException e) {
+//                // 如果之前未在开发者选项中手动打开“允许模拟GPS”，这里可能会抛安全异常
+//                for (GPSReplayListener listener : listeners) {
+//                    listener.onReplayFail(
+//                            GTApp.getContext().getString(R.string.pi_gps_warn_tip));
+//                }
+//                return false;
+//            }
+//        }
         return true;
     }
 
@@ -185,7 +195,6 @@ public class GTGPSReplayEngine extends BaseService {
             return;
         }
 
-        if (locationManager.isProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER)) {
             try {
                 double lng = Double.parseDouble(sLng);
                 double lat = Double.parseDouble(sLat);
@@ -228,7 +237,6 @@ public class GTGPSReplayEngine extends BaseService {
                 isReplay = false;
                 return;
             }
-        }
     }
 
     /*
@@ -239,7 +247,6 @@ public class GTGPSReplayEngine extends BaseService {
             return;
         }
 
-        if (locationManager.isProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER)) {
             BufferedReader reader = null;
             try {
                 List<String> data = new ArrayList<String>();
@@ -265,17 +272,18 @@ public class GTGPSReplayEngine extends BaseService {
                 String[] coordinates = new String[mGPSFileLength];
                 data.toArray(coordinates);
 
-                if (mMockGpsProviderTask == null) {
-                    mMockGpsProviderTask = new MockGpsProvider(selectedItem);
+                if (mMockGpsProviderTask != null) {
+                    mMockGpsProviderTask.cancel(true);
                 }
+                mMockGpsProviderTask = new MockGpsProvider(selectedItem);
                 isReplay = true;
                 mMockGpsProviderTask.execute(coordinates);
             } catch (Exception e) {
+                e.printStackTrace();
                 isReplay = false;
             } finally {
                 FileUtil.closeReader(reader);
             }
-        }
     }
 
     private void stopReplay() {
@@ -345,10 +353,13 @@ public class GTGPSReplayEngine extends BaseService {
         public static final String GPS_MOCK_PROVIDER = LocationManager.GPS_PROVIDER;
         public String orgiFileName;
 
-//		public Integer index = 0;
-
         public MockGpsProvider(String fileName) {
             this.orgiFileName = fileName;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            locationManager.setTestProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER,true);
         }
 
         @Override
@@ -426,25 +437,14 @@ public class GTGPSReplayEngine extends BaseService {
                     break;
                 }
 
-                Log.i(LOG_TAG, location.toString());
 
                 // 提供新的位置信息
                 try {
-                    locationManager.addTestProvider(
-                            LocationManager.GPS_PROVIDER,
-                            "requiresNetwork" == "", "requiresSatellite" == "",
-                            "requiresCell" == "", "hasMonetaryCost" == "",
-                            "supportsAltitude" == "supportsAltitude",
-                            "supportsSpeed" == "supportsSpeed",
-                            "supportsBearing" == "supportsBearing",
-                            android.location.Criteria.POWER_LOW,
-                            android.location.Criteria.ACCURACY_FINE);
-                    locationManager.setTestProviderStatus(GPS_MOCK_PROVIDER,
-                            LocationProvider.AVAILABLE, null,
-                            System.currentTimeMillis());
                     locationManager.setTestProviderLocation(GPS_MOCK_PROVIDER,
                             location);
+                    Log.i(LOG_TAG, location.toString());
                 } catch (Exception e) {
+                    e.printStackTrace();
                     // 如果未开位置模拟，这里可能出异常
                     ToastUtil.ShowLongToast(GTApp.getContext(),
                             GTApp.getContext().getString(R.string.pi_gps_warn_tip));
@@ -489,35 +489,6 @@ public class GTGPSReplayEngine extends BaseService {
             index = 0;
             for (GPSReplayListener listener : listeners) {
                 listener.onReplayStop();
-            }
-
-            /*
-             * add on 20141226 将回放位置的时刻记录在文件中，以便使用模拟位置的应用核对事件发生时的位置
-             * TODO 回放记录放在GT/Log/gpsreplay/<原回放文件名>_log.gps
-             */
-            File folder = new File(Env.S_ROOT_LOG_FOLDER + "gpsreplay/");
-            folder.mkdirs();
-            // GT/Log/gpsreplay/xxxx_log.gps
-            String recordFileName = orgiFileName;
-            if (orgiFileName.toLowerCase(Locale.ENGLISH).endsWith(".gps")) {
-                recordFileName = orgiFileName.substring(0, orgiFileName.length() - 4) + "_log.gps";
-            }
-
-            File f = new File(folder, recordFileName);
-
-            BufferedWriter bw = null;
-
-            try {
-                f.createNewFile();
-                bw = new BufferedWriter(new FileWriter(f));
-                for (int i = 0; i < timezones.size(); i++) {
-                    String relayLine = timezones.get(i) + "," + data[i].trim() + "\r\n";
-                    bw.write(relayLine);
-                }
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } finally {
-                FileUtil.closeWriter(bw);
             }
 
             return null;
