@@ -87,7 +87,7 @@ public class GTGPSReplayEngine extends BaseService {
     }
 
     private GTGPSReplayEngine() {
-        listeners = new ArrayList<GPSReplayListener>();
+        listeners = new ArrayList<>();
     }
 
     public synchronized void addListener(GPSReplayListener listener) {
@@ -117,10 +117,10 @@ public class GTGPSReplayEngine extends BaseService {
         }
 
         selectedItemPos = intent.getIntExtra("seq", -1);
-        int progess = Math.min(100, intent.getIntExtra("progress", 0));
+        int progress = Math.min(100, intent.getIntExtra("progress", 0));
         mreplayspeed = intent.getIntExtra("replayspeed", 1);
-        index = getGPSFileLength() * progess / 100;
-        if (-1 == selectedItemPos) {
+        index = getGPSFileLength() * progress / 100;
+        if (-2 == selectedItemPos) {
             selectedItem = intent.getStringExtra("filename");
             if (null == selectedItem) {
                 // 还有一种可能是直接提供给服务的是经纬度坐标
@@ -139,8 +139,7 @@ public class GTGPSReplayEngine extends BaseService {
                 // 按文件名回放
                 replay(selectedItem);
             }
-        } else // 按序号回放
-        {
+        } else {// 按序号回放
             // 先找好对应的文件名，再按文件名回放
             ArrayList<String> items = GTGPSUtils.getGPSFileList();
             if (items.size() > 0 && items.size() > selectedItemPos && !items.get(0).equals("empty"))
@@ -273,7 +272,6 @@ public class GTGPSReplayEngine extends BaseService {
                 mMockGpsProviderTask.execute(coordinates);
             } catch (Exception e) {
                 isReplay = false;
-                return;
             } finally {
                 FileUtil.closeReader(reader);
             }
@@ -341,6 +339,7 @@ public class GTGPSReplayEngine extends BaseService {
         return mGPSFileLength;
     }
 
+    //TODO static
     private class MockGpsProvider extends AsyncTask<String, Integer, Void> {
         public static final String LOG_TAG = "GpsMockProvider";
         public static final String GPS_MOCK_PROVIDER = LocationManager.GPS_PROVIDER;

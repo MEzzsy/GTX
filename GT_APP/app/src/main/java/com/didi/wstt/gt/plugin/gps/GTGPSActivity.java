@@ -50,7 +50,7 @@ import com.didi.wstt.gt.utils.ToastUtil;
 import java.io.File;
 import java.util.ArrayList;
 
-public class GTGPSActivity extends GTBaseActivity implements GPSRecordListener, GPSReplayListener {
+public class GTGPSActivity extends GTBaseActivity {
     public static final String TAG = "GTGPSActivity";
     private static final String MOCK_GPS_PROVIDER_INDEX = "GpsMockProviderIndex";
     public static final int RES_GPSREPALY_ACTIVITY = 200;
@@ -149,6 +149,76 @@ public class GTGPSActivity extends GTBaseActivity implements GPSRecordListener, 
         }
     }
 
+    private GPSRecordListener mGPSRecordListener = new GPSRecordListener() {
+        @Override
+        public void onRecordStart() {
+            GTGPSActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tv_record.setBackgroundResource(R.drawable.switch_off_border);
+                    tv_record.setText(getString(R.string.pi_gps_record_stop));
+                }
+            });
+        }
+
+        @Override
+        public void onRecordStop() {
+            GTGPSActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tv_record.setBackgroundResource(R.drawable.switch_on_border);
+                    tv_record.setText(getString(R.string.pi_gps_record));
+                    // 更新UI
+                    handler.sendEmptyMessage(0);
+                }
+            });
+        }
+
+        @Override
+        public void onRecordFail(final String errorstr) {
+            GTGPSActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ToastUtil.ShowLongToast(GTGPSActivity.this, errorstr);
+                }
+            });
+        }
+    };
+
+    private GPSReplayListener mGPSReplayListener = new GPSReplayListener() {
+        @Override
+        public void onReplayStart() {
+            GTGPSActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tv_replay.setBackgroundResource(R.drawable.switch_off_border);
+                    tv_replay.setText(getString(R.string.pi_gps_replay_stop));
+                }
+            });
+        }
+
+        @Override
+        public void onReplayEnd() {
+
+        }
+
+        @Override
+        public void onReplayStop() {
+            GTGPSActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tv_replay.setBackgroundResource(R.drawable.switch_on_border);
+                    tv_replay.setText(getString(R.string.pi_gps_replay));
+                }
+            });
+        }
+
+        @Override
+        public void onReplayFail(String errorstr) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,8 +272,8 @@ public class GTGPSActivity extends GTBaseActivity implements GPSRecordListener, 
             GTGPSReplayEngine.getInstance().selectedItem = o.toString();
         }
 
-        GTGPSRecordEngine.getInstance().addListener(this);
-        GTGPSReplayEngine.getInstance().addListener(this);
+        GTGPSRecordEngine.getInstance().addListener(mGPSRecordListener);
+        GTGPSReplayEngine.getInstance().addListener(mGPSReplayListener);
     }
 
     @Override
@@ -221,81 +291,10 @@ public class GTGPSActivity extends GTBaseActivity implements GPSRecordListener, 
 
     @Override
     protected void onDestroy() {
-        GTGPSRecordEngine.getInstance().removeListener(this);
-        GTGPSReplayEngine.getInstance().removeListener(this);
+        GTGPSRecordEngine.getInstance().removeListener(mGPSRecordListener);
+        GTGPSReplayEngine.getInstance().removeListener(mGPSReplayListener);
         handler.removeCallbacksAndMessages(null);
         super.onDestroy();
-    }
-
-    @Override
-    public void onRecordStart() {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tv_record.setBackgroundResource(R.drawable.switch_off_border);
-                tv_record.setText(getString(R.string.pi_gps_record_stop));
-            }
-        });
-    }
-
-    @Override
-    public void onRecordStop() {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tv_record.setBackgroundResource(R.drawable.switch_on_border);
-                tv_record.setText(getString(R.string.pi_gps_record));
-                // 更新UI
-                handler.sendEmptyMessage(0);
-            }
-        });
-    }
-
-    @Override
-    public void onRecordFail(final String errorstr) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ToastUtil.ShowLongToast(GTGPSActivity.this, errorstr);
-            }
-        });
-    }
-
-    @Override
-    public void onReplayStart() {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tv_replay.setBackgroundResource(R.drawable.switch_off_border);
-                tv_replay.setText(getString(R.string.pi_gps_replay_stop));
-            }
-        });
-    }
-
-    @Override
-    public void onReplayStop() {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tv_replay.setBackgroundResource(R.drawable.switch_on_border);
-                tv_replay.setText(getString(R.string.pi_gps_replay));
-            }
-        });
-    }
-
-    @Override
-    public void onReplayEnd() {
-
-    }
-
-    @Override
-    public void onReplayFail(final String errorstr) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ToastUtil.ShowLongToast(GTGPSActivity.this, errorstr);
-            }
-        });
     }
 
     private void initListView() {
