@@ -23,12 +23,18 @@
  */
 package com.didi.wstt.gt.plugin.internal;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.IBinder;
 
 import com.didi.wstt.gt.GTApp;
+import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.plugin.BaseService;
 
 import java.util.ArrayList;
@@ -36,7 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PluginService extends Service {
-
+    private static final String CHANNEL_ID = "CHANNEL_ONE_ID";
     private static final HashMap<Class<?>, BaseService> mServiceMap = new HashMap<Class<?>, BaseService>();
     private static final HashMap<Class<?>, ArrayList<BaseServiceConnection>> mServiceConnections =
             new HashMap<Class<?>, ArrayList<BaseServiceConnection>>();
@@ -57,6 +63,30 @@ public class PluginService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+        Intent notificationIntent = new Intent(this, PluginService.class);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, notificationIntent, 0);
+
+        Notification.Builder builder = new Notification.Builder(this)
+                .setContentTitle("GTX")
+                .setContentText("GTX正在后台运行")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentIntent(pendingIntent);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            builder.setChannelId(CHANNEL_ID);
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,
+                    CHANNEL_ID, NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.setShowBadge(true);
+            notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(notificationChannel);
+        }
+
+        Notification notification = builder.build();
+        startForeground(1, notification);
         return START_STICKY;
     }
 

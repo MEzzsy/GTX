@@ -61,16 +61,6 @@ public class GTService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent == null) return START_STICKY_COMPATIBILITY;
-        String version_type = "Release";
-        if (1 == GTConfig.VERSION_TYPE) {
-            version_type = "Develop";
-        }
-        GTMainActivity.notification = NotificationHelper.genNotification(
-                GTApp.getContext(), 0, R.drawable.gt_entrlogo, "GT", 1,
-                "Version: " + version_type + " " + GTConfig.VERSION,
-                "GT is running", GTMainActivity.class,
-                true, false, 0);
-        startForeground(10, GTMainActivity.notification);
         return super.onStartCommand(intent, flags, startId);
     }
 }

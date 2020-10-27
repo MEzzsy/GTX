@@ -26,6 +26,7 @@ package com.didi.wstt.gt;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 
 import com.didi.wstt.gt.activity.GTEntrance;
@@ -136,9 +137,11 @@ public class GTApp extends Application {
         PluginManager pm = PluginManager.getInstance();
         // 启动PluginService
         Intent intent = new Intent(this, PluginService.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startService(intent);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.startForegroundService(intent);
+        } else {
+            this.startService(intent);
+        }
         // 插件管理器初始化
         pm.register(new BatteryPluginItem());
         pm.register(new TcpdumpPluginItem());
