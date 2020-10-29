@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,13 +21,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#00000000"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="48dip"
         android:background="@drawable/bottom_gray"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/perf_detail_back"
@@ -74,7 +73,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/perf_detail_observe"
@@ -83,7 +82,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="4dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/op_perf_detail_about"
@@ -103,12 +102,12 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/op_perf_detail_key"
@@ -129,7 +128,7 @@
                 android:layout_marginBottom="0dp"
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="2dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -157,14 +156,14 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/a_gt_perf_tag_list_item_border"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="@drawable/a_gt_perf_tag_list_item_border"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/op_perf_detail_attent"
@@ -197,7 +196,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="9dp"
                     android:layout_marginRight="9dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/bh_perf_detail_times_toast"
@@ -240,7 +239,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="9dp"
                     android:layout_marginRight="9dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/bh_perf_detail_max_toast"
@@ -288,8 +287,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:background="@drawable/a_gt_perf_tag_list_item_border"
-                android:orientation="vertical" >
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -297,14 +295,14 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/a_gt_perf_tag_list_item_border"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/warning_fold"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/op_perf_detail_interval_toast"
@@ -356,7 +354,7 @@
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent" >
+                        android:layout_height="fill_parent">
 
                         <ImageView
                             android:id="@+id/bottom_arrow"
@@ -372,13 +370,12 @@
                     android:id="@+id/op_perf_detail_warnarea"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:orientation="horizontal" >
-                    </LinearLayout>
+                        android:orientation="horizontal"></LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -386,7 +383,7 @@
                         android:layout_marginBottom="2dp"
                         android:layout_marginLeft="9dp"
                         android:layout_marginRight="9dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/op_perf_detail_interval_toast2"
@@ -416,7 +413,7 @@
                         android:layout_marginBottom="4dp"
                         android:layout_marginLeft="9dp"
                         android:layout_marginRight="9dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/op_perf_detail_upper_interval"

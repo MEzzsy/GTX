@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -19,11 +18,10 @@
      specific language governing permissions and limitations under the License.
 -->
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@android:id/text1"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:gravity="center"
-	android:textColor="#000000"
-	android:textSize="20sp"
-	android:singleLine="true"
-	/>
+    android:id="@android:id/text1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    android:singleLine="true" />

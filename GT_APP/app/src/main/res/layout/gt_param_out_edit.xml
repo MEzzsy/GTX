@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,12 +21,12 @@
     xmlns:dslv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#29292d" >
+        android:background="#29292d">
 
         <TextView
             android:layout_width="wrap_content"

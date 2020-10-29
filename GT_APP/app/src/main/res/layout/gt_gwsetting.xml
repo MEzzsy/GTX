@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -21,12 +20,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="48dp"
-        android:background="#3c3c42" >
+        android:background="#3c3c42">
 
         <TextView
             android:id="@+id/tv_back"
@@ -52,7 +51,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/op_refresh_inter_time"
@@ -71,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="8dp" >
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/seekbar_bottom_gray"
@@ -118,7 +117,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/op_refresh_inter_time_FPS"
@@ -137,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="8dp" >
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/seekbar_bottom_gray_FPS"

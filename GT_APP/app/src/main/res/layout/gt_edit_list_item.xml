@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,7 +21,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp" >
+    android:layout_marginRight="10dp">
 
     <TextView
         android:id="@+id/draglist_item_bottom"
@@ -55,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/listrow_right_border" >
+        android:layout_toLeftOf="@id/listrow_right_border">
 
         <TextView
             android:id="@+id/draglist_shotkey"

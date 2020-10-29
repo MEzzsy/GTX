@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -19,7 +18,7 @@
      specific language governing permissions and limitations under the License.
 -->
 
-<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android" 
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     android:singleLine="true"
     android:layout_width="match_parent"
@@ -29,9 +28,7 @@
     android:gravity="center_vertical"
     android:paddingLeft="10dp"
     android:textSize="19sp"
-    android:background="@drawable/a_gt_log_filter_list_item_selector"
-    />
-<!--
+    android:background="@drawable/a_gt_log_filter_list_item_selector" /><!--
 	android:background="#00FF00"注意背景色受选择器控制，所以不能在Item这里设置,否则不会随点击变化 
     style="?android:attr/dropDownItemStyle"
  -->

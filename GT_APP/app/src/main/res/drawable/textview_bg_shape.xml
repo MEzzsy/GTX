@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -20,21 +19,24 @@
 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#80858175" />
-    <stroke android:width="1dip" android:color="#aea594" />
-      <corners android:topLeftRadius="2dp"    
-        android:topRightRadius="2dp"     
-        android:bottomRightRadius="2dp"    
-        android:bottomLeftRadius="2dp"/>
+    <stroke
+        android:width="1dip"
+        android:color="#aea594" />
+    <corners
+        android:topLeftRadius="2dp"
+        android:topRightRadius="2dp"
+        android:bottomRightRadius="2dp"
+        android:bottomLeftRadius="2dp" />
 </shape>
 
 
-<!-- <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
-    <gradient 
-        android:startColor="#FFFFFFFF"
-        android:endColor="#FFFFFFFF"
-        android:angle="270.0"
-        android:centerY="0.3"
-        android:centerColor="#FFBDBDBD"
-        />
-</shape>-->
+    <!-- <?xml version="1.0" encoding="utf-8"?>
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+        <gradient
+            android:startColor="#FFFFFFFF"
+            android:endColor="#FFFFFFFF"
+            android:angle="270.0"
+            android:centerY="0.3"
+            android:centerColor="#FFBDBDBD"
+            />
+    </shape>-->

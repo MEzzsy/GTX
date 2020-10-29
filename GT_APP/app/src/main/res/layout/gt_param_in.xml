@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -21,12 +20,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#29292d" >
+        android:background="#29292d">
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,11 +35,11 @@
             android:text="@string/para_in_list_title"
             android:textColor="#cb7418"
             android:textSize="16sp" />
-        
-        
+
+
     </FrameLayout>
-    
-  
+
+
     <TextView
         android:id="@+id/ip_title_toast"
         android:layout_height="fill_parent"
@@ -48,9 +47,8 @@
         android:text="@string/Empty"
         android:textSize="20dp"
         android:textColor="#808080"
-        android:gravity="center|fill_vertical"
-        />
-    
+        android:gravity="center|fill_vertical" />
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"

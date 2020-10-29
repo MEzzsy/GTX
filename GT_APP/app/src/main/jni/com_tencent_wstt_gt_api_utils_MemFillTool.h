@@ -13,10 +13,10 @@ extern "C" {
  * Signature: (II)I
  */
 JNIEXPORT jint JNICALL Java_com_tencent_wstt_gt_api_utils_MemFillTool_fillMem
-  (JNIEnv *, jobject, jint);
+        (JNIEnv *, jobject, jint);
 
 JNIEXPORT jint JNICALL Java_com_tencent_wstt_gt_api_utils_MemFillTool_freeMem
-  (JNIEnv *, jobject);
+        (JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }

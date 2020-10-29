@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,7 +21,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp" >
+    android:layout_marginRight="10dp">
 
     <TextView
         android:id="@+id/draglist_item_bottom"
@@ -56,8 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@id/listrow_right_border"
-         >
+        android:layout_toLeftOf="@id/listrow_right_border">
 
         <TextView
             android:id="@+id/data_flag"
@@ -73,9 +71,8 @@
             android:text="@string/sss1"
             android:paddingLeft="2dp"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" 
-            />
-<!-- gravity="center"兼容乐视等系统checkbox在gravity="right"时无法显示的bug -->
+            android:textSize="15sp" />
+        <!-- gravity="center"兼容乐视等系统checkbox在gravity="right"时无法显示的bug -->
         <CheckBox
             android:id="@+id/cb_tick"
             android:layout_width="wrap_content"
@@ -83,8 +80,7 @@
             android:layout_alignParentRight="true"
             android:clickable="true"
             android:focusable="false"
-            android:gravity="center" 
-           />
+            android:gravity="center" />
 
     </RelativeLayout>
 
@@ -93,14 +89,15 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/listrow_top_border"
-        android:layout_toRightOf="@id/listrow_left_border" >
+        android:layout_toRightOf="@id/listrow_left_border">
 
-        
+
         <TextView
             android:id="@+id/listrow_bg"
             android:layout_width="match_parent"
-            android:layout_height="50dp" 
-            android:background="#FFFFFF"/>
+            android:layout_height="50dp"
+            android:background="#FFFFFF" />
+
         <TextView
             android:id="@+id/draglist_shotkey"
             android:layout_width="58dp"

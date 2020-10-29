@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -21,20 +20,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/Installed_Application_List"
-    />
-<ListView 
-	android:id="@+id/listview"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:clickable="true"
-	android:cacheColorHint="#00000000"
-	android:scrollbars="none"
-	android:drawSelectorOnTop="false"
-  	/>
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Installed_Application_List" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:cacheColorHint="#00000000"
+        android:scrollbars="none"
+        android:drawSelectorOnTop="false" />
 </LinearLayout>

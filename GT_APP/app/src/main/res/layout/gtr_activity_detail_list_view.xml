@@ -3,14 +3,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#000000"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="48dip"
         android:background="@drawable/bottom_gray"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/image_back"
@@ -44,7 +44,6 @@
     </RelativeLayout>
 
 
-
     <LinearLayout
         android:id="@+id/linear_result"
         android:layout_width="fill_parent"
@@ -60,7 +59,7 @@
             android:id="@+id/text_result"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,15 +72,13 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/a_gt_perf_tag_list_item_border"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ListView
             android:id="@+id/detail_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-
-
 
 
 </LinearLayout>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-	<!--
+<?xml version="1.0" encoding="utf-8"?>    <!--
 		/* //device/apps/common/assets/res/any/layout/simple_spinner_item.xml
 		** ** Copyright 2008, The Android Open Source Project ** ** Licensed
 		under the Apache License, Version 2.0 (the "License"); ** you may not
@@ -13,15 +12,26 @@
 		limitations under the License. */
 	-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="wrap_content"
-	android:orientation="vertical">
-	<CheckedTextView
-		android:id="@android:id/text1" style="?android:attr/spinnerDropDownItemStyle"
-		android:singleLine="true" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:ellipsize="marquee" />
-	<TextView android:id="@android:id/text2" android:singleLine="true"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:ellipsize="marquee" android:textSize="13sp"
-		android:textColor="@android:color/secondary_text_light_nodisable"
-		android:paddingLeft="10dp" android:paddingBottom="5dp" />
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <CheckedTextView
+        android:id="@android:id/text1"
+        style="?android:attr/spinnerDropDownItemStyle"
+        android:singleLine="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee" />
+
+    <TextView
+        android:id="@android:id/text2"
+        android:singleLine="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:textSize="13sp"
+        android:textColor="@android:color/secondary_text_light_nodisable"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp" />
 </LinearLayout>

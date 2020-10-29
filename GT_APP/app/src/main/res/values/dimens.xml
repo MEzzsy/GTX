@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -20,12 +19,12 @@
 -->
 <resources>
     <dimen name="text_size_xsmall">8px</dimen>
-	<dimen name="text_size_small">10px</dimen>
-	<dimen name="text_size_medium">12px</dimen>
-	<dimen name="text_size_large">14px</dimen>
-	<dimen name="text_size_xlarge">16px</dimen>
-	
-	<!-- dialog -->
+    <dimen name="text_size_small">10px</dimen>
+    <dimen name="text_size_medium">12px</dimen>
+    <dimen name="text_size_large">14px</dimen>
+    <dimen name="text_size_xlarge">16px</dimen>
+
+    <!-- dialog -->
     <dimen name="dialog_width">280dip</dimen>
     <dimen name="dialog_body_height">80dip</dimen>
     <dimen name="dialog_content_margin">5dip</dimen>
@@ -37,4 +36,4 @@
 
     <!--  Size of icons in the top-level of settings  -->
     <!-- Default screen margins, per the Android Design guidelines. -->
-    </resources>
+</resources>

@@ -17,20 +17,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.analysis4.GTRDataToJsManager;
 import com.didi.wstt.gt.api.utils.Env;
-import com.didi.wstt.gt.share.Constants;
-import com.didi.wstt.gt.utils.FileUtils;
 import com.didi.wstt.gt.utils.ToastUtil;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
-import com.tencent.mm.opensdk.modelmsg.WXFileObject;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -53,7 +47,6 @@ public class ShowFileListActivity extends GTBaseActivity {
     private static final int COPYFAILED = 2;
 
     private String pullType = "";
-    private IWXAPI api;
     private int CONTENT_LENGTH_LIMIT = 10485760;
 
     private Handler mHandler = new Handler() {
@@ -79,21 +72,17 @@ public class ShowFileListActivity extends GTBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gtr_activity_showfile);
-        lv_Showfile = (ListView) findViewById(R.id.lv_showfile);
+        lv_Showfile = findViewById(R.id.lv_showfile);
 
         // 获取导出方式
         pullType = getIntent().getStringExtra("pullType");
-        // 通过WXAPIFactory工厂，获取IWXAPI的实例
-        api = WXAPIFactory.createWXAPI(this, Constants.APP_ID, false);
-        // 将该app注册到微信
-        api.registerApp(Constants.APP_ID);
 
         showFileDir(originalPath);
     }
 
     private void showFileDir(String path) {
-        names = new ArrayList<String>();
-        paths = new ArrayList<String>();
+        names = new ArrayList<>();
+        paths = new ArrayList<>();
         File file = new File(path);
         File[] files = file.listFiles();
         //添加所有文件
@@ -152,64 +141,9 @@ public class ShowFileListActivity extends GTBaseActivity {
                                 })
                                 .show();
                         break;
-                    case "wx":
-                        new AlertDialog.Builder(ShowFileListActivity.this)
-                                .setMessage("是否导出数据并分享到微信")
-                                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                })
-                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        displayProgress();
-                                        new Thread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                try {
-                                                    long startTime = System.currentTimeMillis();
-                                                    boolean b = GTRDataToJsManager.toAnalysis(paths.get(position), true);
-                                                    if (b) {
-                                                        long endTime = System.currentTimeMillis();
-                                                        Log.i("adam", "解析数据完成使用" + (endTime - startTime) + "ms");
-                                                        boolean isZipSuccess = FileUtils.zipFile(Env.GTR_WX_DATAJS_PATH_NAME, Env.GTR_ZIP_DATAJS_PATH_NAME);
-                                                        if (isZipSuccess) {
-                                                            Log.i("adam", "压缩数据完成使用" + (System.currentTimeMillis() - endTime) + "ms");
-                                                            File zipFile = new File(Env.GTR_ZIP_DATAJS_PATH_NAME);
-                                                            dismissProgress();
-                                                            if (isFileExceedsSize(zipFile)) {
-                                                                File dataFile = new File(Env.GTR_WX_DATAJS_PATH_NAME);
-                                                                if (zipFile.exists())
-                                                                    zipFile.delete();
-                                                                if (dataFile.exists())
-                                                                    dataFile.delete();
-                                                                ToastUtil.ShowShortToast(ShowFileListActivity.this, "测试数据压缩后大小超过10M,建议导出文件到手机根目录");
-                                                            } else {
-                                                                shareFileToWX(zipFile);
-                                                                ShowFileListActivity.this.finish();
-                                                            }
-                                                        } else {
-                                                            ToastUtil.ShowShortToast(ShowFileListActivity.this, "Compressed file failed");
-                                                        }
-                                                    } else {
-                                                        ToastUtil.ShowShortToast(ShowFileListActivity.this, "Serialization file failed");
-                                                    }
-                                                } catch (Exception e) {
-                                                    Log.i("adam", "run: error~~" + e.toString());
-                                                    dismissProgress();
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        }).start();
-                                        dialog.dismiss();
-                                    }
-                                })
-                                .show();
-                        break;
                     default:
-                        new Exception("The pullType is not found");
+                        Toast.makeText(ShowFileListActivity.this, "The pullType is not found",
+                                Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -239,7 +173,7 @@ public class ShowFileListActivity extends GTBaseActivity {
         }
     }
 
-    private class MyAdapter extends BaseAdapter {
+    private static class MyAdapter extends BaseAdapter {
         private LayoutInflater inflater;
         //存储文件名称
         private ArrayList<String> names = null;
@@ -255,31 +189,27 @@ public class ShowFileListActivity extends GTBaseActivity {
 
         @Override
         public int getCount() {
-            // TODO Auto-generated method stub
             return names.size();
         }
 
         @Override
         public Object getItem(int position) {
-            // TODO Auto-generated method stub
             return names.get(position);
         }
 
         @Override
         public long getItemId(int position) {
-            // TODO Auto-generated method stub
             return position;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            // TODO Auto-generated method stub
             ViewHolder holder;
             if (null == convertView) {
                 convertView = inflater.inflate(R.layout.item_file, null);
                 holder = new ViewHolder();
-                holder.text = (TextView) convertView.findViewById(R.id.textView);
-                holder.image = (ImageView) convertView.findViewById(R.id.imageView);
+                holder.text = convertView.findViewById(R.id.textView);
+                holder.image = convertView.findViewById(R.id.imageView);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -296,34 +226,10 @@ public class ShowFileListActivity extends GTBaseActivity {
             return convertView;
         }
 
-        private class ViewHolder {
+        private static class ViewHolder {
             private TextView text;
             private ImageView image;
         }
     }
 
-    private boolean isFileExceedsSize(File file) {
-        if (file.length() > CONTENT_LENGTH_LIMIT)
-            return true;
-        return false;
-    }
-
-    private boolean shareFileToWX(File file) {
-        WXFileObject fileObject = new WXFileObject();
-        fileObject.setContentLengthLimit(CONTENT_LENGTH_LIMIT);
-        fileObject.setFilePath(file.getPath());
-
-        WXMediaMessage msg = new WXMediaMessage();
-        msg.mediaObject = fileObject;
-        msg.title = file.getName();
-
-        SendMessageToWX.Req req = new SendMessageToWX.Req();
-
-        req.transaction = "file" + System.currentTimeMillis();
-        req.message = msg;
-        req.scene = SendMessageToWX.Req.WXSceneSession;
-
-        api.sendReq(req);
-        return true;
-    }
 }

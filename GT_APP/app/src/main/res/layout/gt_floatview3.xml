@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,7 +21,7 @@
     android:id="@+id/floatviewandlogo"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/gt_floatview_left_img"
@@ -36,14 +35,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@id/gt_floatview_left_img"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <FrameLayout
             android:id="@+id/fl_floatview_title"
             android:layout_width="188dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_floatview_title"
@@ -54,7 +53,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/floatview_timer"
@@ -82,7 +81,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/floatview_op1"
@@ -109,7 +108,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/floatview_op2"
@@ -136,7 +135,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/floatview_op3"
@@ -165,7 +164,7 @@
             android:layout_width="188dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/floatview_ip_bottom"
@@ -176,7 +175,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/floatview_ip1"
@@ -262,7 +261,7 @@
             android:layout_width="188dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/ip_fold"
@@ -283,7 +282,7 @@
         android:id="@+id/fm_floatview_top_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" >
+        android:layout_gravity="center">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -321,7 +320,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/gt_floatview"
-        android:layout_gravity="center" >
+        android:layout_gravity="center">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -330,7 +329,7 @@
         <RelativeLayout
             android:id="@+id/floatview_bottom_layout"
             android:layout_width="250dp"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_gt_logo_bottom_left"

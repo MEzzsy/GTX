@@ -17,22 +17,22 @@
      CONDITIONS OF ANY KIND, either express or implied. See the License for the
      specific language governing permissions and limitations under the License.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/about"
-        android:title="@string/setting_about_tab"/>
+        android:title="@string/setting_about_tab" />
     <item
         android:id="@+id/log_switch"
-        android:title="@string/setting_log_tab"/>
+        android:title="@string/setting_log_tab" />
     <item
         android:id="@+id/air_console"
-        android:title="@string/setting_air_tab"/>
+        android:title="@string/setting_air_tab" />
     <item
         android:id="@+id/intervals"
-        android:title="@string/setting_intervals_tab"/>
+        android:title="@string/setting_intervals_tab" />
     <item
         android:id="@+id/exit"
-        android:title="@string/setting_exit_tab"/>
+        android:title="@string/setting_exit_tab" />
 
 </menu>

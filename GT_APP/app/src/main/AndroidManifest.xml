@@ -341,20 +341,6 @@
             android:name="com.didi.wstt.gt.activity.ShowFileListActivity"
             android:label="@string/pi_filelist_label" />
 
-        <!-- use for share to WX -->
-        <receiver
-            android:name="com.didi.wstt.gt.share.AppRegisterToWX"
-            android:permission="com.tencent.mm.plugin.permission.SEND">
-            <intent-filter>
-                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
-            </intent-filter>
-        </receiver>
-
-        <activity
-            android:name="com.didi.wstt.gt.wxapi.WXEntryActivity"
-            android:exported="true">
-
-        </activity>
     </application>
 
 </manifest>

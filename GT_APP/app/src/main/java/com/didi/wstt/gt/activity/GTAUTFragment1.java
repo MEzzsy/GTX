@@ -594,17 +594,6 @@ public class GTAUTFragment1 extends Fragment implements OnClickListener {
                                     startActivity(intent);
                                 }
                             })
-                            .setPositiveButton("微信", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent();
-                                    intent.setClass(getActivity(), ShowFileListActivity.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("pullType", "wx");
-                                    intent.putExtras(bundle);
-                                    startActivity(intent);
-                                }
-                            })
                             .show();
 
                 } else {

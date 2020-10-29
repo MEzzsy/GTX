@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -21,23 +20,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/tv_opName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
+        android:layout_marginRight="10dp" />
+
     <TextView
         android:id="@+id/tv_opDiscription"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_marginTop="10dp" />
+
     <Button
         android:id="@+id/btn_ok"
         android:layout_width="100dp"
@@ -45,5 +44,5 @@
         android:layout_marginTop="10dp"
         android:text="@string/ok"
         android:layout_gravity="center"
-        android:gravity="center"/>
+        android:gravity="center" />
 </LinearLayout>

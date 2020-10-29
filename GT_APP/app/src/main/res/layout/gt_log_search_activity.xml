@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,14 +21,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#CF000000"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/log_search_rl"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
         android:background="#29292d"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/log_msg_search_cancel"
@@ -87,7 +86,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#00000000"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/log_search_bottom_rl"
@@ -95,7 +94,7 @@
             android:layout_height="44dp"
             android:layout_alignParentBottom="true"
             android:background="#29292d"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/log_search_count"
@@ -146,7 +145,7 @@
             android:layout_height="fill_parent"
             android:layout_above="@id/log_search_bottom_rl"
             android:background="#00000000"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/log_search_list_empty"
@@ -177,7 +176,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:background="#00000000"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ListView
                     android:id="@+id/log_search_spinner_list"

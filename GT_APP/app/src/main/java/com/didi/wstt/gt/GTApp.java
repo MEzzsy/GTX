@@ -54,7 +54,6 @@ import com.didi.wstt.gt.plugin.screenlock.ScreenlockPluginItem;
 import com.didi.wstt.gt.plugin.tcpdump.TcpdumpPluginItem;
 import com.didi.wstt.gt.utils.GTUtils;
 import com.mezzsy.commonlib.CommonLibContext;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.lang.ref.WeakReference;
 
@@ -94,9 +93,6 @@ public class GTApp extends Application {
 
         // 初始化环境变量
         Env.init();
-
-        // 设置主线程的未捕获异常记录
-        CrashReport.initCrashReport(mContext, "900010910", false);
 
         // 初始化适配Android4.x和5.x以上的ProcessUtils
         ProcessUtils.init();

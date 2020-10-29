@@ -22,11 +22,11 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 
 #define check_value(x) 														\
-	__android_log_print(ANDROID_LOG_INFO, LOG_TAG, "%s: %p", #x, x);		\
-	if(x == NULL){ 															\
-		__android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s was NULL", #x);	\
-	   	exit(0);															\
-	}
+    __android_log_print(ANDROID_LOG_INFO, LOG_TAG, "%s: %p", #x, x);		\
+    if(x == NULL){ 															\
+        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s was NULL", #x);	\
+           exit(0);															\
+    }
 
 #else
 

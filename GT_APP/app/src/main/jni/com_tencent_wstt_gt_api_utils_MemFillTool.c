@@ -29,34 +29,31 @@
 #include "com_tencent_wstt_gt_api_utils_MemFillTool.h"
 
 JNIEXPORT jint JNICALL Java_com_tencent_wstt_gt_api_utils_MemFillTool_fillMem
-(JNIEnv * env, jobject obj, jint blockNum) {
-	return fill((int)blockNum);
+        (JNIEnv *env, jobject obj, jint blockNum) {
+    return fill((int) blockNum);
 }
 
 JNIEXPORT jint JNICALL Java_com_tencent_wstt_gt_api_utils_MemFillTool_freeMem
-(JNIEnv * env, jobject obj) {
-	return freeMem();
+        (JNIEnv *env, jobject obj) {
+    return freeMem();
 }
 
 char *p;
-const int BASE_SIZE = 1024*1024; // 1M
+const int BASE_SIZE = 1024 * 1024; // 1M
 
-int fill(int blockNum)
-{
-	int memSize = blockNum * BASE_SIZE;
-	p = (char *)malloc(memSize);
+int fill(int blockNum) {
+    int memSize = blockNum * BASE_SIZE;
+    p = (char *) malloc(memSize);
 
-	int i;
-	for (i = 0; i < memSize; i++)
-	{
-		p[i] = 0;
-	}
+    int i;
+    for (i = 0; i < memSize; i++) {
+        p[i] = 0;
+    }
 
-	return 0;
+    return 0;
 }
 
-int freeMem()
-{
-	free(p);
-	return 0;
+int freeMem() {
+    free(p);
+    return 0;
 }

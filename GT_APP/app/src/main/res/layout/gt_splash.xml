@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -18,31 +17,30 @@
      CONDITIONS OF ANY KIND, either express or implied. See the License for the
      specific language governing permissions and limitations under the License.
 -->
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="@drawable/white"
-  android:gravity="center"
-  android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/white"
+    android:gravity="center"
+    android:orientation="vertical">
 
-	<RelativeLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="1">
-	 	<ImageView
-     		android:id="@+id/splash"
-     		android:src="@drawable/splash_gt"
-     		android:layout_width="268dp"
-	    	android:layout_height="268dp"
-	    	android:layout_centerInParent="true"
-	    />
-	 </RelativeLayout>
-	 <ImageView
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_weight="7"
-		android:src="@drawable/splash_text"
-	    />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/splash"
+            android:src="@drawable/splash_gt"
+            android:layout_width="268dp"
+            android:layout_height="268dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="7"
+        android:src="@drawable/splash_text" />
 
 </LinearLayout>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,13 +21,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#00000000"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="48dip"
         android:background="@drawable/bottom_gray"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/perf_title"
@@ -93,7 +92,7 @@
         android:layout_width="fill_parent"
         android:layout_height="30dip"
         android:background="#29292d"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/perf_text_times"
@@ -152,10 +151,11 @@
         android:layout_height="fill_parent"
         android:background="#00000000"
         android:orientation="vertical" >-->
-		<LinearLayout
-        	android:layout_width="fill_parent"
-        	android:layout_height="fill_parent"
-        	android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/perf_no_start_toast"
             android:layout_width="fill_parent"

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -24,16 +23,16 @@
     android:layout_height="80dp"
     android:orientation="horizontal"
     android:padding="5dip"
-    android:paddingBottom="15dp" >
+    android:paddingBottom="15dp">
 
-            <TextView
-                android:id="@+id/timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:color="#000"
-                android:textSize="18sp" 
-                android:contentDescription="@+id/timer"/>
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:color="#000"
+        android:textSize="18sp"
+        android:contentDescription="@+id/timer" />
 
 
 </LinearLayout>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -20,7 +19,7 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
     <!--
      	android:paddingTop="10dip"
@@ -34,15 +33,15 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="1dip"
         android:layout_marginRight="1dip"
-        android:singleLine="true"/>
+        android:singleLine="true" />
 
     <ImageButton
         android:id="@+id/save_clean"
         android:layout_width="20dip"
-   	    android:layout_height="20dip"
-   	    android:src="@drawable/a_search_delete"
-   	    android:background="#00FFFFFF"
-   	    android:layout_centerVertical="true"
+        android:layout_height="20dip"
+        android:src="@drawable/a_search_delete"
+        android:background="#00FFFFFF"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dip" />
 

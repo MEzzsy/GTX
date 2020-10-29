@@ -11,10 +11,10 @@ cmake_minimum_required(VERSION 3.4.1)
 # automatically packages shared libraries with your APK.
 
 add_library( # Specifies the name of the library.
-             mem_fill_tool
+        mem_fill_tool
 
-             # Sets the library as a shared library.
-             SHARED
+        # Sets the library as a shared library.
+        SHARED
 
-             # Provides a relative path to your source file(s).
-             com_tencent_wstt_gt_api_utils_MemFillTool.c )
+        # Provides a relative path to your source file(s).
+        com_tencent_wstt_gt_api_utils_MemFillTool.c)

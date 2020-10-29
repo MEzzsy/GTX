@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -22,12 +21,12 @@
     android:id="@+id/setting_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="48dp"
-        android:background="#3c3c42" >
+        android:background="#3c3c42">
 
         <TextView
             android:id="@+id/tv_back"
@@ -66,7 +65,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/master_switch"
@@ -99,7 +98,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/auto_save"
@@ -132,7 +131,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/auto_save_flush"
@@ -154,38 +153,38 @@
             android:button="@drawable/gtcheckbox"
             android:clickable="true" />
     </RelativeLayout>
-<!--
-    <RelativeLayout
-        android:id="@+id/save_default_seg_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/save_default"
+    <!--
+        <RelativeLayout
+            android:id="@+id/save_default_seg_layout"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:background="@drawable/seekbar_border"
-            android:gravity="left|center"
-            android:paddingLeft="8dp"
-            android:text="@string/setting_log_retain_prefix"
-            android:textColor="#b7bdcf"
-            android:textSize="19sp" />
-
-        <com.tencent.wstt.gt.views.GTCheckBox
-            android:id="@+id/cb_save_default"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@null"
-            android:button="@drawable/gtcheckbox"
-            android:clickable="true" />
-    </RelativeLayout>
--->
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/save_default"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/seekbar_border"
+                android:gravity="left|center"
+                android:paddingLeft="8dp"
+                android:text="@string/setting_log_retain_prefix"
+                android:textColor="#b7bdcf"
+                android:textSize="19sp" />
+
+            <com.tencent.wstt.gt.views.GTCheckBox
+                android:id="@+id/cb_save_default"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:button="@drawable/gtcheckbox"
+                android:clickable="true" />
+        </RelativeLayout>
+    -->
 </LinearLayout>

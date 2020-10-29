@@ -27,7 +27,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.util.Log;
@@ -41,17 +40,13 @@ import com.didi.wstt.gt.utils.GTUtils;
 import com.didi.wstt.gt.utils.ToastUtil;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * GPS回放引擎
@@ -195,48 +190,48 @@ public class GTGPSReplayEngine extends BaseService {
             return;
         }
 
-            try {
-                double lng = Double.parseDouble(sLng);
-                double lat = Double.parseDouble(sLat);
+        try {
+            double lng = Double.parseDouble(sLng);
+            double lat = Double.parseDouble(sLat);
 
-                // check坐标点的合法性
-                if (lng < -180 || lng > 180 || lat < -90 || lat > 90) {
-                    // 通知观察者
-                    for (GPSReplayListener listener : listeners) {
-                        listener.onReplayFail(
-                                GTApp.getContext().getString(R.string.pi_gps_warn_tip2));
-                    }
-                    return;
+            // check坐标点的合法性
+            if (lng < -180 || lng > 180 || lat < -90 || lat > 90) {
+                // 通知观察者
+                for (GPSReplayListener listener : listeners) {
+                    listener.onReplayFail(
+                            GTApp.getContext().getString(R.string.pi_gps_warn_tip2));
                 }
-                // 为了使用AsyncTask需要转普通数组
-                StringBuilder sb = new StringBuilder();
-                sb.append(lng);
-                sb.append(",");
-                sb.append(lat);
-                sb.append(",");
-                sb.append(0);
-                sb.append(",");
-                sb.append(0);
-                sb.append(",");
-                sb.append(0);
-                sb.append(",");
-                sb.append(0); // 时间，不过不关注填啥
-                sb.append(",");
-                sb.append(0);
-                sb.append(",");
-                sb.append(0);
-                String[] coordinates = new String[]{sb.toString()};
-
-                if (mMockGpsProviderTask == null) {
-                    String replayRecordFileName = GTUtils.getSaveDate() + "_.gps";
-                    mMockGpsProviderTask = new MockGpsProvider(replayRecordFileName);
-                }
-                isReplay = true;
-                mMockGpsProviderTask.execute(coordinates);
-            } catch (Exception e) {
-                isReplay = false;
                 return;
             }
+            // 为了使用AsyncTask需要转普通数组
+            StringBuilder sb = new StringBuilder();
+            sb.append(lng);
+            sb.append(",");
+            sb.append(lat);
+            sb.append(",");
+            sb.append(0);
+            sb.append(",");
+            sb.append(0);
+            sb.append(",");
+            sb.append(0);
+            sb.append(",");
+            sb.append(0); // 时间，不过不关注填啥
+            sb.append(",");
+            sb.append(0);
+            sb.append(",");
+            sb.append(0);
+            String[] coordinates = new String[]{sb.toString()};
+
+            if (mMockGpsProviderTask == null) {
+                String replayRecordFileName = GTUtils.getSaveDate() + "_.gps";
+                mMockGpsProviderTask = new MockGpsProvider(replayRecordFileName);
+            }
+            isReplay = true;
+            mMockGpsProviderTask.execute(coordinates);
+        } catch (Exception e) {
+            isReplay = false;
+            return;
+        }
     }
 
     /*
@@ -247,43 +242,43 @@ public class GTGPSReplayEngine extends BaseService {
             return;
         }
 
-            BufferedReader reader = null;
-            try {
-                List<String> data = new ArrayList<String>();
+        BufferedReader reader = null;
+        try {
+            List<String> data = new ArrayList<String>();
 
-                File f = new File(Env.ROOT_GPS_FOLDER, fileName);
-                InputStream is = new FileInputStream(f);
-                reader = new BufferedReader(new InputStreamReader(is));
+            File f = new File(Env.ROOT_GPS_FOLDER, fileName);
+            InputStream is = new FileInputStream(f);
+            reader = new BufferedReader(new InputStreamReader(is));
 
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    data.add(line);
-                }
-                if (data.size() == 0) {
-                    // 通知观察者
-                    for (GPSReplayListener listener : listeners) {
-                        listener.onReplayFail(
-                                GTApp.getContext().getString(R.string.pi_gps_warn_tip2));
-                    }
-                    return;
-                }
-                mGPSFileLength = data.size();
-                // 为了使用AsyncTask需要转普通数组
-                String[] coordinates = new String[mGPSFileLength];
-                data.toArray(coordinates);
-
-                if (mMockGpsProviderTask != null) {
-                    mMockGpsProviderTask.cancel(true);
-                }
-                mMockGpsProviderTask = new MockGpsProvider(selectedItem);
-                isReplay = true;
-                mMockGpsProviderTask.execute(coordinates);
-            } catch (Exception e) {
-                e.printStackTrace();
-                isReplay = false;
-            } finally {
-                FileUtil.closeReader(reader);
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                data.add(line);
             }
+            if (data.size() == 0) {
+                // 通知观察者
+                for (GPSReplayListener listener : listeners) {
+                    listener.onReplayFail(
+                            GTApp.getContext().getString(R.string.pi_gps_warn_tip2));
+                }
+                return;
+            }
+            mGPSFileLength = data.size();
+            // 为了使用AsyncTask需要转普通数组
+            String[] coordinates = new String[mGPSFileLength];
+            data.toArray(coordinates);
+
+            if (mMockGpsProviderTask != null) {
+                mMockGpsProviderTask.cancel(true);
+            }
+            mMockGpsProviderTask = new MockGpsProvider(selectedItem);
+            isReplay = true;
+            mMockGpsProviderTask.execute(coordinates);
+        } catch (Exception e) {
+            e.printStackTrace();
+            isReplay = false;
+        } finally {
+            FileUtil.closeReader(reader);
+        }
     }
 
     private void stopReplay() {
@@ -359,7 +354,7 @@ public class GTGPSReplayEngine extends BaseService {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            locationManager.setTestProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER,true);
+            locationManager.setTestProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER, true);
         }
 
         @Override

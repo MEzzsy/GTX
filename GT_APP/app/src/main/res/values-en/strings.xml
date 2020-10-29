@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -32,7 +31,7 @@
     <string name="eula_refuse">Refuse</string>
     <string name="eula_accept_text">I have read and accept all the terms of this Agreement</string>
     <string name="company_name">Tencent</string>
-        <string name="privacy">Terms and Privacy</string>
+    <string name="privacy">Terms and Privacy</string>
     <string name="copyright">Copyright© 1998#8211;2014 Tencent</string>
     <string name="reserved">All Rights Reserved</string>
     <!-- 内存助手 -->

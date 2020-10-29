@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Notwithstanding anything to the contrary herein, any previous version
+<?xml version="1.0" encoding="UTF-8"?><!-- Notwithstanding anything to the contrary herein, any previous version
      of Tencent GT shall not be subject to the license hereunder.
      All right, title, and interest, including all intellectual property rights,
      in and to the previous version of Tencent GT (including any and all copies thereof)
@@ -21,12 +20,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#29292d" >
+        android:background="#29292d">
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,8 +68,7 @@
             android:layout_marginRight="18dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/gw_start"
-            android:visibility="visible" >
-        </Button>
+            android:visibility="visible"></Button>
 
         <Button
             android:id="@+id/btn_monitor_stop"
@@ -81,8 +79,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/gw_pause"
             android:paddingTop="20dp"
-            android:visibility="invisible" >
-        </Button>
+            android:visibility="invisible"></Button>
 
         <TextView
             android:id="@+id/gw_switch"
