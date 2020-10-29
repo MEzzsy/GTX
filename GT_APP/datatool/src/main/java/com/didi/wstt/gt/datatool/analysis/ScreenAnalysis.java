@@ -1,7 +1,7 @@
 package com.didi.wstt.gt.datatool.analysis;
 
-import com.didi.wstt.gt.datatool.obj.ScreenState;
 import com.didi.wstt.gt.datatool.GTRAnalysis;
+import com.didi.wstt.gt.datatool.obj.ScreenState;
 
 import java.util.ArrayList;
 

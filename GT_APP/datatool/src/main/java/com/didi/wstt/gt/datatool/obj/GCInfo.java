@@ -6,6 +6,10 @@ package com.didi.wstt.gt.datatool.obj;
  * art虚拟机有6个GC回收器，分为两组（一组并发，一组非并发），每组有一下三个kGcTypeSticky、kGcTypePartial和kGcTypeFul，回收力度依次加大
  * 依次执行三种类型的GC。每次GC执行完毕，都尝试调用Heap类的成员函数TryToAllocate在不增长当前堆大小的前提下再次尝试分配请求的内存。
  * 如果分配内存成功，则返回得到的内存起始地址给调用者，并且不再执行下一种类型的GC。
+ * Art 日志格式：  dalvikvm gcReason: 什么触发了GC，以及属于哪种类型的垃圾回收，可能出现的值包括  Art gcReason: 什么触发了GC，以及属于哪种类型的垃圾回收，可能出现的值包括一下几种  Art gcType：ART有几种不同的GC
+ * art虚拟机有6个GC回收器，分为两组（一组并发，一组非并发），每组有一下三个kGcTypeSticky、kGcTypePartial和kGcTypeFul，回收力度依次加大
+ * 依次执行三种类型的GC。每次GC执行完毕，都尝试调用Heap类的成员函数TryToAllocate在不增长当前堆大小的前提下再次尝试分配请求的内存。
+ * 如果分配内存成功，则返回得到的内存起始地址给调用者，并且不再执行下一种类型的GC。
  **/
 // D/dalvikvm:<GC_Reason><Amount_freed>,<Heap_stats>,<Pause_time>,<Total_time>
 /** Art 日志格式： **/

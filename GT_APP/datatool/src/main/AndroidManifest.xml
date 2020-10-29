@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="brian.com.datatool" />
+<manifest package="brian.com.datatool" />

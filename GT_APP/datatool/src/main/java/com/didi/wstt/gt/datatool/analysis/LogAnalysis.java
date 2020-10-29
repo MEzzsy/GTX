@@ -1,7 +1,7 @@
 package com.didi.wstt.gt.datatool.analysis;
 
-import com.didi.wstt.gt.datatool.obj.LogInfo;
 import com.didi.wstt.gt.datatool.GTRAnalysis;
+import com.didi.wstt.gt.datatool.obj.LogInfo;
 
 import java.util.ArrayList;
 

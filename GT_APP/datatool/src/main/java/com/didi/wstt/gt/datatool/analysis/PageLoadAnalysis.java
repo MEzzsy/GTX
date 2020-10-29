@@ -2,10 +2,10 @@ package com.didi.wstt.gt.datatool.analysis;
 
 import com.didi.wstt.gt.datatool.GTRAnalysis;
 import com.didi.wstt.gt.datatool.obj.DrawInfo;
-import com.didi.wstt.gt.datatool.obj.LifecycleMethod;
-import com.didi.wstt.gt.datatool.obj.PageLoadState;
 import com.didi.wstt.gt.datatool.obj.FrontBackState;
+import com.didi.wstt.gt.datatool.obj.LifecycleMethod;
 import com.didi.wstt.gt.datatool.obj.PageLoadInfo;
+import com.didi.wstt.gt.datatool.obj.PageLoadState;
 
 import java.util.ArrayList;
 
