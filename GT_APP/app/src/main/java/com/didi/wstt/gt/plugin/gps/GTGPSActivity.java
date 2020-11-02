@@ -181,6 +181,7 @@ public class GTGPSActivity extends GTBaseActivity {
             tv_replay.setBackgroundResource(R.drawable.switch_on_border);
             tv_replay.setText(getString(R.string.pi_gps_replay));
         }
+
         if (GTGPSReplayEngine.getInstance().selectedItemPos >= 0) {
             lv_gpsFile
                     .setSelection(GTGPSReplayEngine.getInstance().selectedItemPos);

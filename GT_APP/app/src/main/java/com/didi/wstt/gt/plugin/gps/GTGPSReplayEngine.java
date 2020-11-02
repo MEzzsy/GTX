@@ -52,11 +52,11 @@ import java.util.List;
  * GPS回放引擎
  */
 public class GTGPSReplayEngine extends BaseService {
+    private static final String TAG = "GTGPSReplayEngine";
     /**
      * 没有选择item
      */
     public static final int SELECTED_NULL_ITEM = -1;
-    private static GTGPSReplayEngine INSTANCE;
     private MockGpsProvider mMockGpsProviderTask = null;
     private LocationManager locationManager = null;
 
@@ -70,15 +70,21 @@ public class GTGPSReplayEngine extends BaseService {
     /*回放gps文件的当前进度*/
     public int index = 0;
     /*回放速率*/
-    public int mreplayspeed;
+    public int mReplaySpeed;
 
     private static final String GPS_MOCK_ACTION = "com.tencent.wstt.gt.ACTION_GPS_MOCK";
 
     public static GTGPSReplayEngine getInstance() {
-        if (null == INSTANCE) {
-            INSTANCE = new GTGPSReplayEngine();
+        return SingletonHolder.INSTANCE.mEngine;
+    }
+
+    private enum SingletonHolder{
+        INSTANCE;
+
+        SingletonHolder() {
         }
-        return INSTANCE;
+
+        private GTGPSReplayEngine mEngine;
     }
 
     private GTGPSReplayEngine() {
@@ -123,7 +129,7 @@ public class GTGPSReplayEngine extends BaseService {
 
         selectedItemPos = intent.getIntExtra("seq", -1);
         int progress = Math.min(100, intent.getIntExtra("progress", 0));
-        mreplayspeed = intent.getIntExtra("replayspeed", 1);
+        mReplaySpeed = intent.getIntExtra("replayspeed", 1);
         index = getGPSFileLength() * progress / 100;
         if (-2 == selectedItemPos) {
             selectedItem = intent.getStringExtra("filename");
@@ -332,7 +338,7 @@ public class GTGPSReplayEngine extends BaseService {
      * 得带当前GPS回放速率
      */
     public int getReplaySpeed() {
-        return mreplayspeed;
+        return mReplaySpeed;
     }
 
     /**
@@ -384,10 +390,10 @@ public class GTGPSReplayEngine extends BaseService {
                 {
                     // add on 20141216 赶在index++前把本点回放的时间记录了
                     timezones.add(System.currentTimeMillis());
-                    if (index + mreplayspeed > data.length - 1) {
+                    if (index + mReplaySpeed > data.length - 1) {
                         index++;
                     } else {
-                        index += mreplayspeed;
+                        index += mReplaySpeed;
                     }
 
                 }
@@ -468,7 +474,7 @@ public class GTGPSReplayEngine extends BaseService {
                             }
                         }
                         Log.i("interval", String.valueOf(interval));
-                        if (mreplayspeed == 1) {
+                        if (mReplaySpeed == 1) {
                             Thread.sleep(interval);
                         } else {
                             Thread.sleep(1000);
