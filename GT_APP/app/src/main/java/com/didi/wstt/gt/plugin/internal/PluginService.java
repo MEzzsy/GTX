@@ -48,10 +48,6 @@ public class PluginService extends Service {
             new HashMap<Class<?>, ArrayList<BaseServiceConnection>>();
     private static Handler handler;
 
-    public static Handler getRootHandler() {
-        return handler;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -106,7 +102,7 @@ public class PluginService extends Service {
     public static BaseService startService(BaseService service, Intent intent) {
         synchronized (BaseService.class) {
             if (mServiceMap.containsKey(service.getClass())) {
-                ((BaseService) mServiceMap.get(service.getClass()))
+                mServiceMap.get(service.getClass())
                         .onStart(intent);
             } else {
                 service.onCreate(GTApp.getContext());
@@ -126,8 +122,10 @@ public class PluginService extends Service {
             if (mServiceMap.containsKey(claxx)) {
                 List<BaseServiceConnection> serviceCons = mServiceConnections.get(claxx);
                 if ((null == serviceCons) || (serviceCons.size() == 0)) {
-                    BaseService theService = (BaseService) mServiceMap.get(claxx);
-                    theService.onDestroy();
+                    BaseService theService = mServiceMap.get(claxx);
+                    if (theService != null) {
+                        theService.onDestroy();
+                    }
                     mServiceMap.remove(claxx);
                     mServiceConnections.remove(claxx);
                     return true;
