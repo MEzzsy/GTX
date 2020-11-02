@@ -36,8 +36,8 @@ import com.didi.wstt.gt.R;
 import com.didi.wstt.gt.api.utils.Env;
 import com.didi.wstt.gt.plugin.BaseService;
 import com.didi.wstt.gt.utils.FileUtil;
-import com.didi.wstt.gt.utils.GTUtils;
 import com.didi.wstt.gt.utils.ToastUtil;
+import com.mezzsy.commonlib.tool.mocklocation.MockLocationManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,10 +58,10 @@ public class GTGPSReplayEngine extends BaseService {
      */
     public static final int SELECTED_NULL_ITEM = -1;
     private MockGpsProvider mMockGpsProviderTask = null;
-    private LocationManager locationManager = null;
+    private MockLocationManager mMockLocationManager;
 
     private List<GPSReplayListener> listeners;
-    private boolean isReplay = false;
+    private volatile boolean isReplay = false;
     public String selectedItem;
     public int selectedItemPos = SELECTED_NULL_ITEM;
 
@@ -72,13 +72,11 @@ public class GTGPSReplayEngine extends BaseService {
     /*回放速率*/
     public int mReplaySpeed;
 
-    private static final String GPS_MOCK_ACTION = "com.tencent.wstt.gt.ACTION_GPS_MOCK";
-
     public static GTGPSReplayEngine getInstance() {
         return SingletonHolder.INSTANCE.mEngine;
     }
 
-    private enum SingletonHolder{
+    private enum SingletonHolder {
         INSTANCE;
 
         SingletonHolder() {
@@ -99,16 +97,16 @@ public class GTGPSReplayEngine extends BaseService {
         listeners.remove(listener);
     }
 
-    synchronized public boolean isReplay() {
+    public boolean isReplay() {
         return isReplay;
     }
 
     @Override
     public void onCreate(Context context) {
         super.onCreate(context);
-        locationManager = (LocationManager) context
-                .getSystemService(Context.LOCATION_SERVICE);
-        locationManager.addTestProvider(MockGpsProvider.GPS_MOCK_PROVIDER,
+        mMockLocationManager = new MockLocationManager(context,
+                MockLocationManager.MOCK_PROVIDER_NAME);
+        mMockLocationManager.addTestProvider(
                 false,
                 false,
                 false,
@@ -118,6 +116,8 @@ public class GTGPSReplayEngine extends BaseService {
                 true,
                 0,
                 5);
+        mMockLocationManager.setTestProviderEnabled(true);
+        Log.i(TAG, "onCreate: ");
     }
 
     @Override
@@ -131,37 +131,19 @@ public class GTGPSReplayEngine extends BaseService {
         int progress = Math.min(100, intent.getIntExtra("progress", 0));
         mReplaySpeed = intent.getIntExtra("replayspeed", 1);
         index = getGPSFileLength() * progress / 100;
-        if (-2 == selectedItemPos) {
-            selectedItem = intent.getStringExtra("filename");
-            if (null == selectedItem) {
-                // 还有一种可能是直接提供给服务的是经纬度坐标
-                String lng = intent.getStringExtra("lng");
-                String lat = intent.getStringExtra("lat");
-                if (lng == null || lat == null) {
-                    // 通知观察者需要选择一个文件或文件序号
-                    for (GPSReplayListener listener : listeners) {
-                        listener.onReplayFail(
-                                GTApp.getContext().getString(R.string.pi_gps_replay_tip));
-                    }
-                } else {
-                    replay(lng, lat);
-                }
-            } else {
-                // 按文件名回放
-                replay(selectedItem);
-            }
-        } else {// 按序号回放
-            // 先找好对应的文件名，再按文件名回放
-            ArrayList<String> items = GTGPSUtils.getGPSFileList();
-            if (items.size() > 0 && items.size() > selectedItemPos && !items.get(0).equals("empty"))
-                replay(items.get(selectedItemPos));
+        // 先找好对应的文件名，再按文件名回放
+        ArrayList<String> items = GTGPSUtils.getGPSFileList();
+        if (items.size() > 0 && items.size() > selectedItemPos && !items.get(0).equals("empty")) {
+            replay(items.get(selectedItemPos));
         }
+        Log.i(TAG, "onStart: ");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         stopReplay(); // 停止回放
+        Log.i(TAG, "onDestroy: ");
     }
 
     @Override
@@ -186,58 +168,6 @@ public class GTGPSReplayEngine extends BaseService {
 //            }
 //        }
         return true;
-    }
-
-    /*
-     * 模拟指定点
-     */
-    private void replay(String sLng, String sLat) {
-        if (!isAllowMock()) {
-            return;
-        }
-
-        try {
-            double lng = Double.parseDouble(sLng);
-            double lat = Double.parseDouble(sLat);
-
-            // check坐标点的合法性
-            if (lng < -180 || lng > 180 || lat < -90 || lat > 90) {
-                // 通知观察者
-                for (GPSReplayListener listener : listeners) {
-                    listener.onReplayFail(
-                            GTApp.getContext().getString(R.string.pi_gps_warn_tip2));
-                }
-                return;
-            }
-            // 为了使用AsyncTask需要转普通数组
-            StringBuilder sb = new StringBuilder();
-            sb.append(lng);
-            sb.append(",");
-            sb.append(lat);
-            sb.append(",");
-            sb.append(0);
-            sb.append(",");
-            sb.append(0);
-            sb.append(",");
-            sb.append(0);
-            sb.append(",");
-            sb.append(0); // 时间，不过不关注填啥
-            sb.append(",");
-            sb.append(0);
-            sb.append(",");
-            sb.append(0);
-            String[] coordinates = new String[]{sb.toString()};
-
-            if (mMockGpsProviderTask == null) {
-                String replayRecordFileName = GTUtils.getSaveDate() + "_.gps";
-                mMockGpsProviderTask = new MockGpsProvider(replayRecordFileName);
-            }
-            isReplay = true;
-            mMockGpsProviderTask.execute(coordinates);
-        } catch (Exception e) {
-            isReplay = false;
-            return;
-        }
     }
 
     /*
@@ -289,17 +219,7 @@ public class GTGPSReplayEngine extends BaseService {
 
     private void stopReplay() {
         isReplay = false;
-        try {
-            stopMockLocation();
-        } catch (Exception e) {
-        }
-    }
-
-    private void sendMockBroadcast(Context context, String type) {
-        Intent intent = new Intent();
-        intent.setAction(GPS_MOCK_ACTION);
-        intent.putExtra("type", type);
-        context.sendBroadcast(intent);
+        stopMockLocation();
     }
 
     /**
@@ -313,15 +233,7 @@ public class GTGPSReplayEngine extends BaseService {
         } catch (Exception e) {
         }
 
-        try {
-            LocationManager locationManager = (LocationManager)
-                    GTApp.getContext().getSystemService(Context.LOCATION_SERVICE);
-            locationManager
-                    .removeTestProvider(MockGpsProvider.GPS_MOCK_PROVIDER);
-        } catch (Exception e) {
-        }
-
-        sendMockBroadcast(GTApp.getContext(), "stop");
+        mMockLocationManager.removeTestProvider();
     }
 
     /**
@@ -360,7 +272,7 @@ public class GTGPSReplayEngine extends BaseService {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            locationManager.setTestProviderEnabled(MockGpsProvider.GPS_MOCK_PROVIDER, true);
+
         }
 
         @Override
@@ -369,14 +281,10 @@ public class GTGPSReplayEngine extends BaseService {
             boolean hasMockEnd = false;
 
             double nowtimeStamp;
-            List<Long> timezones = new ArrayList<Long>();
-
-            sendMockBroadcast(GTApp.getContext(), "start");
 
             for (GPSReplayListener listener : listeners) {
                 listener.onReplayStart();
             }
-
 
             /*
              * 修改为保持最后1点的位置
@@ -388,8 +296,6 @@ public class GTGPSReplayEngine extends BaseService {
                 String str = data[index];// 先获取当前点，下一句就index就切到下一个了
                 if (index < data.length - 1) // 到最后一点就不加序号了
                 {
-                    // add on 20141216 赶在index++前把本点回放的时间记录了
-                    timezones.add(System.currentTimeMillis());
                     if (index + mReplaySpeed > data.length - 1) {
                         index++;
                     } else {
@@ -399,7 +305,6 @@ public class GTGPSReplayEngine extends BaseService {
                 }
                 // add on 20150108 到最后一点立即发出广播通知测试程序回放逻辑已结束
                 else if (!hasMockEnd) {
-                    sendMockBroadcast(GTApp.getContext(), "end");
                     hasMockEnd = true;
 
                     for (GPSReplayListener listener : listeners) {
@@ -411,38 +316,23 @@ public class GTGPSReplayEngine extends BaseService {
 
                 try {
                     String[] parts = str.split(",");
-                    nowtimeStamp = Double.valueOf(parts[6]);
+                    nowtimeStamp = Double.parseDouble(parts[6]);
                     location.setTime(System.currentTimeMillis());
-                    location.setLatitude(Double.valueOf(parts[1]));
-                    location.setLongitude(Double.valueOf(parts[0]));
-                    location.setAccuracy((Float.valueOf(parts[2])));
-                    location.setAltitude(Double.valueOf(parts[7]));
-                    location.setBearing(Float.valueOf(parts[3]));
-                    location.setSpeed(Float.valueOf(parts[4]));
-                    /*
-                     * 因为setElapsedRealtimeNanos在Android4.0后才支持，
-                     * 为了避免Android4.0之后报异常，用反射的方式补完location对象
-                     * location.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
-                     */
-                    try {
-                        Method method = Location.class.getMethod("makeComplete");
-                        if (method != null) {
-                            method.invoke(location);
-                        }
-                    } catch (NoSuchMethodException e) {
-                        // Andorid4.0以下没有这个方法，直接跳过即可
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    location.setLatitude(Double.parseDouble(parts[1]));
+                    location.setLongitude(Double.parseDouble(parts[0]));
+                    location.setAccuracy((Float.parseFloat(parts[2])));
+                    location.setAltitude(Double.parseDouble(parts[7]));
+                    location.setBearing(Float.parseFloat(parts[3]));
+                    location.setSpeed(Float.parseFloat(parts[4]));
+                    location.setElapsedRealtimeNanos(System.nanoTime());
                 } catch (Exception e) {
+                    e.printStackTrace();
                     break;
                 }
 
-
                 // 提供新的位置信息
                 try {
-                    locationManager.setTestProviderLocation(GPS_MOCK_PROVIDER,
-                            location);
+                    mMockLocationManager.setTestProviderLocation(location);
                     Log.i(LOG_TAG, location.toString());
                 } catch (Exception e) {
                     e.printStackTrace();
