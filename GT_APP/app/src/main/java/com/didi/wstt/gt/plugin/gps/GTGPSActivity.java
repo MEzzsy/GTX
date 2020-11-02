@@ -52,7 +52,6 @@ import java.util.ArrayList;
 
 public class GTGPSActivity extends GTBaseActivity {
     public static final String TAG = "GTGPSActivity";
-    private static final String MOCK_GPS_PROVIDER_INDEX = "GpsMockProviderIndex";
     public static final int RES_GPSREPALY_ACTIVITY = 200;
 
     private TextView back_gt;
@@ -71,8 +70,6 @@ public class GTGPSActivity extends GTBaseActivity {
             mAdapter.notifyDataSetChanged();
         }
     };
-
-    private static int mMockGpsProviderIndex = 0;
 
     private View.OnClickListener mOnClickListener = new OnClickListener() {
         @Override
@@ -126,22 +123,21 @@ public class GTGPSActivity extends GTBaseActivity {
                     GTGPSReplayEngine.getInstance().selectedItemPos);
             PluginManager.getInstance().getPluginControler()
                     .startService(GTGPSReplayEngine.getInstance(), intent);
+
+            tv_replay.setBackgroundResource(R.drawable.switch_off_border);
+            tv_replay.setText(getString(R.string.pi_gps_replay_stop));
         } else {
             PluginManager.getInstance().getPluginControler()
                     .stopService(GTGPSReplayEngine.getInstance());
+
+            tv_replay.setBackgroundResource(R.drawable.switch_on_border);
+            tv_replay.setText(getString(R.string.pi_gps_replay));
         }
     }
 
     private GPSReplayListener mGPSReplayListener = new GPSReplayListener() {
         @Override
         public void onReplayStart() {
-            GTGPSActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tv_replay.setBackgroundResource(R.drawable.switch_off_border);
-                    tv_replay.setText(getString(R.string.pi_gps_replay_stop));
-                }
-            });
         }
 
         @Override
@@ -151,13 +147,6 @@ public class GTGPSActivity extends GTBaseActivity {
 
         @Override
         public void onReplayStop() {
-            GTGPSActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tv_replay.setBackgroundResource(R.drawable.switch_on_border);
-                    tv_replay.setText(getString(R.string.pi_gps_replay));
-                }
-            });
         }
 
         @Override
@@ -170,12 +159,6 @@ public class GTGPSActivity extends GTBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pi_gps);
-
-        // 恢复因GT crash而中断的模拟位置点
-        if (savedInstanceState != null) {
-            mMockGpsProviderIndex = savedInstanceState.getInt(
-                    MOCK_GPS_PROVIDER_INDEX, 0);
-        }
 
         back_gt = findViewById(R.id.frame_back_gt);
         back_gt.setOnClickListener(mOnClickListener);
@@ -208,13 +191,6 @@ public class GTGPSActivity extends GTBaseActivity {
         }
 
         GTGPSReplayEngine.getInstance().addListener(mGPSReplayListener);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putInt(MOCK_GPS_PROVIDER_INDEX,
-                mMockGpsProviderIndex);
-        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
