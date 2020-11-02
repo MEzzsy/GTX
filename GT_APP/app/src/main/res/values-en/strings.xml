@@ -259,7 +259,7 @@
     <string name="pi_othersm_recover_property_btn">Resume</string>
     <string name="pi_othersm_restart_btn">Restart</string>
     <string name="pi_gps_title">月光宝盒</string>
-    <string name="pi_gps_item">record&amp;replay GPS</string>
+    <string name="pi_gps_item">replay GPS</string>
     <string name="pi_gps_record">Record</string>
     <string name="pi_gps_record_stop">Stop Record</string>
     <string name="pi_gps_replay">Replay</string>

@@ -264,7 +264,7 @@
     <string name="pi_othersm_recover_property_btn">恢复</string>
     <string name="pi_othersm_restart_btn">重启</string>
     <string name="pi_gps_title">月光宝盒</string>
-    <string name="pi_gps_item">录制GPS轨迹并模拟回放</string>
+    <string name="pi_gps_item">回放GPS轨迹</string>
     <string name="pi_gps_record">录制</string>
     <string name="pi_gps_record_stop">结束录制</string>
     <string name="pi_gps_replay">回放</string>

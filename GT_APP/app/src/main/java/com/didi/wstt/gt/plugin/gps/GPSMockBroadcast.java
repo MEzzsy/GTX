@@ -31,8 +31,6 @@ import android.util.Log;
 import com.didi.wstt.gt.plugin.PluginManager;
 
 public class GPSMockBroadcast extends BroadcastReceiver {
-    public static final String GPS_START_RECORD = "com.tencent.wstt.gt.plugin.gps.startRecord";
-    public static final String GPS_END_RECORD = "com.tencent.wstt.gt.plugin.gps.endRecord";
     public static final String GPS_START_REPLAY = "com.tencent.wstt.gt.plugin.gps.startReplay";
     public static final String GPS_END_REPLAY = "com.tencent.wstt.gt.plugin.gps.endReplay";
 
@@ -42,17 +40,11 @@ public class GPSMockBroadcast extends BroadcastReceiver {
             String action = intent.getAction();
             if (action == null) return;
             if (action.equals(GPS_START_REPLAY)) {
-                PluginManager.getInstance().getPluginControler(
-                ).startService(GTGPSReplayEngine.getInstance(), intent);
+                PluginManager.getInstance().getPluginControler()
+                        .startService(GTGPSReplayEngine.getInstance(), intent);
             } else if (action.equals(GPS_END_REPLAY)) {
-                PluginManager.getInstance().getPluginControler(
-                ).stopService(GTGPSReplayEngine.getInstance());
-            } else if (action.equals(GPS_START_RECORD)) {
-                PluginManager.getInstance().getPluginControler(
-                ).startService(GTGPSRecordEngine.getInstance(), intent);
-            } else if (action.equals(GPS_END_RECORD)) {
-                PluginManager.getInstance().getPluginControler(
-                ).stopService(GTGPSRecordEngine.getInstance());
+                PluginManager.getInstance().getPluginControler()
+                        .stopService(GTGPSReplayEngine.getInstance());
             }
         } catch (Exception e) {
             Log.e("GT", "error on GPSMockBroadcast.onReceive()...");

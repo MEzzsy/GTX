@@ -48,7 +48,6 @@ public class GTGPSTaskExecutor implements PluginTaskExecutor {
      */
     @Override
     public void execute(Bundle bundle) {
-
         String cmd = bundle.getString("cmd");
         if (cmd != null && cmd.equals("replay")) {
             int seq = bundle.getInt("seq", -1);
@@ -70,22 +69,6 @@ public class GTGPSTaskExecutor implements PluginTaskExecutor {
             // 停Replay服务
             PluginManager.getInstance().getPluginControler(
             ).stopService(GTGPSReplayEngine.getInstance());
-        } else if (cmd != null && cmd.equals("record")) {
-            String item = bundle.getString("filename");
-            // 起Record服务
-            if (item == null) {
-                PluginManager.getInstance().getPluginControler(
-                ).startService(GTGPSRecordEngine.getInstance());
-            } else {
-                Intent intent = new Intent();
-                intent.putExtra("filename", item);
-                PluginManager.getInstance().getPluginControler(
-                ).startService(GTGPSRecordEngine.getInstance(), intent);
-            }
-        } else if (cmd != null && cmd.equals("stopRecord")) {
-            // 停Record服务
-            PluginManager.getInstance().getPluginControler(
-            ).stopService(GTGPSRecordEngine.getInstance());
         }
     }
 

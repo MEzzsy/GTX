@@ -56,7 +56,6 @@ public class GTGPSActivity extends GTBaseActivity {
     public static final int RES_GPSREPALY_ACTIVITY = 200;
 
     private TextView back_gt;
-    private TextView tv_record;
     private TextView tv_replay;
     private TextView tv_refresh;
     private TextView tv_clear;
@@ -79,9 +78,6 @@ public class GTGPSActivity extends GTBaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.record:
-                    onClickRecord();
-                    break;
                 case R.id.replay:
                     onClickReplay();
                     break;
@@ -136,55 +132,6 @@ public class GTGPSActivity extends GTBaseActivity {
         }
     }
 
-    /**
-     * 点击录制按钮
-     */
-    private void onClickRecord() {
-        if (!GTGPSRecordEngine.getInstance().isRecord()) {
-            PluginManager.getInstance().getPluginControler()
-                    .startService(GTGPSRecordEngine.getInstance());
-        } else {
-            PluginManager.getInstance().getPluginControler()
-                    .stopService(GTGPSRecordEngine.getInstance());
-        }
-    }
-
-    private GPSRecordListener mGPSRecordListener = new GPSRecordListener() {
-        @Override
-        public void onRecordStart() {
-            GTGPSActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tv_record.setBackgroundResource(R.drawable.switch_off_border);
-                    tv_record.setText(getString(R.string.pi_gps_record_stop));
-                }
-            });
-        }
-
-        @Override
-        public void onRecordStop() {
-            GTGPSActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tv_record.setBackgroundResource(R.drawable.switch_on_border);
-                    tv_record.setText(getString(R.string.pi_gps_record));
-                    // 更新UI
-                    handler.sendEmptyMessage(0);
-                }
-            });
-        }
-
-        @Override
-        public void onRecordFail(final String errorstr) {
-            GTGPSActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    ToastUtil.ShowLongToast(GTGPSActivity.this, errorstr);
-                }
-            });
-        }
-    };
-
     private GPSReplayListener mGPSReplayListener = new GPSReplayListener() {
         @Override
         public void onReplayStart() {
@@ -233,12 +180,10 @@ public class GTGPSActivity extends GTBaseActivity {
         back_gt = findViewById(R.id.frame_back_gt);
         back_gt.setOnClickListener(mOnClickListener);
 
-        tv_record = findViewById(R.id.record);
         tv_replay = findViewById(R.id.replay);
         tv_refresh = findViewById(R.id.refresh);
         tv_clear = findViewById(R.id.clear);
 
-        tv_record.setOnClickListener(mOnClickListener);
         tv_replay.setOnClickListener(mOnClickListener);
         tv_refresh.setOnClickListener(mOnClickListener);
         tv_clear.setOnClickListener(mOnClickListener);
@@ -246,22 +191,12 @@ public class GTGPSActivity extends GTBaseActivity {
         lv_gpsFile = findViewById(R.id.gpslist);
         initListView();
 
-        if (GTGPSRecordEngine.getInstance().isRecord()) {
-            tv_record.setBackgroundResource(R.drawable.switch_off_border);
-            tv_record.setText(getString(R.string.pi_gps_record_stop));
-        } else {
-            tv_record.setBackgroundResource(R.drawable.switch_on_border);
-            tv_record.setText(getString(R.string.pi_gps_record));
-
-        }
-
         if (GTGPSReplayEngine.getInstance().isReplay()) {
             tv_replay.setBackgroundResource(R.drawable.switch_off_border);
             tv_replay.setText(getString(R.string.pi_gps_replay_stop));
         } else {
             tv_replay.setBackgroundResource(R.drawable.switch_on_border);
             tv_replay.setText(getString(R.string.pi_gps_replay));
-
         }
         if (GTGPSReplayEngine.getInstance().selectedItemPos >= 0) {
             lv_gpsFile
@@ -272,7 +207,6 @@ public class GTGPSActivity extends GTBaseActivity {
             GTGPSReplayEngine.getInstance().selectedItem = o.toString();
         }
 
-        GTGPSRecordEngine.getInstance().addListener(mGPSRecordListener);
         GTGPSReplayEngine.getInstance().addListener(mGPSReplayListener);
     }
 
@@ -291,7 +225,6 @@ public class GTGPSActivity extends GTBaseActivity {
 
     @Override
     protected void onDestroy() {
-        GTGPSRecordEngine.getInstance().removeListener(mGPSRecordListener);
         GTGPSReplayEngine.getInstance().removeListener(mGPSReplayListener);
         handler.removeCallbacksAndMessages(null);
         super.onDestroy();
